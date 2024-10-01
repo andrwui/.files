@@ -19,10 +19,6 @@ alias cls="clear"
 
 alias nf="clear && neofetch"
 
-alias cc="nv ~/.config"
-alias notes="nv ~/notes"
-alias codemiem="nv /Development/Workspaces/git/ApiaIDE_MIEM_TEL/"
-
 alias vpnmiem="sudo openfortivpn -c /etc/openfortivpn/config"
 
 alias t="tmux"
@@ -58,7 +54,7 @@ function z_tmux
 end
 
 
-function nvim_open
+function nv 
     if test (count $argv) -gt 0
         set dir (zoxide query $argv[1] )
         if test -n "$dir"
@@ -69,22 +65,12 @@ function nvim_open
     end
 end
 
-alias nv="nvim_open"
-
 
 function toshare
     cp $argv[1] ~/rdmiemshare/
 end
 
-
-function btc
-    set NAME $argv[1]
-    set device (bluetoothctl devices | grep -i $NAME | cut -d ' ' -f 2)
-    bluetoothctl -- connect $device
-end
-alias btd="bluetoothctl disconnect"
-alias btdev="bluetoothctl devices | cut -d ' ' -f 3- --output-delimiter=' ' | sed 's/^ *//'"
-
+alias bt="bluetuith"
 
 fish_add_path /home/andrw/.spicetify
 
