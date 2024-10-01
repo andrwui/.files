@@ -1,0 +1,75 @@
+import network from 'services/network'
+
+const NetworkTrayButton = () => {
+
+	const icon = network.bind("network_info").as((ni) => {
+		if (ni.ethernet.isConnected == true) {
+			return "󰈀"
+		} else if (ni.wifi.isConnected) {
+			return "󰖩"
+		} else {
+			return "󰖪"
+		}
+	})
+
+	const tooltip = network.bind("network_info").as(ni => ni.wifi.isConnected ? `${ni.wifi.name.trim()}` : '')
+
+	return Widget.Button({
+		className: 'indicator-button',
+		label: icon,
+		onClicked: () => {
+			NetworkTrayWindow.visible = !NetworkTrayWindow.visible
+		},
+		tooltipText: tooltip
+	})
+}
+
+const NetworkTray = () => {
+
+	const NetworkButtons = network.bind('network_info').as(networkInfo => {
+		const sinkList = networkInfo.wifi.availableNetworks.map(network => {
+			return Widget.Button({
+				hpack: 'start',
+				vpack: 'start',
+				label: `${network}`,
+			})
+		})
+		return sinkList.length === 0 ? [Widget.Label('No audio devices connected.')] : sinkList
+	})
+
+	const NetworkButtonBox = Widget.Scrollable({
+		hscroll: 'never',
+		heightRequest: 120,
+		child: Widget.Box({
+			children: NetworkButtons,
+			vertical: true,
+		})
+	})
+
+
+	const MainBox = Widget.Box({
+		vertical: true,
+		spacing: 15,
+		hpack: 'center',
+		css: 'padding: 15px;',
+		children: [
+			NetworkButtonBox,
+		]
+	})
+
+	return MainBox
+
+}
+
+const NetworkTrayWindow = Widget.Window({
+	css: 'background: #080808',
+	child: NetworkTray(),
+	visible: false,
+	margins: [10, 150],
+	anchor: ['right', 'top']
+})
+
+
+
+
+export default NetworkTrayButton

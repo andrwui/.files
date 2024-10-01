@@ -1,0 +1,36 @@
+.battery
+  .empty
+    background: #111111 
+
+  .filled
+    background: #5de04f
+
+
+  &.charging .filled 
+    background: #5de04f
+
+  &.overcharging .filled
+    animation-duration: .5s
+    animation-direction: alternate
+    animation-iteration-count: infinite
+    animation-name: blink
+
+
+  &.med .filled 
+    background: #e0ba4f
+
+  &.low .filled
+    background: #e04f4f
+
+
+  &.danger .filled, &.danger block 
+    animation-duration: .2s
+    animation-direction: alternate
+    animation-iteration-count: infinite
+    animation-name: blink
+
+
+
+@keyframes blink 
+  to 
+    background-color: transparent

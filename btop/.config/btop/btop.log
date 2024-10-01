@@ -1,0 +1,86 @@
+
+2024/06/16 (00:31:57) | ===> btop++ v.1.3.2
+2024/06/16 (00:31:57) | INFO: Logger set to DEBUG
+2024/06/16 (00:31:58) | INFO: Logger set to INFO
+2024/06/16 (00:32:00) | INFO: Logger set to DEBUG
+2024/06/16 (00:32:01) | INFO: Logger set to DEBUG
+2024/06/16 (00:32:18) | DEBUG: Loading theme file: /usr/share/btop/themes/dusklight.theme
+2024/06/16 (00:32:19) | DEBUG: Loading theme file: /usr/share/btop/themes/tomorrow-night.theme
+2024/06/16 (00:32:33) | DEBUG: Loading theme file: /usr/share/btop/themes/adapta.theme
+2024/06/16 (00:32:36) | DEBUG: Loading theme file: /usr/share/btop/themes/kyli0x.theme
+2024/06/16 (00:32:40) | DEBUG: Loading theme file: /usr/share/btop/themes/flat-remix.theme
+2024/06/16 (00:32:44) | DEBUG: Loading theme file: /usr/share/btop/themes/dracula.theme
+2024/06/16 (00:32:47) | DEBUG: Loading theme file: /usr/share/btop/themes/elementarish.theme
+2024/06/16 (00:32:50) | DEBUG: Loading theme file: /usr/share/btop/themes/whiteout.theme
+2024/06/16 (00:32:52) | DEBUG: Loading theme file: /usr/share/btop/themes/paper.theme
+2024/06/16 (00:32:57) | DEBUG: Loading theme file: /usr/share/btop/themes/solarized_dark.theme
+2024/06/16 (00:33:00) | DEBUG: Loading theme file: /usr/share/btop/themes/everforest-dark-medium.theme
+2024/06/16 (00:33:02) | DEBUG: Loading theme file: /usr/share/btop/themes/onedark.theme
+2024/06/16 (00:33:05) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2024/06/16 (00:33:05) | DEBUG: Loading theme file: /usr/share/btop/themes/tokyo-storm.theme
+2024/06/16 (00:33:06) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2024/06/16 (00:33:08) | DEBUG: Loading theme file: /usr/share/btop/themes/tokyo-storm.theme
+2024/06/16 (00:33:12) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark_v2.theme
+2024/06/16 (00:33:14) | DEBUG: Loading theme file: /usr/share/btop/themes/tokyo-night.theme
+2024/06/16 (00:33:16) | DEBUG: Loading theme file: /usr/share/btop/themes/flat-remix-light.theme
+2024/06/16 (00:33:29) | DEBUG: Loading theme file: /usr/share/btop/themes/tokyo-night.theme
+2024/06/16 (00:33:29) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark_v2.theme
+2024/06/16 (00:33:33) | DEBUG: Loading theme file: /usr/share/btop/themes/tokyo-storm.theme
+2024/06/16 (00:33:33) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2024/06/16 (00:33:36) | DEBUG: Loading theme file: /usr/share/btop/themes/onedark.theme
+2024/06/16 (00:33:36) | DEBUG: Loading theme file: /usr/share/btop/themes/everforest-dark-medium.theme
+2024/06/16 (00:33:37) | DEBUG: Loading theme file: /usr/share/btop/themes/solarized_dark.theme
+2024/06/16 (00:33:40) | DEBUG: Loading theme file: /usr/share/btop/themes/paper.theme
+2024/06/16 (00:33:43) | DEBUG: Loading theme file: /usr/share/btop/themes/whiteout.theme
+2024/06/16 (00:33:46) | DEBUG: Loading theme file: /usr/share/btop/themes/elementarish.theme
+2024/06/16 (00:33:49) | DEBUG: Loading theme file: /usr/share/btop/themes/dracula.theme
+2024/06/16 (00:33:49) | DEBUG: Loading theme file: /usr/share/btop/themes/flat-remix.theme
+2024/06/16 (00:33:53) | DEBUG: Loading theme file: /usr/share/btop/themes/kyli0x.theme
+2024/06/16 (00:33:58) | DEBUG: Loading theme file: /usr/share/btop/themes/adapta.theme
+2024/06/16 (00:34:01) | DEBUG: Loading theme file: /usr/share/btop/themes/tomorrow-night.theme
+2024/06/16 (00:34:03) | DEBUG: Loading theme file: /usr/share/btop/themes/dusklight.theme
+2024/06/16 (00:34:11) | DEBUG: Loading theme file: /usr/share/btop/themes/matcha-dark-sea.theme
+2024/06/16 (00:34:13) | DEBUG: Loading theme file: /usr/share/btop/themes/night-owl.theme
+2024/06/16 (00:34:15) | DEBUG: Loading theme file: /usr/share/btop/themes/HotPurpleTrafficLight.theme
+2024/06/16 (00:34:18) | DEBUG: Loading theme file: /usr/share/btop/themes/monokai.theme
+2024/06/16 (00:34:20) | DEBUG: Loading theme file: /usr/share/btop/themes/greyscale.theme
+
+2024/06/16 (12:44:16) | ===> btop++ v.1.3.2
+2024/06/16 (12:44:16) | ERROR: Couldn't determine terminal size of "STDOUT_FILENO"!
+
+2024/07/23 (23:19:25) | ===> btop++ v.1.3.2
+2024/07/23 (23:19:25) | ERROR: Stall in Runner thread, restarting!
+
+2024/07/26 (11:18:16) | ===> btop++ v.1.3.2
+2024/07/26 (11:18:16) | ERROR: Couldn't determine terminal size of "STDOUT_FILENO"!
+2024/07/26 (11:18:16) | ERROR: Couldn't determine terminal size of "/dev/tty"!
+
+2024/09/24 (20:58:36) | ===> btop++ v.1.4.0
+2024/09/24 (20:58:36) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/09/26 (13:57:47) | ===> btop++ v.1.4.0
+2024/09/26 (13:57:47) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/09/26 (14:24:04) | ===> btop++ v.1.4.0
+2024/09/26 (14:24:04) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/09/27 (09:03:11) | ===> btop++ v.1.4.0
+2024/09/27 (09:03:11) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/09/27 (10:06:09) | ===> btop++ v.1.4.0
+2024/09/27 (10:06:09) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/09/28 (21:53:41) | ===> btop++ v.1.4.0
+2024/09/28 (21:53:41) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/09/28 (21:56:03) | ===> btop++ v.1.4.0
+2024/09/28 (21:56:03) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/09/28 (21:57:33) | ===> btop++ v.1.4.0
+2024/09/28 (21:57:33) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/09/28 (21:57:37) | ===> btop++ v.1.4.0
+2024/09/28 (21:57:37) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/09/29 (20:00:37) | ===> btop++ v.1.4.0
+2024/09/29 (20:00:37) | WARNING: Intel GPU: Failed to initialize PMU
