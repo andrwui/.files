@@ -17,12 +17,20 @@ alias cd..="cd .."
 alias ls="ls -a1"
 alias cls="clear"
 
-alias nf="clear && neofetch"
-
 alias vpnmiem="sudo openfortivpn -c /etc/openfortivpn/config"
 
-alias t="tmux"
-alias td="tmux detach"
+function tmux
+    if count $argv > /dev/null
+        command tmux $argv
+    else
+        set -l sessions (command tmux list-sessions 2>/dev/null)
+        if test $status -eq 0
+            command tmux attach
+        else
+            command tmux
+        end
+    end
+end
 
 alias wlan0="iwctl station wlan0"
 
@@ -42,15 +50,6 @@ function tn --description 'Select directory with fzf and create tmux session'
             tmux attach-session -t $session_name
         end
     end
-end
-
-function z_tmux
-	if test (count $argv) -gt 0
-		z $argv[1] && tmux
-	else 
-		echo "Path not found"
-	end
-	
 end
 
 
