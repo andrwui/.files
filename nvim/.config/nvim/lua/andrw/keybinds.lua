@@ -58,7 +58,7 @@ remap({ 'v' }, '<C-l>', '$h')
 -- Left
 remap({ 'n', 'v' }, 'k', 'h')
 remap({ 'n', 'v' }, '<S-k>', 'b')
-remap({ 'n', 'v' }, '<C-k>', '0')
+remap({ 'n', 'v' }, '<C-k>', '^')
 
 -- Yank to the clipboard
 remap({ 'n', 'v' }, 'Y', '"+yy')
@@ -75,6 +75,9 @@ remap({ 'n', 'v' }, '<C-a>', '[[V]]')
 
 -- Delete current line
 remap({ 'n', 'v' }, '<C-d>', '"_dd')
+
+-- Replace all line from first character
+remap({ 'n' }, '<C-c>', 'Vc')
 
 -- Undo and redo
 remap({ 'n', 'v' }, '<C-z>', 'u')
@@ -105,10 +108,26 @@ remap('n', '_', function()
   vim.diagnostic.open_float(nil, { border = 'single' })
 end)
 
--- Rename namespace with C-r
-remap('n', '<C-r>', function()
+-- Rename namespace (with vim motions!!!) with C-r
+remap("n", "<C-r>", function()
+  vim.api.nvim_create_autocmd({ "CmdlineEnter" }, {
+    callback = function()
+      local key = vim.api.nvim_replace_termcodes("<C-f>", true, false, true)
+      vim.api.nvim_feedkeys(key, "c", false)
+      vim.api.nvim_feedkeys("0", "n", false)
+      return true
+    end,
+  })
   vim.lsp.buf.rename()
 end)
+
+
+-- Exiting command window with Esc
+vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
+  callback = function()
+    vim.keymap.set("n", "<esc>", "<esc>:quit<CR>", { buffer = true })
+  end,
+})
 
 -- If error != nil for golang
 local en = 'iif<Space>err<Space>!=<Space>nil<Space>{<Return><Return>}<Esc>ki'
