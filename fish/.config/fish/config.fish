@@ -16,6 +16,7 @@ alias sysupdate="pacman -Syuu"
 alias cd..="cd .."
 alias ls="ls -a1"
 alias cls="clear"
+alias rm="trash"
 
 alias vpnmiem="sudo openfortivpn -c /etc/openfortivpn/config"
 
