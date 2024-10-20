@@ -62,6 +62,7 @@ local lspzero = {
     cmp.setup({
       sources = {
         { name = 'nvim_lsp' },
+        { name = 'luasnip' }
       },
       mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),

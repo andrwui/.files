@@ -3,11 +3,11 @@
 local opts = { noremap = true, silent = true }
 
 local remap = function(modes, remap, action)
-  vim.keymap.set(modes, remap, action, opts)
+    vim.keymap.set(modes, remap, action, opts)
 end
 
 local unmap = function(modes, unmap)
-  remap(modes, unmap, '<NOP>')
+    remap(modes, unmap, '<NOP>')
 end
 
 -- UNMAPPINGS
@@ -100,33 +100,33 @@ remap({ 'n', 'v' }, '<CR>', 'o<Esc>')
 
 -- Show hover snippet with -
 remap('n', '-', function()
-  vim.lsp.buf.hover()
+    vim.lsp.buf.hover()
 end)
 
 -- Diagnostic snippet with _
 remap('n', '_', function()
-  vim.diagnostic.open_float(nil, { border = 'single' })
+    vim.diagnostic.open_float(nil, { border = 'single' })
 end)
 
 -- Rename namespace (with vim motions!!!) with C-r
 remap("n", "<C-r>", function()
-  vim.api.nvim_create_autocmd({ "CmdlineEnter" }, {
-    callback = function()
-      local key = vim.api.nvim_replace_termcodes("<C-f>", true, false, true)
-      vim.api.nvim_feedkeys(key, "c", false)
-      vim.api.nvim_feedkeys("0", "n", false)
-      return true
-    end,
-  })
-  vim.lsp.buf.rename()
+    vim.api.nvim_create_autocmd({ "CmdlineEnter" }, {
+        callback = function()
+            local key = vim.api.nvim_replace_termcodes("<C-f>", true, false, true)
+            vim.api.nvim_feedkeys(key, "c", false)
+            vim.api.nvim_feedkeys("0", "n", false)
+            return true
+        end,
+    })
+    vim.lsp.buf.rename()
 end)
 
 
 -- Exiting command window with Esc
 vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
-  callback = function()
-    vim.keymap.set("n", "<esc>", "<esc>:quit<CR>", { buffer = true })
-  end,
+    callback = function()
+        vim.keymap.set("n", "<esc>", "<esc>:quit<CR>", { buffer = true })
+    end,
 })
 
 -- If error != nil for golang

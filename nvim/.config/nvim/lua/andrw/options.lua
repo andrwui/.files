@@ -11,6 +11,13 @@ vim.cmd("set cmdwinheight=1")
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+vim.opt.wrap = false
+vim.opt.relativenumber = true
+vim.opt.ignorecase = false
+vim.opt.incsearch = true
+vim.opt.scrolloff = 10
+vim.opt.splitright = true
+
 
 vim.o.signcolumn = "yes"
 vim.o.fillchars = "eob: "
@@ -18,14 +25,10 @@ vim.o.fillchars = "eob: "
 vim.opt.autoread = true
 vim.opt.swapfile = false
 
-vim.diagnostic.config({
-  undercurl = true, -- Enable underlining for all severities
-})
-
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { underline = true, sp = '#E7AFA8' })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { underline = true, sp = '#E5CC87' })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { underline = true, sp = '#00FFFF' })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { underline = true, sp = '#00FF00' })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { undercurl = true, sp = '#E7AFA8' })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { undercurl = true, sp = '#E5CC87' })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { underline = true, sp = '#FFFFFF' })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { underline = true, sp = '#080808' })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = {
