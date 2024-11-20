@@ -118,26 +118,70 @@ remap('n', '<C-b>', ':NvimTreeToggle<CR>')
 
 -- Rename namespace (with vim motions!!!) with C-r
 remap("n", "<C-r>", function()
-  vim.api.nvim_create_autocmd({ "CmdlineEnter" }, {
-    callback = function()
-      local key = vim.api.nvim_replace_termcodes("<C-f>", true, false, true)
-      vim.api.nvim_feedkeys(key, "c", false)
-      vim.api.nvim_feedkeys("0", "n", false)
-      return true
-    end,
-  })
   vim.lsp.buf.rename()
 end)
-
-
--- Exiting command window with Esc
-vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
-  callback = function()
-    vim.keymap.set("n", "<esc>", "<esc>:quit<CR>", { buffer = true })
-  end,
-})
 
 
 -- Generate Golang json tags for current line and jump downards
 remap('n', '<Leader>gj',
   "^yiwA<Space>`json:\"<Esc>pa\"`<Esc>F\"F\"l~F`i<CR><Esc>V:s/\\u/_\\L&/ge<CR>:noh<CR>kJj^")
+
+
+local cycle_buffers = function(direction)
+  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+  local current = vim.fn.bufnr('%')
+  local index = 0
+
+  for i, buf in ipairs(buffers) do
+    if buf.bufnr == current then
+      index = i
+      break
+    end
+  end
+
+  if direction == 'next' then
+    index = index % #buffers + 1
+  else
+    index = index - 1
+    if index == 0 then
+      index = #buffers
+    end
+  end
+
+  vim.cmd('buffer ' .. buffers[index].bufnr)
+end
+
+local kill_buffer = function()
+  local current_buffer = vim.fn.bufnr('%')
+  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+  if #buffers <= 1 then
+    vim.cmd('bdelete! ' .. current_buffer)
+    return
+  end
+
+  local next_buffer
+  for i, buf in ipairs(buffers) do
+    if buf.bufnr == current_buffer then
+      next_buffer = buffers[(i % #buffers) + 1].bufnr
+      break
+    end
+  end
+
+  if next_buffer then
+    vim.cmd('buffer ' .. next_buffer)
+    vim.cmd('bdelete! ' .. current_buffer)
+  end
+end
+
+remap('n', '<Leader>x', function() kill_buffer() end)
+remap('n', '<Leader><BS>', function()
+  kill_buffer()
+end)
+
+remap('n', '<Leader>gg', function()
+  cycle_buffers('prev')
+end)
+remap('n', '<Leader>hh', function()
+  cycle_buffers('next')
+end)
