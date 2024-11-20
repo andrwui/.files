@@ -1,3 +1,4 @@
+-- treesitter lesgooo
 local TS = {
 
   'nvim-treesitter/nvim-treesitter',
@@ -18,7 +19,9 @@ local TS = {
         'astro',
         'css',
         'scss',
-        'lua'
+        'lua',
+        'markdown',
+        'markdown_inline',
       },
       ignore_install = { 'rust' }
     })

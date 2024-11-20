@@ -1,3 +1,4 @@
+-- monochrome theme, color are for the weak. we are stronger. we are better.
 local monochrome = {
 
   'kdheepak/monochrome.nvim',
@@ -9,4 +10,3 @@ local monochrome = {
 
 
 return { monochrome }
-

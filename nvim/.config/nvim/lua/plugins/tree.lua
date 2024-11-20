@@ -7,6 +7,10 @@ local tree = {
   },
   config = function()
     require("nvim-tree").setup({
+      diagnostics = {
+        enable = true,
+        show_on_dirs = false,
+      },
       on_attach = function(bufnr)
         local api = require('nvim-tree.api')
 

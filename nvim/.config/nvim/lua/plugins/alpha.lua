@@ -1,3 +1,4 @@
+-- splash screen. i literally never see it, i just open my projects directly lmao. used for some nice posts on unixporn
 local alpha = {
   "goolord/alpha-nvim",
   dependencies = { 'nvim-tree/nvim-web-devicons' },

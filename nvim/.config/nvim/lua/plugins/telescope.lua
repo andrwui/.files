@@ -1,3 +1,4 @@
+-- mythic telescope, literally the best plugin ever
 local telescope = {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.8',

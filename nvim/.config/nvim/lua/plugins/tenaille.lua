@@ -1,6 +1,7 @@
-local P = {
+-- wrap selection on any kinda bracket
+local tenaille = {
   -- plugin spec
   'doums/tenaille.nvim',
   config = true,
 }
-return { P }
+return { tenaille }

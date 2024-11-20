@@ -1,12 +1,12 @@
+-- status bar plugin tingy
 local lualine = {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      local ll = require('lualine')
-      local lc = ll.get_config()
-      ll.setup(lc)
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  config = function()
+    local ll = require('lualine')
+    local lc = ll.get_config()
+    ll.setup(lc)
+  end,
+}
 
-    end,
-  }
-
-return {lualine}
+return { lualine }

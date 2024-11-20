@@ -18,6 +18,8 @@ alias ls="ls -a1"
 alias cls="clear"
 alias rm="trash"
 
+alias sony="bluetoothctl connect 00:A4:1C:7C:E3:86"
+
 alias vpnmiem="sudo openfortivpn -c /etc/openfortivpn/config"
 
 function tmux

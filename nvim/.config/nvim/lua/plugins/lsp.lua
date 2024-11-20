@@ -1,3 +1,4 @@
+-- lsp stuff, he's a good guy. just don't touch it or it will break horribly and not work anymore until you literally reformat your pc
 local mason = {
   'williamboman/mason.nvim',
   config = function()
@@ -62,7 +63,8 @@ local lspzero = {
     cmp.setup({
       sources = {
         { name = 'nvim_lsp' },
-        { name = 'luasnip' }
+        { name = 'luasnip' },
+        { name = 'lazydev' }
       },
       mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),

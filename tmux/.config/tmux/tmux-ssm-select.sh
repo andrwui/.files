@@ -64,47 +64,6 @@ while true; do
     "q"|"Q")
         break
         ;;
-    "R"|"r")
-        clear_help_line
-        echo -n "  rename: "
-        if read_input; then
-          tmux rename-session -t "${session_list[$selected]}" "$REPLY"
-          refresh_sessions
-        else
-          clear_help_line
-        fi
-        ;;
-    "D")
-      clear_help_line
-      echo -n "  delete '${session_list[$selected]}'?: "
-      if read_input; then
-        confirm=${REPLY:-n}
-        if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
-            if [ "${#session_list[@]}" -gt 1 ]; then
-                next_session=$(( (selected + 1) % ${#session_list[@]} ))
-                tmux switch-client -t "${session_list[$next_session]}"
-            fi
-            tmux kill-session -t "${session_list[$selected]}"
-            refresh_sessions
-            [ "$selected" -ge ${#session_list[@]} ] && selected=$((${#session_list[@]} - 1))
-        else
-            clear_help_line
-        fi
-      fi
-      ;;
-    "A"|"a")
-        clear_help_line
-        echo -n "  name: "
-        if read_input; then
-          tmux new-session -d -s "$REPLY" -c "$HOME"
-          tmux switch-client -t "$REPLY"
-          refresh_sessions
-          selected=$((${#session_list[@]} - 1))
-          break
-        else
-          clear_help_line
-        fi
-        ;;
   esac
 done
 
