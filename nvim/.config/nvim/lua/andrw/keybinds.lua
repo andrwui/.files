@@ -17,7 +17,6 @@ unmap({ 'n', 'v', 's' }, 'h')
 unmap({ 'n', 'v', 's' }, 'H')
 unmap({ 'n', 'v', 's' }, '<C-h>')
 unmap({ 'n', 'v', 's' }, 'j')
-unmap({ 'n', 'v', 's' }, '<C-j>')
 unmap({ 'n', 'v', 's' }, 'w')
 unmap({ 'n', 'v', 's' }, 'W')
 unmap({ 'n', 'v', 's' }, '0')
@@ -76,6 +75,9 @@ remap({ 'v' }, 'p', 'P')
 -- Select all
 remap({ 'n', 'v' }, '<Leader>a', '[[V]]')
 
+-- Remap delete to j
+remap({ 'n', 'v' }, 'j', '"_d')
+
 -- Delete current line
 remap({ 'n', 'v' }, '<C-d>', '"_dd')
 
@@ -116,72 +118,107 @@ end)
 -- Toggle NvimTree
 remap('n', '<C-b>', ':NvimTreeToggle<CR>')
 
--- Rename namespace (with vim motions!!!) with C-r
+-- Rename namespace with C-r
 remap("n", "<C-r>", function()
   vim.lsp.buf.rename()
 end)
 
+-- Kill current buffer
+remap('n', '<Leader><BS>', function()
+  vim.cmd('bdelete')
+end)
 
 -- Generate Golang json tags for current line and jump downards
 remap('n', '<Leader>gj',
   "^yiwA<Space>`json:\"<Esc>pa\"`<Esc>F\"F\"l~F`i<CR><Esc>V:s/\\u/_\\L&/ge<CR>:noh<CR>kJj^")
 
 
-local cycle_buffers = function(direction)
-  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
-  local current = vim.fn.bufnr('%')
-  local index = 0
 
-  for i, buf in ipairs(buffers) do
-    if buf.bufnr == current then
-      index = i
-      break
-    end
-  end
 
-  if direction == 'next' then
-    index = index % #buffers + 1
-  else
-    index = index - 1
-    if index == 0 then
-      index = #buffers
-    end
-  end
 
-  vim.cmd('buffer ' .. buffers[index].bufnr)
-end
 
-local kill_buffer = function()
-  local current_buffer = vim.fn.bufnr('%')
-  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
 
-  if #buffers <= 1 then
-    vim.cmd('bdelete! ' .. current_buffer)
-    return
-  end
+-- Comment
+local commentapi = require('Comment.api')
+remap({ 'n' }, '<S-c>', function()
+  commentapi.toggle.linewise.current()
+end)
 
-  local next_buffer
-  for i, buf in ipairs(buffers) do
-    if buf.bufnr == current_buffer then
-      next_buffer = buffers[(i % #buffers) + 1].bufnr
-      break
-    end
-  end
+remap({ 'v' }, '<S-c>', function()
+  commentapi.toggle.blockwise.current(vim.fn.visualmode())
+end)
 
-  if next_buffer then
-    vim.cmd('buffer ' .. next_buffer)
-    vim.cmd('bdelete! ' .. current_buffer)
-  end
-end
-
-remap('n', '<Leader>x', function() kill_buffer() end)
+-- Kill current buffer
 remap('n', '<Leader><BS>', function()
-  kill_buffer()
+  vim.cmd('bdelete')
 end)
 
-remap('n', '<Leader>gg', function()
-  cycle_buffers('prev')
+-- Generate Golang json tags for current line and jump downards
+remap('n', '<Leader>gj',
+  "^yiwA<Space>`json:\"<Esc>pa\"`<Esc>F\"F\"l~F`i<CR><Esc>V:s/\\u/_\\L&/ge<CR>:noh<CR>kJj^")
+
+
+
+
+
+
+
+-- Comment
+local commentapi = require('Comment.api')
+remap({ 'n' }, '<S-c>', function()
+  commentapi.toggle.linewise.current()
 end)
-remap('n', '<Leader>hh', function()
-  cycle_buffers('next')
+
+remap({ 'v' }, '<S-c>', function()
+  commentapi.toggle.blockwise.current(vim.fn.visualmode())
+end)
+
+-- Kill current buffer
+remap('n', '<Leader><BS>', function()
+  vim.cmd('bdelete')
+end)
+
+-- Generate Golang json tags for current line and jump downards
+remap('n', '<Leader>gj',
+  "^yiwA<Space>`json:\"<Esc>pa\"`<Esc>F\"F\"l~F`i<CR><Esc>V:s/\\u/_\\L&/ge<CR>:noh<CR>kJj^")
+
+
+
+
+
+
+
+-- Comment
+local commentapi = require('Comment.api')
+remap({ 'n' }, '<S-c>', function()
+  commentapi.toggle.linewise.current()
+end)
+
+remap({ 'v' }, '<S-c>', function()
+  commentapi.toggle.blockwise.current(vim.fn.visualmode())
+end)
+
+-- Kill current buffer
+remap('n', '<Leader><BS>', function()
+  vim.cmd('bdelete')
+end)
+
+-- Generate Golang json tags for current line and jump downards
+remap('n', '<Leader>gj',
+  "^yiwA<Space>`json:\"<Esc>pa\"`<Esc>F\"F\"l~F`i<CR><Esc>V:s/\\u/_\\L&/ge<CR>:noh<CR>kJj^")
+
+
+
+
+
+
+
+-- Comment
+local commentapi = require('Comment.api')
+remap({ 'n' }, '<S-c>', function()
+  commentapi.toggle.linewise.current()
+end)
+
+remap({ 'v' }, '<S-c>', function()
+  commentapi.toggle.blockwise.current(vim.fn.visualmode())
 end)

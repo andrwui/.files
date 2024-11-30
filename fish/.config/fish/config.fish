@@ -1,12 +1,8 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
+set fish_greeting
 
 if test -f ~/.config/fish/private.fish
     source ~/.config/fish/private.fish
 end
-
-set fish_greeting
 
 alias reboot="sudo reboot"
 alias pacman="sudo pacman"
@@ -16,11 +12,10 @@ alias sysupdate="pacman -Syuu"
 alias cd..="cd .."
 alias ls="ls -a1"
 alias cls="clear"
-alias rm="trash"
-
-alias sony="bluetoothctl connect 00:A4:1C:7C:E3:86"
 
 alias vpnmiem="sudo openfortivpn -c /etc/openfortivpn/config"
+
+alias wlan0="iwctl station wlan0"
 
 function tmux
     if count $argv > /dev/null
@@ -35,8 +30,6 @@ function tmux
     end
 end
 
-alias wlan0="iwctl station wlan0"
-
 function tn --description 'Select directory with fzf and create tmux session'
     set selected_dir (find ~ -type d -print | fzf)
     
@@ -48,7 +41,7 @@ function tn --description 'Select directory with fzf and create tmux session'
         end
         
         if set -q TMUX
-            tmux switch-client -t $session_name
+            tmux switch-client -t $session_name \; new-window -dn scratch \; send-keys 'nv' C-m \; send-keys 'clear' C-m
         else
             tmux attach-session -t $session_name
         end
