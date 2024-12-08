@@ -2,7 +2,7 @@ vim.wo.number = true
 
 vim.diagnostic.config({
   update_in_insert = true,
-  virtual_text = true
+  virtual_text = true,
 })
 
 vim.opt.tabstop = 2
@@ -40,7 +40,7 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   }
 })
 
--- NVIM TREE COLORS
+-- COLORS
 vim.cmd [[
   hi Normal guibg=NONE ctermbg=NONE
   hi NonText guibg=NONE ctermbg=NONE

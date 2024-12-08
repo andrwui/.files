@@ -43,6 +43,9 @@ local luasnip = {
         ls.text_node({ "", "\t" }), ls.insert_node(1),
         ls.text_node({ "", "}" })
       }),
+      ls.snippet("enew", {
+        ls.text_node("errors.New(\""), ls.insert_node(1), ls.text_node("\")")
+      })
     })
 
     -- Java snippets
