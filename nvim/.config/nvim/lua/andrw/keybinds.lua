@@ -10,8 +10,6 @@ local unmap = function(modes, unmap)
   remap(modes, unmap, '<NOP>')
 end
 
-
-
 -- UNMAPPINGS
 unmap({ 'n', 'v', 's' }, 'h')
 unmap({ 'n', 'v', 's' }, 'H')
@@ -27,7 +25,6 @@ unmap({ 'n', 'v', 's', 'i' }, '<Left>')
 unmap({ 'n', 'v', 's', 'i' }, '<Right>')
 unmap({ 'n', 'v', 's', 'i' }, '<PageUp>')
 unmap({ 'n', 'v', 's', 'i' }, '<PageDown>')
-unmap({ 'n', 'v', 's' }, 'yy')
 unmap({ 'n', 'v', 's' }, '<C-d>')
 unmap({ 'n', 'v', 's' }, '<C-a>')
 unmap({ 'n', 'v', 's' }, '<C-r>')
@@ -63,14 +60,18 @@ remap({ 'n', 'v' }, '<S-k>', 'b')
 remap({ 'n', 'v' }, '<C-k>', '^')
 
 -- Yank to the clipboard
-remap({ 'n', 'v' }, 'Y', '"+yy')
-remap({ 'v' }, 'yy', '"+y')
+remap({ 'n', 'v' }, 'y', '"+y')
+remap({ 'n' }, 'yy', '"+yy')
 
--- Cut entire line
-remap({ 'n', 'v' }, 'X', 'dd')
+-- Cut
+remap({ 'n', 'v' }, 'x', '"+d')
+remap({ 'n', 'v' }, '<Del>', '"_x')
 
--- Default behavior of 'p' in visual mode is dogshit
-remap({ 'v' }, 'p', 'P')
+-- c to black hole, if i wanted to cut i would do that.
+remap({ 'n', 'v' }, 'c', '"_c')
+
+-- Paste
+remap({ 'v' }, 'p', '"+p')
 
 -- Select all
 remap({ 'n', 'v' }, '<Leader>a', '[[V]]')
@@ -81,14 +82,11 @@ remap({ 'n', 'v' }, 'j', '"_d')
 -- Delete current line
 remap({ 'n', 'v' }, '<C-d>', '"_dd')
 
--- Remap delete to e
-remap({ 'n', 'v' }, 'e', 'd')
-
 -- Run normal mode commands in insert mode with <C-b> because my tmux prefix is <C-o>
 remap({ 'i' }, '<C-b>', '<C-o>')
 
--- Undo and redo
-remap({ 'n', 'v' }, '<C-y>', '<C-r>')
+-- Redo to U
+remap({ 'n' }, 'U', '<C-r>')
 
 -- Change between panes
 remap({ 'n', 'v' }, '<Leader>k', '<C-w><Left>')
@@ -131,87 +129,6 @@ end)
 -- Generate Golang json tags for current line and jump downards
 remap('n', '<Leader>gj',
   "^yiwA<Space>`json:\"<Esc>pa\"`<Esc>F\"F\"l~F`i<CR><Esc>V:s/\\u/_\\L&/ge<CR>:noh<CR>kJj^")
-
-
-
-
-
-
-
--- Comment
-local commentapi = require('Comment.api')
-remap({ 'n' }, '<S-c>', function()
-  commentapi.toggle.linewise.current()
-end)
-
-remap({ 'v' }, '<S-c>', function()
-  commentapi.toggle.blockwise.current(vim.fn.visualmode())
-end)
-
--- Kill current buffer
-remap('n', '<Leader><BS>', function()
-  vim.cmd('bdelete')
-end)
-
--- Generate Golang json tags for current line and jump downards
-remap('n', '<Leader>gj',
-  "^yiwA<Space>`json:\"<Esc>pa\"`<Esc>F\"F\"l~F`i<CR><Esc>V:s/\\u/_\\L&/ge<CR>:noh<CR>kJj^")
-
-
-
-
-
-
-
--- Comment
-local commentapi = require('Comment.api')
-remap({ 'n' }, '<S-c>', function()
-  commentapi.toggle.linewise.current()
-end)
-
-remap({ 'v' }, '<S-c>', function()
-  commentapi.toggle.blockwise.current(vim.fn.visualmode())
-end)
-
--- Kill current buffer
-remap('n', '<Leader><BS>', function()
-  vim.cmd('bdelete')
-end)
-
--- Generate Golang json tags for current line and jump downards
-remap('n', '<Leader>gj',
-  "^yiwA<Space>`json:\"<Esc>pa\"`<Esc>F\"F\"l~F`i<CR><Esc>V:s/\\u/_\\L&/ge<CR>:noh<CR>kJj^")
-
-
-
-
-
-
-
--- Comment
-local commentapi = require('Comment.api')
-remap({ 'n' }, '<S-c>', function()
-  commentapi.toggle.linewise.current()
-end)
-
-remap({ 'v' }, '<S-c>', function()
-  commentapi.toggle.blockwise.current(vim.fn.visualmode())
-end)
-
--- Kill current buffer
-remap('n', '<Leader><BS>', function()
-  vim.cmd('bdelete')
-end)
-
--- Generate Golang json tags for current line and jump downards
-remap('n', '<Leader>gj',
-  "^yiwA<Space>`json:\"<Esc>pa\"`<Esc>F\"F\"l~F`i<CR><Esc>V:s/\\u/_\\L&/ge<CR>:noh<CR>kJj^")
-
-
-
-
-
-
 
 -- Comment
 local commentapi = require('Comment.api')
