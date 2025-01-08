@@ -32,7 +32,7 @@ local luasnip = {
       return string.gsub(path_after_src, "/", ".")
     end
 
-    local function get_class_name()
+    local function get_file_name()
       return vim.fn.expand("%:t:r")
     end
 
@@ -62,14 +62,14 @@ local luasnip = {
         }}
       ]], {
         ls.function_node(get_package_path),
-        ls.function_node(get_class_name),
+        ls.function_node(get_file_name),
         ls.insert_node(1)
       }))
     })
 
     -- TypeScript/React snippets
     ls.add_snippets("typescriptreact", {
-      ls.snippet("rfc", require("luasnip.extras.fmt").fmt([[
+      ls.snippet("rc", require("luasnip.extras.fmt").fmt([[
 type {}Props = {{
 }}
 const {} = () => {{
@@ -78,10 +78,10 @@ const {} = () => {{
 
 export default {}
       ]], {
-        ls.function_node(get_class_name),
-        ls.function_node(get_class_name),
+        ls.function_node(get_file_name),
+        ls.function_node(get_file_name),
         ls.insert_node(1),
-        ls.function_node(get_class_name)
+        ls.function_node(get_file_name)
       }))
     })
   end

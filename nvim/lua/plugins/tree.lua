@@ -11,6 +11,12 @@ local tree = {
         enable = true,
         show_on_dirs = false,
       },
+      git = {
+        enable = true,
+        ignore = false,
+        timeout = 500,
+      },
+
       on_attach = function(bufnr)
         local api = require('nvim-tree.api')
 
