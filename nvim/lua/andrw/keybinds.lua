@@ -99,9 +99,11 @@ remap({ 'n', 'v' }, '>>', '>>')
 remap({ 'n' }, '<C-x>', '<C-a>')
 remap({ 'n' }, '<C-S-x>', '<C-x>')
 
--- Add empty line up and down with enter
 remap({ 'n', 'v' }, '<CR>', 'o<Esc>')
-remap({ 'n', 'v' }, '<CR>', 'o<Esc>')
+
+remap({ 'n' }, '<C-o>', '<BS>')
+
+
 
 -- Show hover snippet with -
 remap('n', '-', function()
@@ -138,4 +140,11 @@ end)
 
 remap({ 'v' }, '<S-c>', function()
   commentapi.toggle.blockwise.current(vim.fn.visualmode())
+end)
+
+vim.keymap.set('n', 'gT', function()
+  vim.lsp.buf.type_definition()
+  vim.schedule(function()
+    vim.cmd('normal! <C-o>')
+  end)
 end)

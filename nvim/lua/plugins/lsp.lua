@@ -1,4 +1,3 @@
--- lsp stuff, he's a good guy. just don't touch it or it will break horribly and not work anymore until you literally reformat your pc
 local mason = {
   'williamboman/mason.nvim',
   config = function()
@@ -21,7 +20,7 @@ local mason_lspconfig = {
         'jsonls',
         'lua_ls',
         'sqls',
-        'lemminx'
+        'lemminx',
       }
     })
   end
@@ -30,24 +29,20 @@ local mason_lspconfig = {
 local lspzero = {
   'VonHeikemen/lsp-zero.nvim',
   branch = 'v4.x',
-
   dependencies = {
     'neovim/nvim-lspconfig',
     'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/nvim-cmp'
+    'hrsh7th/nvim-cmp',
+    'onsails/lspkind.nvim'
   },
-
   config = function()
     local lsp_zero = require('lsp-zero')
-
     lsp_zero.extend_lspconfig()
-
     local lsp_attach = function(client, bufnr)
       lsp_zero.default_keymaps({
         buffer = bufnr,
         exclude = { 'K' }
       })
-
       if client.server_capabilities.documentFormattingProvider then
         vim.api.nvim_create_autocmd("BufWritePre", {
           buffer = bufnr,
@@ -62,9 +57,22 @@ local lspzero = {
 
     cmp.setup({
       sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'lazydev' }
+        { name = 'nvim_lsp', max_item_count = 10 },
+        { name = 'luasnip',  priority = 1000 },
+        { name = 'lazydev' },
+        { name = 'emmet_ls', priority = 0 }
+      },
+      formatting = {
+        fields = { "kind", "abbr", "menu" },
+        expandable_indicator = true,
+        format = function(entry, vim_item)
+          vim_item.menu = ({
+            nvim_lsp = '[LSP]',
+            luasnip = '[Snippet]',
+            lazydev = '[Lazy]'
+          })[entry.source.name]
+          return vim_item
+        end
       },
       mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
@@ -75,7 +83,6 @@ local lspzero = {
     })
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
     require('mason-lspconfig').setup_handlers({
       function(server_name)
         require('lspconfig')[server_name].setup({
