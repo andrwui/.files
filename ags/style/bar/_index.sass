@@ -1,0 +1,50 @@
+@use 'clock.sass'
+
+window.Bar 
+  background: #080808
+  font-weight: bold
+
+  >centerbox 
+    margin: 0px 6px
+    background: #080808
+    padding: 10px
+
+switch
+  border-radius: 0
+  border: 2px solid white
+
+  &:checked 
+    background: white
+
+    slider
+      background: #080808
+
+  slider
+    box-shadow: none
+    border-radius: 0
+    background: white
+
+.window
+  background: #080808
+  padding: 10px
+  border: 1px solid white
+
+scale
+  padding: 0
+  &.muted
+    highlight
+      background: #262626
+  contents
+    trough
+      background: #171717
+      slider
+        box-shadow: none
+        background: transparent
+        padding: 5px
+
+      highlight
+        background: white 
+
+.windowTextButton
+  font-size: 12px
+  font-weight: 200

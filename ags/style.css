@@ -1,0 +1,29 @@
+* {
+  font-family: Geist Mono;
+}
+
+button {
+  padding: 0;
+  box-shadow: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  outline-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+window.Bar {
+  background: #080808;
+  font-weight: bold;
+}
+window.Bar > centerbox {
+  margin: 0px 6px;
+  background: #080808;
+  padding: 10px;
+}
+window.Bar .clock {
+  font-weight: 500;
+}

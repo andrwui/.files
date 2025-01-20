@@ -1,0 +1,17 @@
+screenshots
+indicator
+indicator-radius=50
+indicator-thickness=5
+effect-blur=10x5
+effect-vignette=0:1
+ring-color=ffffff
+key-hl-color=00000088
+line-color=00000000
+inside-color=00000088
+separator-color=00000000
+ring-ver-color=ffffff
+inside-ver-color=ffffff
+grace=5
+grace-no-mouse
+grace-no-touch
+fade-in=0.2

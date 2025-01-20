@@ -1,2 +1,31 @@
-@use './bar/bar.sass'
-@use './notifications/notification.sass'
+@use "bar"
+
+* 
+  font-family: Geist Mono
+  font-weight: 600
+
+button 
+  padding: 0
+  box-shadow: none
+  background: transparent
+  margin: 0
+  padding: 0
+  margin: 0
+  background: transparent
+  outline-color: transparent
+  border-color: transparent
+  box-shadow: none
+
+@keyframes text-blink
+  to
+    color: transparent
+
+@keyframes spin
+  to
+    -gtk-icon-transform: rotate(1turn)
+
+.spinning-icon
+  animation: spin .5s infinite
+
+.text-blink
+  animation: text-blink .5s infinite alternate
