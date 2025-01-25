@@ -10,6 +10,7 @@ const Clock = ({ monitorIndex }: { monitorIndex: number }) => {
 
   return (
     <eventbox
+      cursor={'pointer'}
       className="clock"
       halign={Gtk.Align.END}
       valign={Gtk.Align.CENTER}

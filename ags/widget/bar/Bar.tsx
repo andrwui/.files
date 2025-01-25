@@ -34,6 +34,7 @@ const Bar = (monitor: Gdk.Monitor, monitorIndex: number) => {
           <Network monitorIndex={monitorIndex} />
           <box widthRequest={15} />
           <Battery />
+          <box widthRequest={15} />
           <Clock monitorIndex={monitorIndex} />
           <SystemTray monitorIndex={monitorIndex} />
           <PowerMenu monitorIndex={monitorIndex} />
