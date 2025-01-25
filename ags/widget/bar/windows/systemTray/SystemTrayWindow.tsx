@@ -1,8 +1,9 @@
-import { App, Astal, Gdk } from 'astal/gtk3'
+import { Gdk } from 'astal/gtk3'
 import AstalTray from 'gi://AstalTray?version=0.1'
 import { bind } from 'astal'
 import { chunk } from '../../../../helper/helper'
 import TrayItem from './TrayItem'
+import GenericWindow from '../_generic/GenericWindow'
 
 export const SystemTrayWindowNamePrefix = 'systemTray'
 
@@ -10,26 +11,20 @@ const SystemTrayWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
   const windowName = `${SystemTrayWindowNamePrefix}-${monitorIndex}`
 
   const tray = AstalTray.get_default()
-  const { RIGHT, TOP } = Astal.WindowAnchor
 
   return (
-    <window
+    <GenericWindow
       gdkmonitor={monitor}
       name={windowName}
-      anchor={TOP | RIGHT}
-      margin={15}
-      visible={false}
-      application={App}
     >
       <box
         spacing={10}
-        className={'window'}
         vertical
       >
         {bind(tray, 'items').as((items) => {
           return chunk(items, 4).map((chunk) => {
             return (
-              <box spacing={10}>
+              <box spacing={7}>
                 {chunk.map((item) => {
                   const menu = item.create_menu()
                   return (
@@ -44,7 +39,8 @@ const SystemTrayWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
           })
         })}
       </box>
-    </window>
+      <></>
+    </GenericWindow>
   )
 }
 export default SystemTrayWindow

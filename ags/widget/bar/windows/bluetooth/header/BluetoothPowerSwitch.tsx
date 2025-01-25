@@ -6,6 +6,7 @@ const BluetoothPowerSwitch = () => {
 
   return (
     <switch
+      cursor="pointer"
       margin_right={5}
       halign={Gtk.Align.END}
       active={bt.isPowered}

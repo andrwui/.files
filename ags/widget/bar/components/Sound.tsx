@@ -1,20 +1,41 @@
-import { bind } from 'astal'
+import { bind, Variable } from 'astal'
 import { SoundWindowNamePrefix } from '../windows/sound/SoundWindow'
 import { closeAllOtherWindows } from './helper'
 import AstalWp from 'gi://AstalWp'
+import { Gtk } from 'astal/gtk3'
 
 const Sound = ({ monitorIndex }: { monitorIndex: number }) => {
   const windowName = `${SoundWindowNamePrefix}-${monitorIndex}`
   const defaultSpeaker = AstalWp.get_default()!.audio.defaultSpeaker
 
+  const soundStateBinding = Variable<[boolean, number]>([false, 0])
+
+  Variable.derive(
+    [bind(defaultSpeaker, 'mute'), bind(defaultSpeaker, 'volume')],
+    (mute, volume) => {
+      soundStateBinding.set([mute, volume])
+    },
+  )
+
   return (
-    <eventbox onClick={() => closeAllOtherWindows(windowName)}>
-      {
-        <label
-          css="font-weight: 500; font-size: 15px;"
-          label={bind(defaultSpeaker, 'volume').as((volume) => `[audio]`)}
-        ></label>
-      }
+    <eventbox
+      cursor={'pointer'}
+      onClick={() => closeAllOtherWindows(windowName)}
+    >
+      {bind(soundStateBinding).as(([isMuted, volume]) => {
+        return (
+          <label
+            widthRequest={13}
+            valign={Gtk.Align.FILL}
+            css={`
+              font-weight: 500;
+              font-size: 16px;
+              ${isMuted ? 'color: #404040' : ''}
+            `}
+            label={isMuted ? '󰝟' : volume < 0.15 ? `󰕿` : volume > 0.75 ? `󰕾` : '󰖀'}
+          />
+        )
+      })}
     </eventbox>
   )
 }

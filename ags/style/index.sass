@@ -1,7 +1,7 @@
 @use "bar"
 
 * 
-  font-family: Geist Mono
+  font-family: 'Geist Mono, FiraCode Nerd Font'
   font-weight: 600
 
 button 
@@ -29,3 +29,16 @@ button
 
 .text-blink
   animation: text-blink .5s infinite alternate
+
+
+calendar
+  &*
+    border-radius: 0
+    background: inherit
+    border: none
+  &:selected
+    background: white
+    color: #080808
+  &.today
+    color: red
+

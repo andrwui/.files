@@ -12,25 +12,19 @@ const SoundSpeaker = ({ speaker }: { speaker: AstalWp.Endpoint }) => {
     >
       {bind(speaker, 'isDefault').as((isDefault) => {
         return (
-          <label
+          <GenericTextButton
             hexpand
-            label={`${speakerName.includes('EVO') ? 'EVO4' : speakerName} ${isDefault ? '<-' : ''}`}
-            halign={Gtk.Align.START}
-          />
+            halign={Gtk.Align.FILL}
+            onClick={() => speaker.set_is_default(true)}
+          >
+            <label
+              hexpand
+              label={`${speakerName.includes('EVO') ? 'EVO4' : speakerName} ${isDefault ? '*' : ''}`}
+              halign={Gtk.Align.START}
+            />
+          </GenericTextButton>
         )
       })}
-      <GenericTextButton
-        hexpand
-        halign={Gtk.Align.END}
-        onClick={() => speaker.set_is_default(true)}
-      >
-        <label
-          hexpand
-          label={bind(speaker, 'isDefault').as((isDefault) =>
-            isDefault ? '[default]' : '[set default]',
-          )}
-        />
-      </GenericTextButton>
     </box>
   )
 }

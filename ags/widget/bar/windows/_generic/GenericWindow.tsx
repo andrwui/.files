@@ -3,9 +3,10 @@ import { handleWindowEsc } from '../helper'
 
 interface WindowProps extends Widget.WindowProps {
   children?: JSX.Element | JSX.Element[]
+  boxProps?: Widget.BoxProps
 }
 
-const GenericWindow = ({ children, ...props }: WindowProps) => {
+const GenericWindow = ({ children, boxProps, ...props }: WindowProps) => {
   const { TOP, RIGHT } = Astal.WindowAnchor
 
   return (
@@ -25,6 +26,7 @@ const GenericWindow = ({ children, ...props }: WindowProps) => {
         vertical
         className="window"
         halign={Gtk.Align.FILL}
+        {...boxProps}
       >
         {children}
       </box>

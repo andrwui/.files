@@ -7,7 +7,8 @@ const GenericTextButton = ({ children, ...props }: GenericTextButtonProps) => {
   return (
     <eventbox
       {...props}
-      className={`windowTextButton ${props.className}`}
+      cursor={'pointer'}
+      className={`smallText ${props.className}`}
     >
       {children}
     </eventbox>

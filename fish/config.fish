@@ -34,7 +34,7 @@ function tmux
 end
 
 function tn --description 'Select directory with fzf and create tmux session'
-  set selected_dir (find ~ -type d -print | fzf)
+  set selected_dir (find ~ -path ~/.local -prune -o -type d -print | fzf)
 
   if test -n "$selected_dir"
     set session_name (basename $selected_dir | sed 's/^\./dot/')
@@ -64,6 +64,21 @@ function nv
     end
   else
     nvim .
+  end
+end
+
+
+function untar
+  if test (count $argv) -gt 0
+    if test -f $argv[1]
+      set filename (basename $argv[1] .tar.gz)
+      mkdir -p $filename
+      tar -xvzf $argv[1] -C ./$filename/
+    else
+      echo "tar not found"
+    end
+  else
+    echo "tar not provided" 
   end
 end
 

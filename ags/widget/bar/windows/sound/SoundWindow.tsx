@@ -40,7 +40,6 @@ const SoundWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
         <SoundVolumeSlider />
       </box>
       <Separator />
-
       <SoundSpeakerList />
     </GenericWindow>
   )

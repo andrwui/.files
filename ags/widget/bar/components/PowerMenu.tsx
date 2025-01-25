@@ -6,8 +6,11 @@ const PowerMenu = ({ monitorIndex }: { monitorIndex: number }) => {
 
   return (
     <eventbox
-      width_request={20}
-      css="font-weight: 100; font-size: 15px;"
+      cursor={'pointer'}
+      css={`
+        font-weight: 100;
+        font-size: 13px;
+      `}
       onClick={() => closeAllOtherWindows(windowName)}
     >
       󰐥

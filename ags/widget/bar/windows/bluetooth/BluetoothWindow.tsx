@@ -28,7 +28,10 @@ const BluetoothWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
             css={'font-size: 18px;'}
           />
         </box>
-        <box spacing={20}>
+        <box
+          spacing={20}
+          vexpand={false}
+        >
           {useBluetoothIsPowered((isPowered) => {
             return isPowered ? <BluetoothScanButton /> : ''
           })}

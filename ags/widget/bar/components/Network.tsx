@@ -1,4 +1,4 @@
-import { bind } from 'astal'
+import { bind, Variable } from 'astal'
 import { closeAllOtherWindows } from './helper'
 import AstalNetwork from 'gi://AstalNetwork'
 import { NetworkWindowNamePrefix } from '../windows/network/NetworkWindow'
@@ -7,38 +7,39 @@ import { Gtk } from 'astal/gtk3'
 const Network = ({ monitorIndex }: { monitorIndex: number }) => {
   const network = AstalNetwork.get_default()
 
-  const wifi = bind(network, 'wifi')
-  const wired = bind(network, 'wired')
+  const wifiState = bind(network.wifi, 'state')
+  const wiredState = bind(network.wired, 'state')
+
+  const networkStateBinding = Variable<[number, number]>([0, 0])
+
+  Variable.derive([wifiState, wiredState], (wifiState, wiredState) => {
+    networkStateBinding.set([wifiState, wiredState])
+  })
 
   const windowName = `${NetworkWindowNamePrefix}-${monitorIndex}`
 
+  const { ACTIVATED } = AstalNetwork.DeviceState
+
   return (
     <eventbox
+      cursor={'pointer'}
       halign={Gtk.Align.START}
-      css="font-size: 15px;"
       onClick={() => closeAllOtherWindows(windowName)}
-      tooltipText={wifi.as((wifi) => {
-        return wifi.ssid
-      })}
     >
-      {wifi.as((wifi) => {
+      {bind(networkStateBinding).as(([wifiState, wiredState]) => {
         return (
           <label
-            css={'font-weight: 500;'}
-            label={wired.as((wired) => {
-              if (wired.get_internet() === AstalNetwork.Internet.CONNECTED) {
-                console.log(wired.get_internet())
-                return '[ethernet]'
-              }
-              if (wifi.get_internet() === AstalNetwork.Internet.CONNECTED) {
-                return '[wifi]'
-              }
-            })}
+            widthRequest={15}
+            css={`
+              ${wiredState !== ACTIVATED && wifiState !== ACTIVATED ? 'color: #404040;' : ''},
+            `}
+            label={`${wiredState === ACTIVATED ? '󰈀' : wifiState === ACTIVATED ? '󰖩' : '󰖪'}`}
           />
         )
       })}
+      )
     </eventbox>
   )
 }
-
+//
 export default Network

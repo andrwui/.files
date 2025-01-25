@@ -1,4 +1,4 @@
-import { bind } from 'astal'
+import { bind, execAsync } from 'astal'
 import Hyprland from 'gi://AstalHyprland?version=0.1'
 
 const Workspaces = () => {
@@ -11,14 +11,17 @@ const Workspaces = () => {
           .sort((a, b) => a.id - b.id)
           .map((workspace) => {
             return (
-              <box
-                widthRequest={18}
-                css={bind(hypr, 'focusedWorkspace').as((fw) =>
-                  fw.id === workspace.id
-                    ? 'background-color: #FFFFFF'
-                    : 'background-color: #1a1a1a',
-                )}
-              ></box>
+              <eventbox
+                cursor={'pointer'}
+                onClick={() => execAsync(`hyprctl dispatch workspace ${workspace.id}`)}
+                widthRequest={20}
+              >
+                <box
+                  css={bind(hypr, 'focusedWorkspace').as((fw) =>
+                    fw.id === workspace.id ? 'background: white;' : 'background: #171717',
+                  )}
+                />
+              </eventbox>
             )
           })
       })}

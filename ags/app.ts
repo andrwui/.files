@@ -5,6 +5,9 @@ import BluetoothWindow from './widget/bar/windows/bluetooth/BluetoothWindow'
 import SoundWindow from './widget/bar/windows/sound/SoundWindow'
 import SystemTrayWindow from './widget/bar/windows/systemTray/SystemTrayWindow'
 import PowerMenuWindow from './widget/bar/windows/powerMenu/PowerMenuWindow'
+import NetworkWindow from './widget/bar/windows/network/NetworkWindow'
+import ScreenshotWindow from './widget/bar/windows/screenshot/ScreenshotWindow'
+import CalendarWindow from './widget/bar/windows/calendar/CalendarWindow'
 
 const sassSource = '/home/andrw/.files/ags/style/index.sass'
 const cssOutdir = '/tmp/ags/css.css'
@@ -23,6 +26,9 @@ App.start({
         SoundWindow(monitor, i),
         SystemTrayWindow(monitor, i),
         PowerMenuWindow(monitor, i),
+        NetworkWindow(monitor, i),
+        ScreenshotWindow(monitor, i),
+        CalendarWindow(monitor, i),
       ]
     })
   },

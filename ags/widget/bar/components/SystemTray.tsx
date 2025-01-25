@@ -6,11 +6,14 @@ const SystemTray = ({ monitorIndex }: { monitorIndex: number }) => {
 
   return (
     <eventbox
-      widthRequest={20}
-      css="font-weight: 100; font-size: 15px;"
+      cursor={'pointer'}
       onClick={() => closeAllOtherWindows(windowName)}
     >
-      
+      <label
+        widthRequest={15}
+        css={``}
+        label={'󰅀'}
+      />
     </eventbox>
   )
 }

@@ -18,11 +18,12 @@ const Bar = (monitor: Gdk.Monitor, monitorIndex: number) => {
       name="bar"
       gdkmonitor={monitor}
       exclusivity={Astal.Exclusivity.EXCLUSIVE}
+      layer={Astal.Layer.TOP}
       anchor={TOP | LEFT | RIGHT}
       application={App}
     >
       <centerbox>
-        <QuickAccess />
+        <QuickAccess monitorIndex={monitorIndex} />
         <Workspaces />
         <box
           halign={Gtk.Align.END}
@@ -31,8 +32,9 @@ const Bar = (monitor: Gdk.Monitor, monitorIndex: number) => {
           <Bluetooth monitorIndex={monitorIndex} />
           <Sound monitorIndex={monitorIndex} />
           <Network monitorIndex={monitorIndex} />
+          <box widthRequest={15} />
           <Battery />
-          <Clock />
+          <Clock monitorIndex={monitorIndex} />
           <SystemTray monitorIndex={monitorIndex} />
           <PowerMenu monitorIndex={monitorIndex} />
         </box>
