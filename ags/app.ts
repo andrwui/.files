@@ -8,6 +8,7 @@ import PowerMenuWindow from './widget/bar/windows/powerMenu/PowerMenuWindow'
 import NetworkWindow from './widget/bar/windows/network/NetworkWindow'
 import ScreenshotWindow from './widget/bar/windows/screenshot/ScreenshotWindow'
 import CalendarWindow from './widget/bar/windows/calendar/CalendarWindow'
+import HyprWindow from './widget/bar/windows/hypr/HyprWindow'
 
 const sassSource = '/home/andrw/.files/ags/style/index.sass'
 const cssOutdir = '/tmp/ags/css.css'
@@ -29,6 +30,7 @@ App.start({
         NetworkWindow(monitor, i),
         ScreenshotWindow(monitor, i),
         CalendarWindow(monitor, i),
+        HyprWindow(monitor, i),
       ]
     })
   },

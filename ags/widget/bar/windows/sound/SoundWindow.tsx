@@ -4,6 +4,7 @@ import GenericWindow from '../_generic/GenericWindow'
 import SoundVolumeSlider from './volume/SoundVolumeSlider'
 import SoundVolumeMuteButton from './volume/SoundVolumeMuteButton'
 import SoundSpeakerList from './speakers/SoundSpeakerList'
+import SpotifyPlayer from './music/SpotifyPlayer'
 
 export const SoundWindowNamePrefix = 'soundWindow'
 
@@ -17,11 +18,12 @@ const SoundWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
       gdkmonitor={monitor}
       name={windowName}
       widthRequest={300}
+      marginRight={100}
     >
       <label
         hexpand
         halign={START}
-        label="speakers"
+        label="sound"
         css={'font-size: 18px;'}
       />
       <Separator />
@@ -41,6 +43,7 @@ const SoundWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
       </box>
       <Separator />
       <SoundSpeakerList />
+      <SpotifyPlayer />
     </GenericWindow>
   )
 }

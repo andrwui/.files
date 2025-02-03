@@ -16,6 +16,7 @@ const NetworkWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
       name={windowName}
       widthRequest={300}
       keymode={Astal.Keymode.ON_DEMAND}
+      marginRight={70}
     >
       <label
         hexpand

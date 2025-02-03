@@ -1,7 +1,7 @@
 import { App, Astal, Gdk } from 'astal/gtk3'
 
 import GenericWindow from '../_generic/GenericWindow'
-import { closeAllOtherWindows } from '../../components/helper'
+import { closeAllOtherWindows } from '../../bar_items/helper'
 import { handleWindowEsc } from '../helper'
 import { exec } from 'astal'
 

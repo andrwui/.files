@@ -1,0 +1,12 @@
+alias reboot="sudo reboot"
+
+alias ga="git add"
+alias gc="git commit -m"
+alias gp="git push origin"
+alias gs="git status"
+alias gd="git diff"
+alias gb="git branch"
+alias gbd="git branch --delete"
+alias gco="git checkout"
+alias gnb="git checkout -b"
+alias gm="git merge"

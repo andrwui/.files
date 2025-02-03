@@ -1,4 +1,4 @@
-import { closeAllOtherWindows } from '../../components/helper'
+import { closeAllOtherWindows } from '../../bar_items/helper'
 import GenericWindow from '../_generic/GenericWindow'
 import Separator from '../_generic/Separator'
 import { execAsync } from 'astal'
@@ -20,7 +20,7 @@ const ScreenshotWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
       gdkmonitor={monitor}
       name={windowName}
       anchor={TOP | LEFT}
-      marginLeft={95}
+      marginLeft={15}
     >
       <eventbox
         onClick={() => {

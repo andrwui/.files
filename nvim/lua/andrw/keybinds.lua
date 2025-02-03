@@ -37,6 +37,12 @@ unmap({ 'n', 'v', 's' }, '>>')
 
 -- MAPPINGS
 
+
+
+--spider-nvim for actually good hor movement...
+
+local sp_motion = require('spider').motion
+
 -- Vertical movement
 -- Up and down
 remap({ 'n', 'v' }, 'd', 'j')
@@ -51,13 +57,20 @@ remap({ 'n', 'v' }, '<Leader>d', ']]')
 -- Horizontal movement
 -- Right
 remap({ 'n', 'v' }, 'l', 'l')
-remap({ 'n', 'v' }, '<S-l>', 'w')
+  remap({ 'n', 'v' }, '<S-l>', function()
+    sp_motion('w')
+  end)
+
 remap({ 'n', 'o' }, '<C-l>', '$')
 remap({ 'v' }, '<C-l>', '$h')
+
 -- Left
 remap({ 'n', 'v' }, 'k', 'h')
-remap({ 'n', 'v' }, '<S-k>', 'b')
-remap({ 'n', 'v' }, '<C-k>', '^')
+remap({ 'n', 'v' }, '<S-k>', function()
+  sp_motion('b')
+end)
+remap({ 'n', 'v' }, '<C-k>', '0')
+remap({ 'n', 'v' }, '<C-S-k>', '0<S-l>')
 
 -- Yank to the clipboard
 remap({ 'n', 'v' }, 'y', '"+y')
@@ -74,7 +87,7 @@ remap({ 'n', 'v' }, 'c', '"_c')
 remap({ 'v' }, 'p', '"+p')
 
 -- Select all
-remap({ 'n', 'v' }, '<Leader>a', '[[V]]')
+remap({ 'n', 'v' }, '<C-a>', '[[V]]')
 
 -- Remap delete to j
 remap({ 'n', 'v' }, 'j', '"_d')

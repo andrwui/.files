@@ -1,13 +1,14 @@
 import { App, Astal, Gdk, Gtk } from 'astal/gtk3'
-import Battery from './components/Battery'
-import Clock from './components/Clock'
-import QuickAccess from './components/QuickAccess'
-import Workspaces from './components/Workspaces'
-import SystemTray from './components/SystemTray'
-import Bluetooth from './components/Bluetooth'
-import Sound from './components/Sound'
-import PowerMenu from './components/PowerMenu'
-import Network from './components/Network'
+import Battery from './bar_items/Battery'
+import Clock from './bar_items/Clock'
+import QuickAccess from './bar_items/QuickAccess'
+import Workspaces from './bar_items/Workspaces'
+import SystemTray from './bar_items/SystemTray'
+import Bluetooth from './bar_items/Bluetooth'
+import Sound from './bar_items/Sound'
+import PowerMenu from './bar_items/PowerMenu'
+import Network from './bar_items/Network'
+import Hyprsources from './bar_items/Hyprsources'
 
 const Bar = (monitor: Gdk.Monitor, monitorIndex: number) => {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
@@ -24,11 +25,13 @@ const Bar = (monitor: Gdk.Monitor, monitorIndex: number) => {
     >
       <centerbox>
         <QuickAccess monitorIndex={monitorIndex} />
+
         <Workspaces />
         <box
           halign={Gtk.Align.END}
           spacing={10}
         >
+          <Hyprsources monitorIndex={monitorIndex} />
           <Bluetooth monitorIndex={monitorIndex} />
           <Sound monitorIndex={monitorIndex} />
           <Network monitorIndex={monitorIndex} />

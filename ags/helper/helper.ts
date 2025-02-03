@@ -11,5 +11,5 @@ export const truncate = (str: string, len: number): string => {
     return str
   }
 
-  return `${str.slice(0, len)}...`
+  return `${str.slice(0, len).trim()}...`
 }

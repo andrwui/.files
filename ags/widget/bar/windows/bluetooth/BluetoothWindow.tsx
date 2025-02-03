@@ -17,6 +17,7 @@ const BluetoothWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
       gdkmonitor={monitor}
       name={windowName}
       widthRequest={300}
+      marginRight={170}
     >
       <box halign={Gtk.Align.FILL}>
         <box

@@ -12,23 +12,32 @@ const SoundSpeakerList = () => {
       vertical
       halign={Gtk.Align.FILL}
     >
-      {bind(audio, 'speakers').as((speakers) => {
-        const filteredSpeakers = speakers.filter(
-          (speaker) => !speaker.description.includes('Tiger Lake-LP'),
-        )
-        if (filteredSpeakers.length < 1) {
-          return (
-            <label
-              hexpand
-              halign={Gtk.Align.START}
-              label="no speakers found"
-            />
+      <>
+        <label
+          hexpand
+          halign={Gtk.Align.START}
+          marginBottom={10}
+          label="available speakers"
+        />
+
+        {bind(audio, 'speakers').as((speakers) => {
+          const filteredSpeakers = speakers.filter(
+            (speaker) => !speaker.description.includes('Tiger Lake-LP'),
           )
-        }
-        return filteredSpeakers.map((speaker) => {
-          return <SoundSpeaker speaker={speaker} />
-        })
-      })}
+          if (filteredSpeakers.length < 1) {
+            return (
+              <label
+                hexpand
+                halign={Gtk.Align.START}
+                label="no speakers found"
+              />
+            )
+          }
+          return filteredSpeakers.map((speaker) => {
+            return <SoundSpeaker speaker={speaker} />
+          })
+        })}
+      </>
     </box>
   )
 }
