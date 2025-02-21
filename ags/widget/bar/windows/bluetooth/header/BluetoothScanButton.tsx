@@ -40,9 +40,15 @@ const BluetoothScanButton = () => {
           })
         }}
       >
-        {bind(bt.adapter, 'discovering').as((isDiscovering) => {
-          return `[${isDiscovering ? 'stop scan' : 'scan'}]`
-        })}
+        <icon
+          icon="search-c"
+          css={bind(isDiscovering).as(
+            (searching) => `
+              ${searching ? 'animation: blink .5s infinite alternate' : ''};
+              font-size: 18px;
+              `,
+          )}
+        />
       </GenericTextButton>
     )
   }

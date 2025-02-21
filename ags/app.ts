@@ -9,6 +9,7 @@ import NetworkWindow from './widget/bar/windows/network/NetworkWindow'
 import ScreenshotWindow from './widget/bar/windows/screenshot/ScreenshotWindow'
 import CalendarWindow from './widget/bar/windows/calendar/CalendarWindow'
 import HyprWindow from './widget/bar/windows/hypr/HyprWindow'
+import NotificationPopups from './widget/notifications/NotificationsPopups'
 
 const sassSource = '/home/andrw/.files/ags/style/index.sass'
 const cssOutdir = '/tmp/ags/css.css'
@@ -31,6 +32,7 @@ App.start({
         ScreenshotWindow(monitor, i),
         CalendarWindow(monitor, i),
         HyprWindow(monitor, i),
+        NotificationPopups(monitor),
       ]
     })
   },

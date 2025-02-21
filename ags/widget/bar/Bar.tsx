@@ -12,6 +12,7 @@ import Hyprsources from './bar_items/Hyprsources'
 
 const Bar = (monitor: Gdk.Monitor, monitorIndex: number) => {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
+  App.add_icons('/home/andrw/.files/ags/icons')
 
   return (
     <window
@@ -21,6 +22,10 @@ const Bar = (monitor: Gdk.Monitor, monitorIndex: number) => {
       exclusivity={Astal.Exclusivity.EXCLUSIVE}
       layer={Astal.Layer.TOP}
       anchor={TOP | LEFT | RIGHT}
+      marginTop={5}
+      marginLeft={5}
+      marginRight={5}
+      marginBottom={0}
       application={App}
     >
       <centerbox>
@@ -29,17 +34,20 @@ const Bar = (monitor: Gdk.Monitor, monitorIndex: number) => {
         <Workspaces />
         <box
           halign={Gtk.Align.END}
-          spacing={10}
+          spacing={1}
         >
           <Hyprsources monitorIndex={monitorIndex} />
           <Bluetooth monitorIndex={monitorIndex} />
+          <box widthRequest={5} />
           <Sound monitorIndex={monitorIndex} />
+          <box widthRequest={5} />
           <Network monitorIndex={monitorIndex} />
           <box widthRequest={15} />
           <Battery />
           <box widthRequest={15} />
           <Clock monitorIndex={monitorIndex} />
           <SystemTray monitorIndex={monitorIndex} />
+          <box widthRequest={10} />
           <PowerMenu monitorIndex={monitorIndex} />
         </box>
       </centerbox>

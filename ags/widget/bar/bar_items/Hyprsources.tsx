@@ -1,4 +1,4 @@
-import { App } from 'astal/gtk3'
+import { App, Astal, Gtk } from 'astal/gtk3'
 import { HyprWindowNamePrefix } from '../windows/hypr/HyprWindow'
 import { closeAllOtherWindows } from './helper'
 
@@ -12,7 +12,10 @@ const Hyprsources = ({ monitorIndex }: HyprsourcesProps) => {
   App.add_icons('/home/andrw/.files/ags/icons')
   return (
     <eventbox onClick={() => closeAllOtherWindows(windowName)}>
-      <icon icon={'hyprland-symbolic'} />
+      <icon
+        css=" font-size: 14px;"
+        icon={'hyprland-symbolic'}
+      />
     </eventbox>
   )
 }

@@ -21,12 +21,13 @@ const Bluetooth = ({ monitorIndex }: { monitorIndex: number }) => {
     >
       {bind(bluetoothBinding).as(([connected, powered]) => {
         return (
-          <label
+          <icon
             widthRequest={13}
             css={`
               ${!powered ? 'color: #404040;' : ''}
+              font-size: 14px
             `}
-            label={`${!powered ? '󰂲' : !connected ? '󰂯' : '󰂱'}`}
+            icon={`${!powered ? 'bluetooth-off' : !connected ? 'bluetooth-c' : 'bluetooth-connected'}`}
           />
         )
       })}

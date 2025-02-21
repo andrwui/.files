@@ -17,8 +17,12 @@ const Workspaces = () => {
                 widthRequest={20}
               >
                 <box
-                  css={bind(hypr, 'focusedWorkspace').as((fw) =>
-                    fw.id === workspace.id ? 'background: white;' : 'background: #171717',
+                  css={bind(hypr, 'focusedWorkspace').as(
+                    (fw) =>
+                      `${fw.id === workspace.id ? 'background: white;' : 'background: #171717'};
+                      border-radius: 2px;
+
+                      `,
                   )}
                 />
               </eventbox>

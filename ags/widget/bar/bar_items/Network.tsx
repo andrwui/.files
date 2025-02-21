@@ -25,15 +25,17 @@ const Network = ({ monitorIndex }: { monitorIndex: number }) => {
       cursor={'pointer'}
       halign={Gtk.Align.START}
       onClick={() => closeAllOtherWindows(windowName)}
+      css={' font-size: 200px;'}
     >
       {bind(networkStateBinding).as(([wifiState, wiredState]) => {
         return (
-          <label
-            widthRequest={15}
+          <icon
+            widthRequest={13}
             css={`
-              ${wiredState !== ACTIVATED && wifiState !== ACTIVATED ? 'color: #404040;' : ''},
+              ${wiredState !== ACTIVATED && wifiState !== ACTIVATED ? 'color: #404040;' : ''};
+              font-size: 16px;
             `}
-            label={`${wiredState === ACTIVATED ? '󰈀' : wifiState === ACTIVATED ? '󰖩' : '󰖪'}`}
+            icon={`${wiredState === ACTIVATED ? 'ethernet-port' : wifiState === ACTIVATED ? 'wifi' : 'wifi-off'}`}
           />
         )
       })}

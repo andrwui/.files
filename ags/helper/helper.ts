@@ -13,3 +13,15 @@ export const truncate = (str: string, len: number): string => {
 
   return `${str.slice(0, len).trim()}...`
 }
+
+export const wrap = (str: string, wpp: number): string => {
+  const words = str.split(' ')
+
+  const lines: string[] = []
+
+  for (let i = 0; i < words.length; i += wpp) {
+    lines.push(words.slice(i, i + wpp).join(' '))
+  }
+
+  return lines.join('\n')
+}

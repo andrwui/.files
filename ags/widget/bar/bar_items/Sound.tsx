@@ -24,15 +24,22 @@ const Sound = ({ monitorIndex }: { monitorIndex: number }) => {
     >
       {bind(soundStateBinding).as(([isMuted, volume]) => {
         return (
-          <label
+          <icon
             widthRequest={13}
             valign={Gtk.Align.FILL}
             css={`
-              font-weight: 500;
               font-size: 16px;
               ${isMuted ? 'color: #404040' : ''}
             `}
-            label={isMuted ? '󰝟' : volume < 0.15 ? `󰕿` : volume > 0.75 ? `󰕾` : '󰖀'}
+            icon={
+              isMuted
+                ? 'volume-x'
+                : volume < 0.15
+                  ? `volume-none`
+                  : volume > 0.75
+                    ? `volume-high`
+                    : 'volume-low'
+            }
           />
         )
       })}

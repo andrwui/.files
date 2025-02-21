@@ -5,6 +5,7 @@ import SoundVolumeSlider from './volume/SoundVolumeSlider'
 import SoundVolumeMuteButton from './volume/SoundVolumeMuteButton'
 import SoundSpeakerList from './speakers/SoundSpeakerList'
 import SpotifyPlayer from './music/SpotifyPlayer'
+import ChromePlayer from './music/ChromePlayer'
 
 export const SoundWindowNamePrefix = 'soundWindow'
 
@@ -23,7 +24,7 @@ const SoundWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
       <label
         hexpand
         halign={START}
-        label="sound"
+        label="Sound"
         css={'font-size: 18px;'}
       />
       <Separator />
@@ -33,7 +34,7 @@ const SoundWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
       >
         <box>
           <label
-            label={'volume'}
+            label={'Volume'}
             halign={START}
           />
           <SoundVolumeMuteButton />

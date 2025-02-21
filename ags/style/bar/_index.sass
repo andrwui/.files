@@ -3,6 +3,9 @@
 *
   font-size: 14px
 
+window
+  background: transparent
+
 window.Bar 
   background: #080808
   font-weight: bold
@@ -13,7 +16,7 @@ window.Bar
     padding: 10px
 
 switch
-  border-radius: 0
+  border-radius: 5px
   border: 2px solid white
 
   &:checked 
@@ -24,13 +27,15 @@ switch
 
   slider
     box-shadow: none
-    border-radius: 0
+    border-radius: 5px
     background: white
+
 
 .window
   background: #080808
   padding: 10px
-  border: 1px solid white
+  border-radius: 10px
+  border: 1px solid #171717
 
 scale
   padding: 0
@@ -51,3 +56,9 @@ scale
 .smallText
   font-size: 12px
   font-weight: 500
+
+
+
+.power-menu-item
+  &:hover
+    background: white

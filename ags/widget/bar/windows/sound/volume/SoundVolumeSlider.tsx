@@ -10,6 +10,9 @@ const SoundVolumeSlider = () => {
       heightRequest={10}
       cursor={'pointer'}
       className={bind(speaker, 'mute').as((isMuted) => (isMuted ? 'muted' : ''))}
+      css={`
+        border-radius: 2px;
+      `}
       onDragged={(self) => {
         speaker.volume = self.value * 1.5
       }}

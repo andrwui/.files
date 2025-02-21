@@ -17,7 +17,7 @@ const SoundSpeakerList = () => {
           hexpand
           halign={Gtk.Align.START}
           marginBottom={10}
-          label="available speakers"
+          label="Available speakers"
         />
 
         {bind(audio, 'speakers').as((speakers) => {

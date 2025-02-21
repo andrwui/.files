@@ -12,6 +12,8 @@ const SystemTrayWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
 
   const tray = AstalTray.get_default()
 
+  console.log(tray.items)
+
   return (
     <GenericWindow
       gdkmonitor={monitor}
@@ -26,13 +28,7 @@ const SystemTrayWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
             return (
               <box spacing={7}>
                 {chunk.map((item) => {
-                  const menu = item.create_menu()
-                  return (
-                    <TrayItem
-                      item={item}
-                      menu={menu}
-                    />
-                  )
+                  return <TrayItem item={item} />
                 })}
               </box>
             )

@@ -1,7 +1,10 @@
 @use "bar"
 
+window
+  border-radius: 5px
+
 * 
-  font-family: 'Geist Mono, FiraCode Nerd Font'
+  font-family: 'Geist'
   font-weight: 600
 
 button 
@@ -15,6 +18,7 @@ button
   outline-color: transparent
   border-color: transparent
   box-shadow: none
+  border-radius: 10%
 
 @keyframes text-blink
   to
@@ -38,7 +42,13 @@ calendar
     border: none
   &:selected
     background: white
+    border-radius: 5px
     color: #080808
   &.today
     color: red
+
+
+@keyframes blink
+  to
+    opacity: 0
 

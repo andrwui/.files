@@ -16,10 +16,12 @@ const SystemTray = ({ monitorIndex }: { monitorIndex: number }) => {
             cursor={'pointer'}
             onClick={() => closeAllOtherWindows(windowName)}
           >
-            <label
+            <icon
               widthRequest={15}
-              css={``}
-              label={'󰅀'}
+              icon={'chevron-down-c'}
+              css={`
+                font-size: 16px;
+              `}
             />
           </eventbox>
         ) : (

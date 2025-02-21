@@ -25,7 +25,7 @@ const BluetoothWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
           halign={Gtk.Align.START}
         >
           <label
-            label="bluetooth"
+            label="Bluetooth"
             css={'font-size: 18px;'}
           />
         </box>

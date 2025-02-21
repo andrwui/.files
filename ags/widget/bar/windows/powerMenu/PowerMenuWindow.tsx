@@ -1,4 +1,4 @@
-import { App, Astal, Gdk } from 'astal/gtk3'
+import { App, Astal, Gdk, Gtk } from 'astal/gtk3'
 
 import GenericWindow from '../_generic/GenericWindow'
 import { closeAllOtherWindows } from '../../bar_items/helper'
@@ -68,18 +68,18 @@ const PowerMenuWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
           className={'window'}
         >
           <PowerMenuItem onClick={() => exec('poweroff')}>
-            <label
-              label={'[poweroff]'}
-              className={'window'}
-              hexpand
+            <icon
+              icon={'power'}
+              css="font-size: 30px;"
+              className="window"
             />
             <></>
           </PowerMenuItem>
           <PowerMenuItem onClick={() => exec('swaylock')}>
-            <label
-              label={'[lock]'}
-              className={'window'}
-              hexpand
+            <icon
+              icon={'lock-c'}
+              css="font-size: 30px;"
+              className="window"
             />
             <></>
           </PowerMenuItem>

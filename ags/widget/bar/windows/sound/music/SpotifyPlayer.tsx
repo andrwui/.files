@@ -14,6 +14,8 @@ const SpotifyPlayer = () => {
 
   const spotify = AstalMpris.Player.new('spotify')
 
+  console.log()
+
   const spotifyBinding = Variable<
     [
       boolean,
@@ -104,6 +106,11 @@ const SpotifyPlayer = () => {
               widthRequest={340}
             >
               <Separator />
+              <label
+                label={'Spotify'}
+                halign={Gtk.Align.START}
+                css="font-size: 18"
+              />
               <box
                 vertical
                 spacing={15}
@@ -117,6 +124,7 @@ const SpotifyPlayer = () => {
                     css={`
                       background-image: url('${songCover}');
                       background-size: contain;
+                      border-radius: 5px;
                     `}
                     onClick={() => exec(['bash', '-e', 'spotify'])}
                   />
@@ -128,7 +136,7 @@ const SpotifyPlayer = () => {
                       label={truncate(songTitle, 15)}
                       halign={Gtk.Align.START}
                       css={`
-                        font-size: 20px;
+                        font-size: 24px;
                         font-weight: 500;
                       `}
                     />
@@ -136,7 +144,7 @@ const SpotifyPlayer = () => {
                       label={songArtist}
                       halign={Gtk.Align.START}
                       css={`
-                        font-size: 14px;
+                        font-size: 18px;
                         font-weight: 500;
                       `}
                     />
@@ -144,8 +152,8 @@ const SpotifyPlayer = () => {
                       label={truncate(songAlbum, 30)}
                       halign={Gtk.Align.START}
                       css={`
-                        font-size: 11px;
-                        font-weight: 200;
+                        font-size: 15px;
+                        font-weight: 300;
                       `}
                     />
                   </box>
@@ -169,6 +177,9 @@ const SpotifyPlayer = () => {
                     hexpand
                     heightRequest={10}
                     cursor={'pointer'}
+                    css={`
+                      border-radius: 2px;
+                    `}
                     onDragged={({ value }) => {
                       if (isDebouncing.get()) return
                       timeout(500, () => {
@@ -179,19 +190,21 @@ const SpotifyPlayer = () => {
                   />
                 </box>
                 <box halign={Gtk.Align.FILL}>
-                  <centerbox>
+                  <centerbox spacing={10}>
                     <box hexpand>
                       <eventbox
                         halign={Gtk.Align.START}
                         onClick={() => spotify.shuffle()}
                         cursor={'pointer'}
                       >
-                        <label
-                          label={'[shuffle]'}
+                        <icon
+                          icon={
+                            shuffleStatus === AstalMpris.Shuffle.OFF ? 'shuffle-dark' : 'shuffle-c'
+                          }
                           css={`
-                            color: ${shuffleStatus === AstalMpris.Shuffle.OFF ? '#171717' : ''};
+                            font-size: 18px;
                           `}
-                        ></label>
+                        />
                       </eventbox>
                       <eventbox
                         hexpand
@@ -199,7 +212,12 @@ const SpotifyPlayer = () => {
                         onClick={() => spotify.previous()}
                         cursor={'pointer'}
                       >
-                        {'[<]'}
+                        <icon
+                          css={`
+                            font-size: 18px;
+                          `}
+                          icon="chevron-first"
+                        />
                       </eventbox>
                     </box>
                     <eventbox
@@ -207,7 +225,14 @@ const SpotifyPlayer = () => {
                       onClick={() => spotify.play_pause()}
                       cursor={'pointer'}
                     >
-                      {playbackStatus === AstalMpris.PlaybackStatus.PLAYING ? '[||]' : '[|>]'}
+                      <icon
+                        css={`
+                          font-size: 18px;
+                        `}
+                        icon={
+                          playbackStatus === AstalMpris.PlaybackStatus.PLAYING ? 'pause' : 'play'
+                        }
+                      />
                     </eventbox>
                     <box hexpand>
                       <eventbox
@@ -216,19 +241,24 @@ const SpotifyPlayer = () => {
                         halign={Gtk.Align.START}
                         onClick={() => spotify.next()}
                       >
-                        {'[>]'}
+                        <icon
+                          css={`
+                            font-size: 18px;
+                          `}
+                          icon="chevron-last"
+                        />
                       </eventbox>
                       <eventbox
                         halign={Gtk.Align.END}
                         onClick={() => spotify.loop()}
                         cursor={'pointer'}
                       >
-                        <label
-                          label={`[loop${loopStatus === AstalMpris.Loop.TRACK ? '*' : ''}]`}
+                        <icon
+                          icon={`${loopStatus === AstalMpris.Loop.NONE ? 'repeat-dark' : loopStatus === AstalMpris.Loop.TRACK ? 'infinity' : 'repeat-c'}`}
                           css={`
-                            color: ${loopStatus === AstalMpris.Loop.NONE ? '#171717' : ''};
+                            font-size: 18px;
                           `}
-                        ></label>
+                        />
                       </eventbox>
                     </box>
                   </centerbox>

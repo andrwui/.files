@@ -28,7 +28,7 @@ const BluetoothDevice = ({ device }: { device: AstalBluetooth.Device }) => {
         return (
           <eventbox onClick={() => handleClick(isConnected)}>
             <label
-              label={`${device.name} ${isConnected ? '*' : ''}`}
+              label={`${device.name} ${isConnected ? ' ' : ''}`}
               className={`${isConnecting ? 'text-blink' : ''}`}
             />
           </eventbox>

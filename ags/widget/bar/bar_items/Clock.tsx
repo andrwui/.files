@@ -13,10 +13,14 @@ const Clock = ({ monitorIndex }: { monitorIndex: number }) => {
       cursor={'pointer'}
       className="clock"
       halign={Gtk.Align.END}
-      valign={Gtk.Align.CENTER}
+      valign={Gtk.Align.START}
+      widthRequest={80}
       onClick={() => closeAllOtherWindows(`${CalendarWindowNamePrefix}-${monitorIndex}`)}
     >
-      <label label={time()}></label>
+      <label
+        halign={Gtk.Align.START}
+        label={time()}
+      ></label>
     </eventbox>
   )
 }

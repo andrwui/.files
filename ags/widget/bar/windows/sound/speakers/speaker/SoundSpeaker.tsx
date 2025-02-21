@@ -19,7 +19,7 @@ const SoundSpeaker = ({ speaker }: { speaker: AstalWp.Endpoint }) => {
           >
             <label
               hexpand
-              label={`${speakerName.includes('EVO') ? 'EVO4' : speakerName} ${isDefault ? '*' : ''}`}
+              label={`${speakerName.includes('EVO') ? 'EVO4' : speakerName} ${isDefault ? '' : ''}`}
               halign={Gtk.Align.START}
             />
           </GenericTextButton>

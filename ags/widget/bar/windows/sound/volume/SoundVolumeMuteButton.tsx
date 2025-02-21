@@ -15,7 +15,12 @@ const SoundVolumeMuteButton = () => {
         audio.defaultSpeaker.set_mute(!audio.defaultSpeaker.mute)
       }}
     >
-      {bind(audio.defaultSpeaker, 'mute').as((isMuted) => `[${isMuted ? 'unmute' : 'mute'}]`)}
+      <icon
+        icon={bind(audio.defaultSpeaker, 'mute').as(
+          (isMuted) => `${isMuted ? 'volume-x' : 'volume-high'}`,
+        )}
+        css="font-size: 18px;"
+      />
     </GenericTextButton>
   )
 }

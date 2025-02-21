@@ -27,7 +27,7 @@ const HyprWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
               onClick={() => {
                 exec(['bun', '/home/andrw/.scripts/select_hypr_monitors.ts', 'home'])
               }}
-            >{`home${monitorSetup === 'home' ? '*' : ''}`}</eventbox>
+            >{`Home${monitorSetup === 'home' ? '' : ''}`}</eventbox>
             <Separator />
             <eventbox
               widthRequest={120}
@@ -35,7 +35,7 @@ const HyprWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
               onClick={() => {
                 exec(['bun', '/home/andrw/.scripts/select_hypr_monitors.ts', 'work'])
               }}
-            >{`work${monitorSetup === 'work' ? '*' : ''}`}</eventbox>
+            >{`Work${monitorSetup === 'work' ? '' : ''}`}</eventbox>
           </box>
         )
       })}

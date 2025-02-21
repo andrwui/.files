@@ -57,9 +57,9 @@ remap({ 'n', 'v' }, '<Leader>d', ']]')
 -- Horizontal movement
 -- Right
 remap({ 'n', 'v' }, 'l', 'l')
-  remap({ 'n', 'v' }, '<S-l>', function()
-    sp_motion('w')
-  end)
+remap({ 'n', 'v' }, '<S-l>', function()
+  sp_motion('w')
+end)
 
 remap({ 'n', 'o' }, '<C-l>', '$')
 remap({ 'v' }, '<C-l>', '$h')
@@ -69,8 +69,8 @@ remap({ 'n', 'v' }, 'k', 'h')
 remap({ 'n', 'v' }, '<S-k>', function()
   sp_motion('b')
 end)
-remap({ 'n', 'v' }, '<C-k>', '0')
-remap({ 'n', 'v' }, '<C-S-k>', '0<S-l>')
+remap({ 'n', 'v' }, '<C-k>', '^')
+remap({ 'n', 'v' }, '<C-S-k>', '^<S-k>')
 
 -- Yank to the clipboard
 remap({ 'n', 'v' }, 'y', '"+y')

@@ -31,14 +31,22 @@ const NetworkList = () => {
       spacing={10}
     >
       <box>
-        <label label="access points" />
+        <label label="Access points" />
         <GenericTextButton
           hexpand
           halign={END}
           onClick={() => wifi.scan()}
           cursor="pointer"
         >
-          {bind(wifi, 'scanning').as((isScanning) => `[${isScanning ? 'scanning' : 'scan'}]`)}
+          <icon
+            icon="search-c"
+            css={bind(wifi, 'scanning').as(
+              (isScanning) => `
+                ${isScanning ? 'animation: blink .5s infinite alternate' : ''};
+                font-size: 18px;
+                `,
+            )}
+          />
         </GenericTextButton>
       </box>
 
@@ -70,17 +78,17 @@ const NetworkList = () => {
                     <label
                       hexpand
                       halign={START}
-                      label={`${truncate(ap.ssid, 15)} ${areApsSame(ap, activeAccessPoint || new AstalNetwork.AccessPoint()) ? '*' : ''}`}
+                      label={`${truncate(ap.ssid, 15)} ${areApsSame(ap, activeAccessPoint || new AstalNetwork.AccessPoint()) ? '' : ''}`}
                     />
 
-                    <label
+                    <icon
                       className="smallText"
                       halign={END}
                       widthRequest={20}
                       css={`
                         font-size: 20px;
                       `}
-                      label={`${ap.strength < 40 ? '󰢿' : ap.strength < 60 ? '󰢼' : ap.strength < 80 ? '󰢽' : '󰢾'}`}
+                      icon={`${ap.strength < 40 ? 'wifi-zero' : ap.strength < 60 ? 'wifi-low' : ap.strength < 80 ? 'wifi-high' : 'wifi'}`}
                     />
                   </box>
                 </eventbox>

@@ -13,7 +13,12 @@ const PowerMenu = ({ monitorIndex }: { monitorIndex: number }) => {
       `}
       onClick={() => closeAllOtherWindows(windowName)}
     >
-      󰐥
+      <icon
+        icon="power"
+        css={`
+          font-size: 14px;
+        `}
+      />
     </eventbox>
   )
 }

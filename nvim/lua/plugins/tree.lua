@@ -12,9 +12,10 @@ local tree = {
         show_on_dirs = false,
       },
       git = {
-        enable = true,
-        ignore = false,
-        timeout = 500,
+        enable = false,
+      },
+      view = {
+        side = "right"
       },
 
       on_attach = function(bufnr)
