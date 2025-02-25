@@ -13,7 +13,8 @@ end
 
 
 function tn 
-  set selected_dir (find ~ -path ~/.local -prune -o -type d -print | fzf)
+
+  set selected_dir (find ~ -type d \( -name ".*" -o -path "*/eclipse-workspace/*" \) -prune -o -type d -print | fzf --color=bw)
 
   if test -n "$selected_dir"
     set session_name (basename $selected_dir | sed 's/^\./dot/')

@@ -11,17 +11,20 @@ tmux popup -E -w "$POPUP_WIDTH" -h "$POPUP_HEIGHT" -d '#{pane_current_path}' "
   tmux list-sessions -F '#{session_name}#{?session_attached, <,}' | 
   fzf --reverse --height=100% --border=none --prompt='session > ' \\
       --color=bw \\
-      --expect=ctrl-r,ctrl-k \\
+      --expect=ctrl-r,ctrl-k,ctrl-a \\
       --bind 'esc:abort' > $TMPFILE
 "
 if [ -s "$TMPFILE" ]; then
   KEY=$(head -1 "$TMPFILE")
   SELECTION=$(head -2 "$TMPFILE" | tail -1 | sed 's/ <$//')
   if [ "$KEY" = "ctrl-r" ] && [ -n "$SELECTION" ]; then
-    tmux command-prompt -p "New name:" -I "$SELECTION" "rename-session -t \"$SELECTION\" '%%'"
+    tmux command-prompt -p "session name:" -I "$SELECTION" "rename-session -t \"$SELECTION\" '%%'"
   elif [ "$KEY" = "ctrl-k" ] && [ -n "$SELECTION" ]; then
     tmux kill-session -t "$SELECTION"
+  elif [ "$KEY" = "ctrl-a" ]; then
+    tmux popup -E -w "40%" -h "60%" -d '#{pane_current_path}' "fish -c 'tn'"
   else
+
     tmux switch-client -t "$SELECTION"
   fi
 fi
