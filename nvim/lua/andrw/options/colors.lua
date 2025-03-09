@@ -1,0 +1,24 @@
+vim.cmd [[
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NonText guibg=NONE ctermbg=NONE
+  highlight NvimTreeFolderIcon guifg=#ffffff
+  highlight NvimTreeFolderName guifg=#ffffff
+  highlight NvimTreeOpenedFolderName guifg=#ffffff
+  highlight NvimTreeEmptyFolderName guifg=#ffffff
+  highlight NvimTreeIndentMarker guifg=#ffffff
+  highlight NvimTreeSymlink guifg=#ffffff
+  highlight NvimTreeRootFolder guifg=#ffffff
+  highlight NvimTreeExecFile guifg=#ffffff
+  highlight NvimTreeOpenedFile guifg=#ffffff
+  highlight NvimTreeSpecialFile guifg=#ffffff
+  highlight NvimTreeImageFile guifg=#ffffff
+  highlight NvimTreeGitDirty guifg=#ffffff
+  highlight NvimTreeGitStaged guifg=#ffffff
+  highlight NvimTreeGitMerge guifg=#ffffff
+  highlight NvimTreeGitRenamed guifg=#ffffff
+  highlight NvimTreeGitNew guifg=#ffffff
+  highlight NvimTreeGitDeleted guifg=#ffffff
+  highlight NvimTreeGitIgnored guifg=#ffffff
+]]
+
+return {}

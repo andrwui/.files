@@ -1,0 +1,28 @@
+local helpers = require('andrw.keybinds.helpers')
+local unmap = helpers.unmap
+
+unmap({ 'n', 'v', 's' }, 'h')
+unmap({ 'n', 'v', 's' }, 'H')
+unmap({ 'n', 'v', 's' }, '<C-h>')
+unmap({ 'n', 'v', 's' }, 'j')
+unmap({ 'n', 'v', 's' }, 'w')
+unmap({ 'n', 'v', 's' }, 'W')
+unmap({ 'n', 'v', 's' }, '0')
+unmap({ 'n', 'v', 's' }, '$')
+unmap({ 'n', 'v', 's', 'i' }, '<Up>')
+unmap({ 'n', 'v', 's', 'i' }, '<Down>')
+unmap({ 'n', 'v', 's', 'i' }, '<Left>')
+unmap({ 'n', 'v', 's', 'i' }, '<Right>')
+unmap({ 'n', 'v', 's', 'i' }, '<PageUp>')
+unmap({ 'n', 'v', 's', 'i' }, '<PageDown>')
+unmap({ 'n', 'v', 's' }, '<C-d>')
+unmap({ 'n', 'v', 's' }, '<C-a>')
+unmap({ 'n', 'v', 's' }, '<C-r>')
+unmap({ 'n', 'v', 's' }, '[[')
+unmap({ 'n', 'v', 's' }, ']]')
+unmap({ 'n', 'v', 's' }, '{')
+unmap({ 'n', 'v', 's' }, '}')
+unmap({ 'n', 'v', 's' }, '<<')
+unmap({ 'n', 'v', 's' }, '>>')
+
+return {}
