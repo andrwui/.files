@@ -28,7 +28,13 @@ const SystemTrayWindow = (monitor: Gdk.Monitor, monitorIndex: number) => {
             return (
               <box spacing={7}>
                 {chunk.map((item) => {
-                  return <TrayItem item={item} />
+                  const menu = item.create_menu()
+                  return (
+                    <TrayItem
+                      menu={menu}
+                      item={item}
+                    />
+                  )
                 })}
               </box>
             )

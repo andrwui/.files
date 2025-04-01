@@ -53,35 +53,8 @@ local lspzero = {
       end
     end
 
-    local cmp = require('cmp')
-    cmp.setup({
-      sources = {
-        { name = 'nvim_lsp', max_item_count = 500 },
-        { name = 'luasnip',  priority = 1000 },
-        { name = 'lazydev' },
-        { name = 'emmet_ls', priority = 0 }
-      },
-      formatting = {
-        fields = { "kind", "abbr", "menu" },
-        expandable_indicator = true,
-        format = function(entry, vim_item)
-          vim_item.menu = ({
-            nvim_lsp = '[LSP]',
-            luasnip = '[Snippet]',
-            lazydev = '[Lazy]'
-          })[entry.source.name]
-          return vim_item
-        end
-      },
-      mapping = {
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<Up>'] = cmp.mapping.select_prev_item(),
-        ['<Down>'] = cmp.mapping.select_next_item(),
-      }
-    })
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
     require('mason-lspconfig').setup_handlers({
       function(server_name)
         require('lspconfig')[server_name].setup({

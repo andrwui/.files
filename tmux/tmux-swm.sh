@@ -3,7 +3,7 @@ POPUP_WIDTH="20%"
 POPUP_HEIGHT="20%"
 TMPFILE=$(mktemp /tmp/tmux-fzf.XXXXXX)
 tmux popup -E -w "$POPUP_WIDTH" -h "$POPUP_HEIGHT" -d '#{pane_current_path}' "
-  tmux list-windows -F '#{window_index}:#{window_name}#{?window_active, <,}' | 
+  tmux list-windows -F '#{window_name}#{?window_active, <,}' | 
   fzf --reverse --height=100% --border=none --prompt='window > ' \\
       --color=bw \\
       --expect=ctrl-r,ctrl-k,ctrl-a \\

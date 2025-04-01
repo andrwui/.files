@@ -1,0 +1,19 @@
+main {
+  font-size: 22px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #080808;
+}
+
+#page-header {
+  display: none;
+}
+
+svg {
+  fill: white;
+}
+
+html {
+  background-color: #080808;
+  font-family: 'Geist', 'Geist Mono';
+}

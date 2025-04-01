@@ -12,7 +12,7 @@ remap({ 'n', 'v' }, 'c', '"_c')
 remap('n', 'p', '"+p')
 remap('n', 'P', '"+P')
 
-remap('v', 'p', '"_d"+p')
+remap('v', 'p', '"_d"+P')
 remap('v', 'P', '"_d"+P')
 
 remap({ 'n', 'v' }, '<C-a>', '[[V]]')

@@ -9,7 +9,7 @@ remap({ 'n', 'v' }, 's', 'k')
 remap({ 'n', 'v' }, 'S', '{')
 remap({ 'n', 'v' }, 'D', '}')
 
-remap({ 'n', 'v' }, '<Leader>s', '[[')
+remap({ 'n', 'v' }, '<BS>s', '[[')
 remap({ 'n', 'v' }, '<Leader>d', ']]')
 
 remap({ 'n', 'v' }, 'l', 'l')

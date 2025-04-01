@@ -3,7 +3,9 @@ local remap = helpers.remap
 
 remap({ 'n', 'v' }, 'j', '"_d')
 
-remap({ 'n', 'v' }, '<C-d>', '"_dd')
+remap({ 'n', 'v' }, '<C-j>', '"_dd')
+
+remap({ 'n', 'v' }, '<C-d>', '<S-j>')
 
 remap({ 'i' }, '<C-b>', '<C-o>')
 
