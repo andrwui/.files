@@ -17,10 +17,6 @@ SETUVAR fish_color_cwd:green
 SETUVAR fish_color_cwd_root:red
 SETUVAR fish_color_end:262626
 SETUVAR fish_color_error:af0000
-SETUVAR fish_color_cwd:green
-SETUVAR fish_color_cwd_root:red
-SETUVAR fish_color_end:262626
-SETUVAR fish_color_error:af0000
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:brcyan
 SETUVAR fish_color_option:\x1d
@@ -46,4 +42,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dreverse
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/andrw/\x2elocal/share/pnpm\x1e/usr/lib/jvm/java\x2d22\x2dopenjdk/bin\x1e/home/andrw/go/bin\x1e/home/andrw/\x2espicetify\x1e/usr/local/ant/bin\x1e/sbin\x1e/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/sbin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl
+SETUVAR fish_user_paths:/home/andrw/\x2ebun/bin\x1e/home/andrw/\x2elocal/share/pnpm\x1e/usr/lib/jvm/java\x2d22\x2dopenjdk/bin\x1e/home/andrw/go/bin\x1e/home/andrw/\x2espicetify\x1e/usr/local/ant/bin\x1e/sbin\x1e/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/sbin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl

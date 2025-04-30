@@ -9,13 +9,16 @@ local tree = {
     require("nvim-tree").setup({
       diagnostics = {
         enable = true,
-        show_on_dirs = false,
+        show_on_dirs = true,
       },
       git = {
-        enable = false,
+        enable = true,
       },
       view = {
-        side = "right"
+        side = "left"
+      },
+      update_focused_file = {
+        enable = true,
       },
 
       on_attach = function(bufnr)

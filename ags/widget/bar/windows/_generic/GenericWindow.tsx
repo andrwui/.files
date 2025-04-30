@@ -17,7 +17,7 @@ const GenericWindow = ({ children, boxProps, ...props }: WindowProps) => {
       visible={false}
       anchor={TOP | RIGHT}
       margin={15}
-      keymode={Astal.Keymode.NONE}
+      keymode={Astal.Keymode.EXCLUSIVE}
       onKeyPressEvent={handleWindowEsc}
       {...props}
     >

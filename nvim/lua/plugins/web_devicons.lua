@@ -1,4 +1,3 @@
--- monochrome webdevicons, javascript icon sucks, what the fuck does it mean??
 local icons = {
   'nvim-tree/nvim-web-devicons',
   config = function()

@@ -1,4 +1,5 @@
 vim.cmd [[
+
   hi Normal guibg=NONE ctermbg=NONE
   hi NonText guibg=NONE ctermbg=NONE
   highlight NvimTreeFolderIcon guifg=#ffffff
@@ -19,6 +20,12 @@ vim.cmd [[
   highlight NvimTreeGitNew guifg=#ffffff
   highlight NvimTreeGitDeleted guifg=#ffffff
   highlight NvimTreeGitIgnored guifg=#ffffff
+
+  highlight BlinkCmpMenu guifg=#ffffff
+  highlight BlinkCmpMenuBorder guibg=#ffffff
+  highlight BlinkCmpMenuSelection guibg=#ffffff guifg=#0a0a0a gui=bold
+  highlight BlinkCmpScrollBarThumb guibg=#ffffff
+
 ]]
 
 return {}

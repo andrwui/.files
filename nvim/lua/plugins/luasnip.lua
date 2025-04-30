@@ -1,4 +1,3 @@
--- cool snippets, actually a great plugin, one of my favs
 local luasnip = {
   "L3MON4D3/LuaSnip",
   version = 'v2.*',
@@ -22,11 +21,4 @@ local luasnip = {
   end
 }
 
-local luasnip_cmp = {
-  'saadparwaiz1/cmp_luasnip',
-  setup = function()
-    require('cmp_luasnip').setup({})
-  end
-}
-
-return { luasnip, luasnip_cmp }
+return { luasnip }

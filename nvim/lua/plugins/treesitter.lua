@@ -1,4 +1,3 @@
--- treesitter lesgooo
 local TS = {
 
   'nvim-treesitter/nvim-treesitter',

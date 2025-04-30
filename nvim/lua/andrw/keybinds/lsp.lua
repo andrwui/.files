@@ -1,9 +1,9 @@
 local helpers = require('andrw.keybinds.helpers')
 local remap = helpers.remap
 
-remap('n', '-', function()
-  vim.lsp.buf.hover()
-end)
+remap('n', '-', '<cmd>Lspsaga peek_definition<CR>')
+
+remap('n', '+', '<cmd>Lspsaga hover_doc<CR>')
 
 remap('n', '_', function()
   vim.diagnostic.open_float(nil, { border = 'single' })

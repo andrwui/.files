@@ -8,12 +8,23 @@ const Network = ({ monitorIndex }: { monitorIndex: number }) => {
   const network = AstalNetwork.get_default()
 
   const wifiState = bind(network.wifi, 'state')
+  const wifiStrength = bind(network.wifi, 'strength')
   const wiredState = bind(network.wired, 'state')
 
-  const networkStateBinding = Variable<[number, number]>([0, 0])
+  const networkStateBinding = Variable<[number, number, number]>([0, 0, 0])
 
-  Variable.derive([wifiState, wiredState], (wifiState, wiredState) => {
-    networkStateBinding.set([wifiState, wiredState])
+  const getWifiIcon = (strength: number) => {
+    return strength < 40
+      ? 'wifi-zero'
+      : strength < 60
+        ? 'wifi-low'
+        : strength < 80
+          ? 'wifi-high'
+          : 'wifi'
+  }
+
+  Variable.derive([wifiState, wifiStrength, wiredState], (wifiState, wifiStrength, wiredState) => {
+    networkStateBinding.set([wifiState, wifiStrength, wiredState])
   })
 
   const windowName = `${NetworkWindowNamePrefix}-${monitorIndex}`
@@ -27,7 +38,7 @@ const Network = ({ monitorIndex }: { monitorIndex: number }) => {
       onClick={() => closeAllOtherWindows(windowName)}
       css={' font-size: 200px;'}
     >
-      {bind(networkStateBinding).as(([wifiState, wiredState]) => {
+      {bind(networkStateBinding).as(([wifiState, wifiStrength, wiredState]) => {
         return (
           <icon
             widthRequest={13}
@@ -35,7 +46,7 @@ const Network = ({ monitorIndex }: { monitorIndex: number }) => {
               ${wiredState !== ACTIVATED && wifiState !== ACTIVATED ? 'color: #404040;' : ''};
               font-size: 16px;
             `}
-            icon={`${wiredState === ACTIVATED ? 'ethernet-port' : wifiState === ACTIVATED ? 'wifi' : 'wifi-off'}`}
+            icon={`${wiredState === ACTIVATED ? 'ethernet-port' : wifiState === ACTIVATED ? getWifiIcon(wifiStrength) : 'wifi-off'}`}
           />
         )
       })}

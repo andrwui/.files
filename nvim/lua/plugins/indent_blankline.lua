@@ -1,4 +1,3 @@
--- indentation indicators
 local indent_blankline = {
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",

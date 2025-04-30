@@ -11,4 +11,3 @@ M.unmap = function(modes, unmap)
 end
 
 return M
-

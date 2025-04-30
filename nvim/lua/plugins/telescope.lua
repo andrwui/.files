@@ -1,4 +1,3 @@
--- mythic telescope, literally the best plugin ever
 local telescope = {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.8',
@@ -11,6 +10,6 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>bb', builtin.buffers, {})
 
-require('telescope').setup()
+require('telescope').setup({})
 
 return { telescope }

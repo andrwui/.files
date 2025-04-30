@@ -1,4 +1,3 @@
--- wrap selection on any kinda bracket
 local tenaille = {
   -- plugin spec
   'doums/tenaille.nvim',
