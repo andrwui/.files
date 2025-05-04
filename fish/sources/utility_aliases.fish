@@ -1,7 +1,3 @@
-alias cd..="cd .."
-alias ls="eza -l -a --no-permissions --no-user --no-filesize --color=never --icons --no-time"
-alias cls="clear"
-alias img="kitten icat"
 
 function untar
   if test (count $argv) -gt 0
