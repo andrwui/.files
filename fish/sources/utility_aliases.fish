@@ -1,4 +1,3 @@
-
 function untar
   if test (count $argv) -gt 0
     if test -f $argv[1]

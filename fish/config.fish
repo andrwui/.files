@@ -1,4 +1,13 @@
 set fish_greeting
+set -gx EDITOR nvim
+
+if [ (tty) = "/dev/tty1" ]
+    exec Hyprland
+end
+
+if test (tty) = "/dev/tty1"
+    exec Hyprland
+end
 
 if test -f ~/.config/fish/private.fish
   source ~/.config/fish/private.fish

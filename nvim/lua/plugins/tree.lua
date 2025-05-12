@@ -13,6 +13,7 @@ local tree = {
       },
       git = {
         enable = true,
+        ignore = false,
       },
       view = {
         side = "left"

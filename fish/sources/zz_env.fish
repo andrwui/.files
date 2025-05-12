@@ -1,5 +1,3 @@
-set -gx EDITOR nvim
-
 #zoxide sourcing
 zoxide init fish | source
 
