@@ -19,7 +19,7 @@ local tree = {
         side = "left"
       },
       update_focused_file = {
-        enable = true,
+        enable = false,
       },
 
       on_attach = function(bufnr)

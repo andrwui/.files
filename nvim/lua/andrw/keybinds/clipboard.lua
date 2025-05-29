@@ -15,6 +15,6 @@ remap('n', 'P', '"+P')
 remap('v', 'p', '"_d"+P')
 remap('v', 'P', '"_d"+P')
 
-remap({ 'n', 'v' }, '<C-a>', '[[V]]')
+remap({ 'n', 'v' }, '<C-a>', 'gg0vG$')
 
 return {}

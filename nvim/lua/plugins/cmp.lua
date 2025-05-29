@@ -9,14 +9,10 @@ local cmp = {
 
   opts = {
     sources = {
-      default = { 'avante', 'lsp', 'path', 'snippets', 'buffer' },
-      providers = {
-        avante = {
-          module = 'blink-cmp-avante',
-          name = 'Avante',
-        }
-
-      }
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      per_filetype = {
+        codecompanion = { "codecompanion" },
+      },
     },
 
     keymap = {
@@ -32,19 +28,43 @@ local cmp = {
     },
 
     completion = {
+      menu = {
+        draw = {
+          columns = {
+            { "kind_icon", "label", gap = 2 },
+          }
+        }
+      },
+
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 0,
       },
+
       ghost_text = {
         enabled = false
+      },
+
+      trigger = {
+        show_on_blocked_trigger_characters = {
+          ' ',
+          '\n',
+          '\t',
+          '{',
+        }
+      },
+
+      accept = {
+        auto_brackets = {
+          enabled = false
+        }
       }
 
     },
 
+
     fuzzy = { implementation = "prefer_rust_with_warning" },
 
-    -- Disable for Dressing's popups, it's annoying
     enabled = function() return not vim.tbl_contains({ "DressingInput" }, vim.bo.filetype) end,
 
   },

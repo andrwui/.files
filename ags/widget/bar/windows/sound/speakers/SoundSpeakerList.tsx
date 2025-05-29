@@ -21,9 +21,10 @@ const SoundSpeakerList = () => {
         />
 
         {bind(audio, 'speakers').as((speakers) => {
-          const filteredSpeakers = speakers.filter(
-            (speaker) => !speaker.description.includes('Tiger Lake-LP'),
-          )
+          const filteredSpeakers = speakers.filter((speaker) => {
+            const speakerName = speaker.description
+            return !speakerName.includes('Tiger Lake')
+          })
           if (filteredSpeakers.length < 1) {
             return (
               <label

@@ -1,4 +1,5 @@
 fish/sources/private.fish
+fish/scripts/private
 btop/btop.log
 hyprsources/sources.json
 tmux/plugins

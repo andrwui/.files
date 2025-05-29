@@ -37,6 +37,9 @@ local lspzero = {
     lsp_zero.extend_lspconfig()
 
     local lsp_attach = function(client, bufnr)
+      if client.name == 'tsserver' then
+        client.server_capabilities.documentFormattingProvider = false
+      end
       lsp_zero.default_keymaps({
         buffer = bufnr,
         exclude = { 'K' }
