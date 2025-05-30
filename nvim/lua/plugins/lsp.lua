@@ -39,11 +39,9 @@ local lspzero = {
     local lsp_attach = function(client, bufnr)
       if client.name == 'tsserver' then
         client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
       end
-      lsp_zero.default_keymaps({
-        buffer = bufnr,
-        exclude = { 'K' }
-      })
+
       if client.server_capabilities.documentFormattingProvider then
         vim.api.nvim_create_autocmd("BufWritePre", {
           buffer = bufnr,
@@ -52,6 +50,11 @@ local lspzero = {
           end,
         })
       end
+
+      lsp_zero.default_keymaps({
+        buffer = bufnr,
+        exclude = { 'K' }
+      })
     end
 
     local capabilities = require('blink.cmp').get_lsp_capabilities()
