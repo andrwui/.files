@@ -18,8 +18,6 @@ remap({ 'n' }, '<C-o>', '<BS>')
 remap({ 'n' }, '<C-x>', '<C-a>')
 remap({ 'n' }, '<C-S-x>', '<C-x>')
 
-remap({ 'n', 'v' }, '>>', '>>')
-remap({ 'n', 'v' }, '<<', '<<')
 remap({ 'n', 'v', 'i' }, '<Tab>', '<Tab>')
 
 local commentapi = require('Comment.api')

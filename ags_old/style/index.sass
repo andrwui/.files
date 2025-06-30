@@ -1,11 +1,15 @@
 @use "bar"
 
 window
-  border-radius: 5px
+  border-radius: 0
+  border-bottom-right-radius: 5px
+  border-bottom-left-radius: 5px
+  border-color: transparent
 
 * 
   font-family: 'Geist'
   font-weight: 600
+  border-color: transparent
 
 button 
   padding: 0
@@ -19,6 +23,10 @@ button
   border-color: transparent
   box-shadow: none
   border-radius: 10%
+
+.smallText:hover
+    background: red
+    min-height: 1000px
 
 @keyframes text-blink
   to

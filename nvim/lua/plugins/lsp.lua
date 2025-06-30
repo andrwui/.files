@@ -65,6 +65,9 @@ local lspzero = {
           capabilities = capabilities,
           on_attach = lsp_attach,
         })
+        require('lspconfig')['qmlls'].setup({
+          cmd = { '/usr/lib/qt6/bin/qmlls', '-E' }
+        })
       end,
     })
   end

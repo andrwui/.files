@@ -5,3 +5,5 @@ hyprsources/sources.json
 tmux/plugins
 ags/node_modules
 ags/@girs
+ags_old/node_modules
+ags_old/@girs

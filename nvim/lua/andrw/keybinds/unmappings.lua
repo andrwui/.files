@@ -22,7 +22,7 @@ unmap({ 'n', 'v', 's' }, '[[')
 unmap({ 'n', 'v', 's' }, ']]')
 unmap({ 'n', 'v', 's' }, '{')
 unmap({ 'n', 'v', 's' }, '}')
-unmap({ 'n', 'v', 's' }, '<<')
-unmap({ 'n', 'v', 's' }, '>>')
+unmap({ 'n', 'v', 's' }, '<BS>')
+unmap({ 'n', 'v', 's' }, '<80>kb')
 
 return {}

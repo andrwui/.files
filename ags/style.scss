@@ -1,0 +1,226 @@
+$background: #0a0a0a;
+$accent-background: #1a1a1a;
+$foreground: #ffffff;
+
+* {
+  transition: 250ms;
+  font-family: Geist;
+}
+
+button {
+  padding: 0;
+  border-radius: 0;
+  min-height: 20px;
+  border: none;
+  background: transparent;
+
+  &:active {
+    box-shadow: none;
+  }
+}
+
+window {
+  background: transparent;
+  color: $background;
+  font-weight: 600;
+}
+
+.container {
+  background: $background;
+  color: white;
+  transition: 250ms;
+  border-radius: 10px;
+
+  &.notch {
+    .notch_head {
+      padding: 0 15px;
+    }
+
+    .notch_content {
+      padding: 15px;
+
+      .homeLayout {
+
+        .stats_icon {
+          font-size: 2em;
+        }
+
+        .panel-card {
+          padding: 22px 10px;
+          background: $accent-background;
+          border-radius: 10px;
+
+          &.active {
+            background: white;
+
+            .name {
+              color: $background;
+            }
+          }
+
+          .switch-button {
+            border-radius: 5px;
+            box-shadow: none;
+
+            .icon {
+              font-size: 18px;
+            }
+
+            .name {
+              font-size: 11px;
+              color: $foreground;
+            }
+
+          }
+        }
+
+
+      }
+
+
+
+      .bluetoothLayout {
+
+
+        .title_icon {
+          font-size: 1.5em;
+          padding-top: 2px;
+        }
+
+        .title_title {
+          font-size: 1.8em;
+          font-weight: 500;
+        }
+
+        .title_scanning-label {
+          font-weight: 300;
+          font-size: 0.9rem;
+          animation: blink 1s infinite alternate;
+        }
+
+        spinner {
+          min-width: 15px;
+          color: white;
+        }
+
+        viewport {
+          border-color: $accent-background;
+          border-radius: 5px;
+          padding: 5px;
+          box-shadow: none;
+        }
+
+        .device {
+          &:active {
+
+            .device_name,
+            .device_connected-indicator {
+              color: $accent-background;
+
+            }
+          }
+
+
+          .device_connected-indicator {
+            font-size: 12px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+  }
+
+  &.workspaces {
+    padding: 8px;
+
+    .workspace {
+      border-radius: 5px;
+      min-width: 15px;
+    }
+  }
+
+  &.right {
+    padding: 0 10px;
+  }
+}
+
+
+
+.lock_window {
+  .background_backdrop {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .time {
+    color: white;
+    font-size: 8em;
+  }
+
+  .message {
+    color: white;
+    font-weight: 600;
+    font-size: 2em;
+  }
+
+  .entry {
+    background: $background;
+    border: none;
+    font-size: 1.3em;
+    min-height: 1.8em;
+  }
+
+}
+
+.notification_container {
+  border: 1px solid red;
+
+  .layout {
+    border: 1px solid orange;
+
+    .img {
+      border: 1px solid blue;
+      min-width: 50px;
+    }
+
+    .content {
+      border: 1px solid green;
+    }
+  }
+}
+
+
+
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+.top_bar {
+  background: black;
+  padding: 0px;
+}
+
+
+.test-red {
+  border: 1px solid red;
+}
+
+.test-blue {
+  border: 1px solid blue;
+}
+
+.test-yellow {
+  border: 1px solid yellow;
+}
+
+.test-green {
+  border: 1px solid green;
+}

@@ -9,6 +9,7 @@ vim.opt.wrap = false
 vim.opt.scrolloff = 10
 
 vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 
 return {}

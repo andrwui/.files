@@ -1,39 +1,33 @@
 import { App } from 'astal/gtk3'
-import Bar from './widget/bar/Bar'
-import { exec } from 'astal'
-import BluetoothWindow from './widget/bar/windows/bluetooth/BluetoothWindow'
-import SoundWindow from './widget/bar/windows/sound/SoundWindow'
-import SystemTrayWindow from './widget/bar/windows/systemTray/SystemTrayWindow'
-import PowerMenuWindow from './widget/bar/windows/powerMenu/PowerMenuWindow'
-import NetworkWindow from './widget/bar/windows/network/NetworkWindow'
-import ScreenshotWindow from './widget/bar/windows/screenshot/ScreenshotWindow'
-import CalendarWindow from './widget/bar/windows/calendar/CalendarWindow'
-import HyprWindow from './widget/bar/windows/hypr/HyprWindow'
-import NotificationPopups from './widget/notifications/NotificationsPopups'
+import style from './style.scss'
+import Bar from '@/widget/bar/Bar'
+import Notch from '@/widget/notch/Notch'
+import Lock from './widget/lock/Lock'
+import LockScreenState from './singleton/lockScreenState/LockScreenState'
+import { GLib } from 'astal'
 
-const sassSource = '/home/andrw/.files/ags/style/index.sass'
-const cssOutdir = '/tmp/ags/css.css'
+export enum AppRequests {
+  LOCK_SCREEN = 'lock',
+}
 
-const sassCompile = `sass ${sassSource}:${cssOutdir} --no-source-map`
-
-exec(sassCompile)
+const lockScreenState = LockScreenState.getInstance()
 
 App.start({
-  css: cssOutdir,
+  css: style,
+  icons: `${GLib.getenv('HOME')}/.files/ags/icons/`,
+
+  requestHandler: (req) => {
+    if (req === AppRequests.LOCK_SCREEN) {
+      lockScreenState.set(true)
+    }
+  },
+
   main() {
-    App.get_monitors().map((monitor, i) => {
-      return [
-        Bar(monitor, i),
-        BluetoothWindow(monitor, i),
-        SoundWindow(monitor, i),
-        SystemTrayWindow(monitor, i),
-        PowerMenuWindow(monitor, i),
-        NetworkWindow(monitor, i),
-        ScreenshotWindow(monitor, i),
-        CalendarWindow(monitor, i),
-        HyprWindow(monitor, i),
-        NotificationPopups(monitor),
-      ]
+    const singleMonitor = App.get_monitors().length === 1
+    App.get_monitors().map((monitor) => {
+      const { x, y } = monitor.geometry
+      const isPrimary = singleMonitor ? true : x === 0 && y === 0
+      return [Bar(monitor, isPrimary), Notch(monitor, isPrimary), Lock(monitor, isPrimary)]
     })
   },
 })
