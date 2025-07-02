@@ -1,7 +1,7 @@
 import { App } from 'astal/gtk3'
 import style from './style.scss'
 import Bar from '@/widget/bar/Bar'
-import Notch from '@/widget/notch/Notch'
+import ActionBar from '@/widget/action_bar/ActionBar'
 import Lock from './widget/lock/Lock'
 import LockScreenState from './singleton/lockScreenState/LockScreenState'
 import { GLib } from 'astal'
@@ -27,7 +27,7 @@ App.start({
     App.get_monitors().map((monitor) => {
       const { x, y } = monitor.geometry
       const isPrimary = singleMonitor ? true : x === 0 && y === 0
-      return [Bar(monitor, isPrimary), Notch(monitor, isPrimary), Lock(monitor, isPrimary)]
+      return [Bar(monitor, isPrimary), ActionBar(monitor, isPrimary), Lock(monitor, isPrimary)]
     })
   },
 })

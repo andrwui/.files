@@ -1,8 +1,6 @@
 import { App, Astal, Gdk, Gtk } from 'astal/gtk3'
 import Workspaces from './left/Workspaces'
-import PowerMenu from './right/PowerMenu'
 import Battery from './right/Battery'
-import NotchBoundingBox from './center/NotchBoundingBox'
 
 const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
 
@@ -40,7 +38,6 @@ export default function Bar(gdkmonitor: Gdk.Monitor, isPrimary: boolean) {
           margin_top={5}
         >
           <Battery />
-          <PowerMenu />
         </box>
       </box>
     </window>

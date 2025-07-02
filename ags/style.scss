@@ -3,7 +3,7 @@ $accent-background: #1a1a1a;
 $foreground: #ffffff;
 
 * {
-  transition: 250ms;
+  transition: 300ms;
   font-family: Geist;
 }
 
@@ -28,15 +28,14 @@ window {
 .container {
   background: $background;
   color: white;
-  transition: 250ms;
   border-radius: 10px;
 
-  &.notch {
-    .notch_head {
+  &.actionbar {
+    .actionbar_head {
       padding: 0 15px;
     }
 
-    .notch_content {
+    .actionbar_content {
       padding: 15px;
 
       .homeLayout {
@@ -81,14 +80,24 @@ window {
 
       .bluetoothLayout {
 
+        .back_button {
+          padding: 5px;
+          border-radius: 5px;
+
+          &:hover {
+            background: $accent-background;
+
+          }
+
+        }
 
         .title_icon {
-          font-size: 1.5em;
+          font-size: 1.3em;
           padding-top: 2px;
         }
 
         .title_title {
-          font-size: 1.8em;
+          font-size: 1.3em;
           font-weight: 500;
         }
 
@@ -172,20 +181,35 @@ window {
 
 }
 
-.notification_container {
-  border: 1px solid red;
+.notification {
 
-  .layout {
-    border: 1px solid orange;
+  .summary {
+    font-weight: 800;
+    font-size: 1.1em;
+  }
 
-    .img {
-      border: 1px solid blue;
-      min-width: 50px;
-    }
+  .app-name {
+    font-weight: 400;
+    font-size: 1em;
+    opacity: 0.8;
+  }
 
-    .content {
-      border: 1px solid green;
-    }
+  .app-icon {
+    padding-top: 5px;
+  }
+
+  .action-button {
+    background: $accent-background;
+    padding: 5px 0;
+    border-radius: 5px;
+
+  }
+
+  .close {
+    font-size: 1.2em;
+    background: $accent-background;
+    padding: 0.3em;
+    border-radius: 100%;
   }
 }
 
@@ -223,4 +247,30 @@ window {
 
 .test-green {
   border: 1px solid green;
+}
+
+
+scale {
+
+
+  contents {
+
+
+    trough {
+      min-width: 3em;
+      background: $accent-background;
+
+      slider {
+        background: transparent;
+
+
+        border: 0;
+      }
+
+      highlight {
+        background: white;
+      }
+    }
+
+  }
 }
