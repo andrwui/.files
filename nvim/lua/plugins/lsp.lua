@@ -37,16 +37,16 @@ local lspzero = {
     lsp_zero.extend_lspconfig()
 
     local lsp_attach = function(client, bufnr)
-      if client.name == 'tsserver' then
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-      end
-
       if client.server_capabilities.documentFormattingProvider then
         vim.api.nvim_create_autocmd("BufWritePre", {
           buffer = bufnr,
           callback = function()
-            vim.lsp.buf.format({ async = false })
+            vim.lsp.buf.format({
+              async = false,
+              filter = function(client)
+                return client.name ~= 'ts_ls'
+              end
+            })
           end,
         })
       end
