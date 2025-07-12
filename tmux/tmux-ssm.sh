@@ -1,7 +1,12 @@
 #!/bin/bash
-POPUP_WIDTH="20%"
-POPUP_HEIGHT="30%"
+
+SESSION_COUNT=$(tmux list-sessions | wc -l)
+
+POPUP_WIDTH="15%"
+POPUP_HEIGHT=$((SESSION_COUNT+4))
+
 TMPFILE=$(mktemp /tmp/tmux-sessions-fzf.XXXXXX)
+
 SESSIONS=$(tmux list-sessions -F '#{session_name}')
 if [ -z "$SESSIONS" ]; then
   echo "No tmux sessions found."
@@ -9,7 +14,7 @@ if [ -z "$SESSIONS" ]; then
 fi
 tmux popup -E -w "$POPUP_WIDTH" -h "$POPUP_HEIGHT" -d '#{pane_current_path}' "
   tmux list-sessions -F '#{session_name}#{?session_attached, <,}' | 
-  fzf --reverse --height=100% --border=none --prompt='session > ' \\
+  fzf --reverse --border=none --no-info --prompt='session > ' \\
       --color=bw \\
       --expect=ctrl-r,ctrl-k,ctrl-a \\
       --bind 'esc:abort' > $TMPFILE

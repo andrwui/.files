@@ -56,6 +56,8 @@ local cmp = {
           '}',
           ')',
           ']',
+          '<',
+          '>',
         },
 
         show_on_x_blocked_trigger_characters = {
@@ -68,6 +70,8 @@ local cmp = {
           '}',
           ')',
           ']',
+          '<',
+          '>',
         },
 
       },

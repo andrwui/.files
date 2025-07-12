@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $background: #0a0a0a;
 $accent-background: #1a1a1a;
 $foreground: #ffffff;
@@ -5,6 +7,7 @@ $foreground: #ffffff;
 * {
   transition: 300ms;
   font-family: Geist;
+  color: white;
 }
 
 button {
@@ -26,11 +29,13 @@ window {
 }
 
 .container {
+
   background: $background;
   color: white;
   border-radius: 10px;
 
   &.actionbar {
+
     .actionbar_head {
       padding: 0 15px;
     }
@@ -80,12 +85,16 @@ window {
 
       .bluetoothLayout {
 
-        .back_button {
+        button {
           padding: 5px;
           border-radius: 5px;
 
           &:hover {
             background: $accent-background;
+          }
+
+          &:active {
+            background: color.adjust($accent-background, $lightness: 20%);
 
           }
 
@@ -149,8 +158,8 @@ window {
     }
   }
 
-  &.right {
-    padding: 0 10px;
+  &.tray {
+    padding: 5px;
   }
 }
 
@@ -252,9 +261,10 @@ window {
 
 scale {
 
+  border-radius: 0;
+
 
   contents {
-
 
     trough {
       min-width: 3em;
@@ -262,15 +272,26 @@ scale {
 
       slider {
         background: transparent;
-
-
         border: 0;
+      }
+
+      * {
+        border-radius: 0px;
+        background: red;
+
       }
 
       highlight {
         background: white;
       }
+
     }
 
   }
+}
+
+
+.widgets {
+  min-width: 500px;
+  background: red;
 }

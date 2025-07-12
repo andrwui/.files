@@ -1,0 +1,288 @@
+@use 'sass:color';
+
+$background: #0a0a0a;
+$accent-background: #1a1a1a;
+$foreground: #ffffff;
+
+* {
+  transition: 300ms;
+  font-family: Geist;
+}
+
+button {
+  padding: 0;
+  border-radius: 0;
+  min-height: 20px;
+  border: none;
+  background: transparent;
+
+  &:active {
+    box-shadow: none;
+  }
+}
+
+window {
+  background: transparent;
+  color: $background;
+  font-weight: 600;
+}
+
+.container {
+  background: $background;
+  color: white;
+  border-radius: 10px;
+
+  &.actionbar {
+    .actionbar_head {
+      padding: 0 15px;
+    }
+
+    .actionbar_content {
+      padding: 15px;
+
+      .homeLayout {
+
+        .stats_icon {
+          font-size: 2em;
+        }
+
+        .panel-card {
+          padding: 22px 10px;
+          background: $accent-background;
+          border-radius: 10px;
+
+          &.active {
+            background: white;
+
+            .name {
+              color: $background;
+            }
+          }
+
+          .switch-button {
+            border-radius: 5px;
+            box-shadow: none;
+
+            .icon {
+              font-size: 18px;
+            }
+
+            .name {
+              font-size: 11px;
+              color: $foreground;
+            }
+
+          }
+        }
+
+
+      }
+
+
+
+      .bluetoothLayout {
+
+        button {
+          padding: 5px;
+          border-radius: 5px;
+
+          &:hover {
+            background: $accent-background;
+          }
+
+          &:active {
+            background: color.adjust($accent-background, $lightness: 20%);
+
+          }
+
+        }
+
+        .title_icon {
+          font-size: 1.3em;
+          padding-top: 2px;
+        }
+
+        .title_title {
+          font-size: 1.3em;
+          font-weight: 500;
+        }
+
+        .title_scanning-label {
+          font-weight: 300;
+          font-size: 0.9rem;
+          animation: blink 1s infinite alternate;
+        }
+
+        spinner {
+          min-width: 15px;
+          color: white;
+        }
+
+        viewport {
+          border-color: $accent-background;
+          border-radius: 5px;
+          padding: 5px;
+          box-shadow: none;
+        }
+
+        .device {
+          &:active {
+
+            .device_name,
+            .device_connected-indicator {
+              color: $accent-background;
+
+            }
+          }
+
+
+          .device_connected-indicator {
+            font-size: 12px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+  }
+
+  &.workspaces {
+    padding: 8px;
+
+    .workspace {
+      border-radius: 5px;
+      min-width: 15px;
+    }
+  }
+
+  &.right {
+    padding: 0 10px;
+  }
+}
+
+
+
+.lock_window {
+  .background_backdrop {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .time {
+    color: white;
+    font-size: 8em;
+  }
+
+  .message {
+    color: white;
+    font-weight: 600;
+    font-size: 2em;
+  }
+
+  .entry {
+    background: $background;
+    border: none;
+    font-size: 1.3em;
+    min-height: 1.8em;
+  }
+
+}
+
+.notification {
+
+  .summary {
+    font-weight: 800;
+    font-size: 1.1em;
+  }
+
+  .app-name {
+    font-weight: 400;
+    font-size: 1em;
+    opacity: 0.8;
+  }
+
+  .app-icon {
+    padding-top: 5px;
+  }
+
+  .action-button {
+    background: $accent-background;
+    padding: 5px 0;
+    border-radius: 5px;
+
+  }
+
+  .close {
+    font-size: 1.2em;
+    background: $accent-background;
+    padding: 0.3em;
+    border-radius: 100%;
+  }
+}
+
+
+
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+.top_bar {
+  background: black;
+  padding: 0px;
+}
+
+
+.test-red {
+  border: 1px solid red;
+}
+
+.test-blue {
+  border: 1px solid blue;
+}
+
+.test-yellow {
+  border: 1px solid yellow;
+}
+
+.test-green {
+  border: 1px solid green;
+}
+
+
+scale {
+
+  border-radius: 0;
+
+
+  contents {
+
+    trough {
+      min-width: 3em;
+      background: $accent-background;
+
+      slider {
+        background: transparent;
+        border: 0;
+      }
+
+      * {
+        border-radius: 0px;
+        background: red;
+
+      }
+
+      highlight {
+        background: white;
+      }
+
+    }
+
+  }
+}

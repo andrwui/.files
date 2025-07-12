@@ -1,0 +1,53 @@
+import {Gtk} from'ags/gtk3'
+import { createState, With } from "ags"
+import DynamicBarStateContext from "../../singleton/dynamic-bar-state-context"
+import { timeout } from "ags/time"
+import { Durations, DynamicBarState } from "./DynamicBar"
+
+export default function DynamicBar() {
+  const css = ''
+
+  const barStateInstance = DynamicBarStateContext.getInstance()
+  const barState = barStateInstance.get()
+  const setBarState = barStateInstance.set
+
+  const [shouldReveal, setShouldReveal] = createState(false)
+  const [shouldRender, setShouldRender] = createState(false)
+  const [shouldResize, setShouldResize] = createState(false)
+
+  barState.subscribe(() => {
+    if (barState.get() === DynamicBarState.) {
+      setShouldResize(true)
+      timeout(Durations.TRANSITION, () => {
+        setShouldRender(true)
+        setShouldReveal(true)
+      })
+    } else {
+      timeout(Durations.TRANSITION, () => {
+        setShouldReveal(false)
+        setShouldRender(false)
+        setShouldResize(false)
+      })
+    }
+  })
+
+  return (
+    <box
+      $type="named"
+      name={DynamicBarState.}
+      css={shouldResize((shouldResize) => (shouldResize ? css : ''))}
+    >
+      <revealer
+        revealChild={shouldReveal}
+        transitionType={Gtk.RevealerTransitionType.CROSSFADE}
+        transitionDuration={Durations.TRANSITION}
+      >
+        <With value={shouldRender}>
+        {(state) => state &&  (
+          <box></box>
+        )}
+        </With>
+      </revealer>
+    </box>
+  )
+}
