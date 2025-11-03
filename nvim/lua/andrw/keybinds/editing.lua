@@ -2,10 +2,9 @@ local helpers = require('andrw.keybinds.helpers')
 local remap = helpers.remap
 
 remap({ 'n', 'v' }, 'j', '"_d')
+remap({ 'n', 'v' }, 'jj', '"_dd')
 
 remap({ 'n', 'v' }, '<C-j>', '"_dd')
-
-remap({ 'n', 'v' }, '<C-d>', '<S-j>')
 
 remap({ 'i' }, '<C-b>', '<C-o>')
 

@@ -28,4 +28,21 @@ vim.cmd [[
 
 ]]
 
+vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = '#ffffff', italic = true })
+vim.api.nvim_set_hl(0, 'Pmenu', { fg = '#808080', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#ffffff', bg = '#404040' })
+vim.api.nvim_set_hl(0, 'PmenuSbar', { bg = '#404040' })
+vim.api.nvim_set_hl(0, 'PmenuThumb', { bg = '#808080' })
+vim.api.nvim_set_hl(0, 'WildMenu', { fg = '#808080', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#808080', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'Pmenu', { fg = '#808080', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#ffffff', bg = '#404040' })
+vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#808080' })
+vim.api.nvim_set_hl(0, 'NormalFloat', { fg = '#808080', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'Special', { fg = '#808080' })
+vim.api.nvim_set_hl(0, 'SpecialKey', { fg = '#808080' })
+vim.api.nvim_set_hl(0, 'NonText', { fg = '#808080' })
+vim.api.nvim_set_hl(0, 'MoreMsg', { fg = '#808080' })
+vim.api.nvim_set_hl(0, 'Question', { fg = '#808080' })
+
 return {}

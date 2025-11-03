@@ -1,7 +1,7 @@
-vim.wo.number = true
-vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = false
 
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = "no"
 
 vim.o.fillchars = "eob: "
 

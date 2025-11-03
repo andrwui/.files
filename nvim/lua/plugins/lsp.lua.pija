@@ -1,0 +1,67 @@
+local mason = {
+  'williamboman/mason.nvim',
+  config = function()
+    require('mason').setup()
+  end
+}
+
+local mason_lspconfig = {
+  'williamboman/mason-lspconfig.nvim',
+  dependencies = {
+    'williamboman/mason.nvim',
+  },
+  config = function()
+    local mason_lspconfig = require('mason-lspconfig')
+
+    mason_lspconfig.setup({
+      ensure_installed = {
+        'gopls',
+        'astro',
+        'bashls',
+        'cssls',
+        'dockerls',
+        'html',
+        'ts_ls',
+        'jsonls',
+        'lua_ls',
+        'lemminx',
+      }
+    })
+
+    mason_lspconfig.setup_handlers({
+      function(server_name)
+        local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+        require('lspconfig')[server_name].setup({
+          capabilities = capabilities,
+          on_attach = function(client, bufnr)
+            -- Auto-format on save (excluding ts_ls)
+            if client.server_capabilities.documentFormattingProvider then
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = bufnr,
+                callback = function()
+                  vim.lsp.buf.format({
+                    async = false,
+                    filter = function(client)
+                      return client.name ~= 'ts_ls'
+                    end
+                  })
+                end,
+              })
+            end
+
+            -- Your keymaps here if you want them
+          end,
+        })
+      end,
+    })
+
+    -- Set up qmlls separately since it's not from Mason
+    require('lspconfig').qmlls.setup({
+      cmd = { '/usr/lib/qt6/bin/qmlls', '-E' },
+      capabilities = require('blink.cmp').get_lsp_capabilities(),
+    })
+  end
+}
+
+return { mason, mason_lspconfig }

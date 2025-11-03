@@ -7,13 +7,13 @@ local move = {
       mappings = {
         left = '<<',
         right = '>>',
-        up = '<M-s>',
-        down = '<M-d>',
+        up = '<C-s>',
+        down = '<C-d>',
 
         line_right = '>>',
         line_left = '<<',
-        line_up = '<M-s>',
-        line_down = '<M-d>',
+        line_up = '<C-s>',
+        line_down = '<C-d>',
       },
 
       options = {
@@ -23,6 +23,7 @@ local move = {
   end
 }
 
+
 local cursorword = {
   'echasnovski/mini.cursorword',
   version = '*',
@@ -31,6 +32,7 @@ local cursorword = {
   end
 }
 
+--[[
 local files = {
   'echasnovski/mini.files',
   version = '*',
@@ -38,5 +40,40 @@ local files = {
     require('mini.files').setup({})
   end
 }
+]]
 
-return { move, cursorword }
+local surround = {
+
+  'echasnovski/mini.surround',
+
+  version = '*',
+
+  config = function()
+    require('mini.surround').setup({
+      mappings = {
+        add = '<Leader>a',
+        delete = '<Leader>d',
+        find = '',
+        find_left = '',
+        highlight = '',
+        replace = '<Leader>r',
+        update_n_lines = '',
+      }
+
+    })
+  end
+}
+
+local diff = {
+  "echasnovski/mini.diff",
+  config = function()
+    local diff = require("mini.diff")
+    diff.setup({
+      -- Disabled by default
+      source = diff.gen_source.none(),
+    })
+  end,
+}
+
+
+return { move, cursorword, surround, diff }

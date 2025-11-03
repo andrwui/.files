@@ -1,0 +1,6 @@
+background = 080808
+font-family = Geist Bold
+confirm-close-surface = false
+theme = deep
+font-thicken = true
+window-colorspace = display-p3

@@ -9,19 +9,71 @@ local function get_file_name()
 end
 
 return {
-  s("rc", fmt([[
-interface {}Props = {{}}
+  s("rct", fmt([[
+  type {}Props = {{}}
 
-const {} = ({{}}: {}Props ) => {{
+  export default function {}({{}}: {}Props ){{
+    {}
+  }}
+  ]],
+    {
+      f(get_file_name),
+      f(get_file_name),
+      f(get_file_name),
+      i(1),
+    }
+  )),
+
+  s("rc", fmt([[
+export default function {}(){{
   {}
 }}
-export default {}
-  ]], {
-    f(get_file_name),
-    f(get_file_name),
-    f(get_file_name),
-    i(1),
-    f(get_file_name)
-  }))
-}
+]],
+    {
+      f(get_file_name),
+      i(1),
+    }
+  )),
 
+  s("ec", fmt([[
+export const {} = () => {{
+  {}
+}}
+]],
+    {
+      f(get_file_name),
+      i(1),
+    }
+  )),
+
+  s("af", fmt([[
+const {} = () => {{
+
+}}
+]],
+    {
+      f(1),
+    }
+  )),
+
+  s("usestate", fmt([[
+const [{}, set{}] = useState({})
+]],
+    {
+      i(1),
+      f(function(args)
+        local str = args[1][1]
+        return (str:gsub('^%l', string.upper))
+      end, { 1 }),
+      i(2),
+    })),
+
+  s("useeffect", fmt([[
+  useEffect(() => {{
+    {}
+  }}, [])
+]],
+    {
+      i(1),
+    })),
+}

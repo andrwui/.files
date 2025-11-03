@@ -23,6 +23,8 @@ return {
 package {};
 import com.dogma.busClass.ApiaAbstractClass;
 import com.dogma.busClass.BusClassException;
+import com.dogma.busClass.object.*;
+
 public class {} extends ApiaAbstractClass {{
   @Override
   protected void executeClass() throws BusClassException {{
@@ -35,4 +37,3 @@ public class {} extends ApiaAbstractClass {{
     i(1)
   }))
 }
-

@@ -1,0 +1,52 @@
+local noice = {
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = {
+    messages = { enabled = false }
+  },
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+  },
+  config = function()
+    require("noice").setup({
+      views = {
+        cmdline_popup = {
+          border = {
+            style = "rounded",
+            padding = { 0, 0 },
+          },
+          filter_options = {},
+          win_options = {
+            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+          },
+        },
+      },
+      routes = {
+        {
+          view = "notify",
+          filter = { event = "msg_showmode" },
+        }
+      }
+    })
+
+    local noice_cmd_types = {
+      "CmdLine",
+      "Input",
+      "Lua",
+      "Filter",
+      "Rename",
+      "Substitute",
+      "Help",
+      "Search"
+    }
+
+    for _, type in ipairs(noice_cmd_types) do
+      vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, { fg = "#ffffff" })
+      vim.api.nvim_set_hl(0, "NoiceCmdlineIcon" .. type, { fg = "#ffffff" })
+    end
+
+    vim.api.nvim_set_hl(0, "NoiceConfirmBorder", { fg = "#ffffff" })
+  end
+}
+
+return { noice }
