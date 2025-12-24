@@ -19,6 +19,7 @@ local cmp = {
       preset = 'default',
       ['<CR>'] = { 'accept', 'fallback' },
       ['<Tab>'] = {},
+      ['<S-Tab>'] = {},
     },
 
     snippets = { preset = 'luasnip' },

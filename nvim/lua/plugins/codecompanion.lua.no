@@ -1,0 +1,42 @@
+local codecompanion = {
+  "olimorris/codecompanion.nvim",
+  opts = {
+    strategies = {
+      chat = {
+        adapter = "openrouter",
+      },
+      inline = {
+        adapter = "openrouter",
+      }
+    },
+    adapters = {
+      http = {
+        openrouter = function()
+          return require('codecompanion.adapters').extend("openai_compatible", {
+            env = {
+              url = 'https://openrouter.ai/api',
+              api_key = 'OP_API_KEY',
+              chat_url = 'v1/chat/completions',
+            },
+            schema = {
+              model = {
+                default = "mistralai/devstral-2512:free",
+                choices = {
+                  ["mistralai/devstral-2512:free"] = {},
+                  ["kwaipilot/kat-coder-pro:free"] = {}
+                }
+              }
+            }
+          })
+        end
+      }
+    }
+  },
+
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-treesitter/nvim-treesitter",
+  },
+}
+
+return { codecompanion }

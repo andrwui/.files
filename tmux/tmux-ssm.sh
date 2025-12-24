@@ -10,7 +10,7 @@ if [ -z "$SESSIONS" ]; then
 fi
 tmux popup -E -w "$POPUP_WIDTH" -h "$POPUP_HEIGHT" -d '#{pane_current_path}' "
   tmux list-sessions -F '#{session_name}#{?session_attached, <,}' | 
-  fzf --reverse --border=none --no-info --prompt='session > ' \\
+  fzf --reverse --border=none --no-info --no-scrollbar --prompt='session > ' \\
       --color=bw \\
       --expect=ctrl-r,ctrl-k,ctrl-a \\
       --bind 'esc:abort' > $TMPFILE

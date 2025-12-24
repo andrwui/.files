@@ -17,3 +17,26 @@ html {
   background-color: #080808;
   font-family: 'Geist', 'Geist Mono';
 }
+
+
+table {
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid DimGray;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 1em;
+}
+
+@media print {
+  * {
+    color: balack !important;
+  }
+}

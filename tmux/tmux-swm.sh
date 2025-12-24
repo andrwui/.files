@@ -8,6 +8,7 @@ tmux popup -E -w "$POPUP_WIDTH" -h "$POPUP_HEIGHT" -d '#{pane_current_path}' "
   awk -F'::' '{printf \"%s\\n\", \$2}' |
   fzf --reverse --prompt='window > ' \
       --no-info \
+      --no-scrollbar \
       --color=bw,prompt: \
       --expect=ctrl-r,ctrl-k,ctrl-a \
       --bind 'enter:execute-silent(echo enter >> $TMPFILE)+execute-silent(echo {1} >> $TMPFILE)+abort' \

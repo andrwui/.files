@@ -24,7 +24,7 @@ local mason_lspconfig = {
               vim.lsp.buf.format({
                 async = false,
                 filter = function(c)
-                  return c.name ~= 'ts_ls'
+                  return c.name ~= 'tsgo'
                 end
               })
             end
@@ -41,32 +41,39 @@ local mason_lspconfig = {
       'dockerls',
       'eslint',
       'html',
-      'ts_ls',
+      'tsgo',
       'jsonls',
       'lua_ls',
       'lemminx',
       'tailwindcss',
       'somesass_ls',
-      'emmet_ls',
+      'emmet_language_server',
+      'jdtls',
     }
 
     for _, server in ipairs(servers) do
-      vim.lsp.config(server, {
-        capabilities = capabilities,
-      })
+      local opts = { capabilities = capabilities }
+      if server == 'jdtls' then
+        opts.settings = {
+          java = {
+            configuration = {
+              runtimes = {
+                {
+                  name = 'JavaSE-1.8',
+                  path = '/usr/lib/jvm/java-8-openjdk',
+                  default = true
+                }
+              }
+            }
+          }
+        }
+      elseif server == 'eslint' then
+        opts.settings = { experimental = { useFlatConfig = true } }
+      elseif server == 'qmlls' then
+        opts.cmd = { '/usr/lib/qt6/bin/qmlls', '-E' }
+      end
+      vim.lsp.config(server, opts)
     end
-
-    vim.lsp.config('eslint', {
-      capabilities = capabilities,
-      settings = {
-        experimental = { useFlatConfig = true }
-      }
-    })
-
-    vim.lsp.config('qmlls', {
-      cmd = { '/usr/lib/qt6/bin/qmlls', '-E' },
-      capabilities = capabilities,
-    })
 
     require('mason-lspconfig').setup({
       ensure_installed = servers,
