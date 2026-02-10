@@ -1,9 +1,9 @@
 configuration {
-modes: "drun";
-font: "Geist mono 13";
+modes: "recursivebrowser,drun";
+font: "Geist 13";
 drun-display-format: "{name}";
 show-icons: true;
-display-drun:" Search" ;
+display-drun:"Run" ;
 scroll-method: 1;
 
 

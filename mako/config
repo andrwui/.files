@@ -1,0 +1,13 @@
+font=Geist 10
+text-color=#FFFFFFFF
+
+background-color=#080808FF
+border-color=#FFFFFFFF
+
+border-size=2
+border-radius=12
+
+padding=10
+
+height=200
+

@@ -24,7 +24,7 @@ local mason_lspconfig = {
               vim.lsp.buf.format({
                 async = false,
                 filter = function(c)
-                  return c.name ~= 'tsgo'
+                  return c.name ~= 'ts_ls'
                 end
               })
             end
@@ -41,7 +41,7 @@ local mason_lspconfig = {
       'dockerls',
       'eslint',
       'html',
-      'tsgo',
+      'ts_ls',
       'jsonls',
       'lua_ls',
       'lemminx',

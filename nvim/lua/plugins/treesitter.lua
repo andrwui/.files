@@ -10,6 +10,8 @@ local TS = {
     local confs = require('nvim-treesitter.configs')
 
     confs.setup({
+      enable = true,
+      aditional_vim_regex_highlighting = false,
       ensure_installed = {
         'go',
         'javascript',

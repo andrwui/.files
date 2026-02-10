@@ -45,7 +45,7 @@ Scope {
                     implicitHeight: 35
                     implicitWidth: row.implicitWidth + 20
                     clip: true
-                    color: '#080808'
+                    color: '#111111'
                     radius: 10
 
                     Behavior on implicitWidth {
@@ -97,12 +97,41 @@ Scope {
                 }
 
                 Rectangle {
+                    id: hyprpicker
+                    anchors.left: workspaces.right
+                    anchors.leftMargin: 5
+                    color: "#111111"
+                    height: 35
+                    width: 35
+                    radius: 10
+
+                    Image {
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: parent.left
+                        anchors.leftMargin: 8
+                        source: 'root:/icons/picker.svg'
+                        sourceSize: "18x18"
+                    }
+
+                    Process {
+                        id: hyprPickerRunner
+                        running: false
+                        command: ['sh', '-c', 'hyprpicker | wl-copy']
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: hyprPickerRunner.running = true
+                    }
+                }
+
+                Rectangle {
                     id: bluetooth
                     readonly property BluetoothAdapter adapter: Bluetooth.defaultAdapter
                     readonly property bool connected: adapter.devices.values.some(device => device.connected)
                     anchors.right: time.left
                     anchors.rightMargin: 5
-                    color: "#080808"
+                    color: "#111111"
                     height: 35
                     width: 35
                     radius: 10
@@ -134,7 +163,7 @@ Scope {
                     height: 35
                     width: 85
                     radius: 10
-                    color: "#080808"
+                    color: "#111111"
 
                     property var audioNode: Pipewire.defaultAudioSink
                     property real volume: Math.floor(audioNode.audio.volume * 100)
@@ -188,7 +217,7 @@ Scope {
                     height: 35
                     width: 35
                     radius: 10
-                    color: "#080808"
+                    color: "#111111"
                     property string networkStatusIcon: 'root:/icons/network-disconnected.svg'
 
                     Timer {
@@ -240,7 +269,7 @@ Scope {
                     height: 35
                     width: 190
                     radius: 10
-                    color: "#080808"
+                    color: "#111111"
 
                     Text {
                         anchors.centerIn: parent
@@ -263,7 +292,7 @@ Scope {
                         }
                     }
                     radius: 10
-                    color: "#080808"
+                    color: "#111111"
 
                     RowLayout {
                         anchors.fill: parent

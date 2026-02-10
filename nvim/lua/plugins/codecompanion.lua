@@ -14,17 +14,12 @@ local codecompanion = {
         openrouter = function()
           return require('codecompanion.adapters').extend("openai_compatible", {
             env = {
-              url = 'https://openrouter.ai/api',
-              api_key = 'OP_API_KEY',
-              chat_url = 'v1/chat/completions',
+              url = 'http://localhost:6969/',
+              chat_url = 'chat/completions',
             },
             schema = {
               model = {
                 default = "mistralai/devstral-2512:free",
-                choices = {
-                  ["mistralai/devstral-2512:free"] = {},
-                  ["kwaipilot/kat-coder-pro:free"] = {}
-                }
               }
             }
           })

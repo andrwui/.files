@@ -2,6 +2,7 @@ local ls = require("luasnip")
 local s = ls.snippet
 local i = ls.insert_node
 local f = ls.function_node
+local t = ls.text_node
 local fmt = require("luasnip.extras.fmt").fmt
 
 local function get_file_name()
@@ -76,4 +77,6 @@ const [{}, set{}] = useState({})
     {
       i(1),
     })),
+
+  s("importmotion", { t("import * as motion from 'motion/react-client'"), i(1) }),
 }
