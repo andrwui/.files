@@ -5,6 +5,8 @@ remap({ 'n', 'v' }, '<Leader>k', '<C-w><Left>')
 remap({ 'n', 'v' }, '<Leader>l', '<C-w><Right>')
 remap({ 'n', 'v' }, '<Leader>s', '<C-w><Up>')
 remap({ 'n', 'v' }, '<Leader>d', '<C-w><Down>')
+remap('n', '<C-Right>', '10<C-w>>')
+remap('n', '<C-Left>', '10<C-w><')
 
 
 local function fd_split(split_cmd)
@@ -37,5 +39,6 @@ end)
 remap('n', '<Leader><BS>', function()
   vim.cmd('bdelete')
 end)
+
 
 return {}

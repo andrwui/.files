@@ -23,7 +23,6 @@ Scope {
                 property var modelData
                 screen: modelData
                 color: 'transparent'
-                mask: {}
                 exclusiveZone: 35
 
                 anchors {
@@ -260,6 +259,93 @@ Scope {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: nmRunner.running = true
+                    }
+                }
+
+                Rectangle {
+                    id: vpn
+                    anchors.left: network.right
+                    anchors.leftMargin: 5
+
+                    height: 35
+                    width: 35
+                    radius: 10
+                    color: "#111111"
+                    property string vpnStatusIcon: 'root:/icons/vpn-disconnected.svg'
+                    property bool isConnected: false
+                    property bool isWaiting: false
+
+                    Process {
+                        id: vpnProcess
+                        running: false
+                        command: ['sudo', 'openfortivpn']
+                    }
+
+                    Timer {
+                        id: vpnStatusChecker
+                        interval: 1000
+                        running: true
+                        repeat: true
+                        triggeredOnStart: true
+                        onTriggered: checkVpnStatus.running = true
+                    }
+
+                    Process {
+                        id: checkVpnStatus
+                        running: false
+                        command: ['sh', '-c', 'ip link show ppp0 >/dev/null 2>&1 && echo connected || (pgrep -x openfortivpn >/dev/null && echo waiting || echo disconnected)']
+                        stdout: StdioCollector {
+                            waitForEnd: true
+
+                            onStreamFinished: {
+                                var output = this.text.trim();
+                                console.log("VPN check:", output);
+                                if (output === "connected") {
+                                    vpn.isConnected = true;
+                                    vpn.isWaiting = false;
+                                    vpn.vpnStatusIcon = 'root:/icons/vpn-connected.svg';
+                                } else if (output === "waiting") {
+                                    vpn.isConnected = false;
+                                    vpn.isWaiting = true;
+                                    vpn.vpnStatusIcon = 'root:/icons/vpn-waiting.svg';
+                                } else {
+                                    vpn.isConnected = false;
+                                    vpn.isWaiting = false;
+                                    vpn.vpnStatusIcon = 'root:/icons/vpn-disconnected.svg';
+                                    vpnIcon.opacity = 1;
+                                }
+                            }
+                        }
+                    }
+
+                    Image {
+                        id: vpnIcon
+                        anchors.centerIn: parent
+                        sourceSize: "18x18"
+                        source: vpn.vpnStatusIcon
+                        opacity: 1
+                        Behavior on opacity {
+                            NumberAnimation {
+                                duration: 300
+                            }
+                        }
+                    }
+
+                    Timer {
+                        id: flashTimer
+                        interval: 800
+                        repeat: true
+                        running: vpn.isWaiting
+                        onTriggered: vpnIcon.opacity = vpnIcon.opacity === 1 ? 0.4 : 1
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            console.log("Starting VPN...");
+                            vpnProcess.running = false;
+                            vpnProcess.running = true;
+                        }
                     }
                 }
 
