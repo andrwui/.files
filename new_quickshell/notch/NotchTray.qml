@@ -21,15 +21,15 @@ Rectangle {
 
     z: -1
     color: '#111111'
-    clip: true
     implicitWidth: targetWidth
     implicitHeight: targetHeight
+
+    clip: !NotchState.isHovered
 
     onImplicitWidthChanged: NotchState.trayWidth = implicitWidth
     onImplicitHeightChanged: NotchState.trayWidth = implicitHeight
 
     onXChanged: {
-        console.log('onX', x);
         NotchState.trayPosition.right = x + targetWidth;
         NotchState.trayPosition.left = x;
     }
@@ -70,6 +70,25 @@ Rectangle {
         NumberAnimation {
             duration: 200
             easing.type: Easing.InOutQuad
+        }
+    }
+
+    Rectangle {
+        anchors.left: parent.left
+        anchors.top: parent.top
+        width: 20
+        height: 20
+        InvertedCorner {
+            id: cornerRight
+            color: 'red'
+            radius: 20
+            width: 20
+            height: 20
+            anchors.centerIn: parent
+
+            transform: Rotation {
+                angle: 180
+            }
         }
     }
 }

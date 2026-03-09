@@ -19,4 +19,8 @@ Singleton {
         property real left: 0
         property real right: 0
     }
+
+    onIsHoveredChanged: {
+        console.log(NotchState.isHovered);
+    }
 }
