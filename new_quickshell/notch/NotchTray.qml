@@ -72,10 +72,8 @@ Rectangle {
             easing.type: Easing.InOutQuad
         }
     }
-
     Rectangle {
-        anchors.left: parent.left
-        anchors.top: parent.top
+        x: parent.x < NotchState.notchGlobalPosition.left ? NotchState.notchGlobalPosition.left - 20 - parent.x : 0
         width: 20
         height: 20
         InvertedCorner {
