@@ -1,66 +1,77 @@
+pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Window
 import QtQuick.Layouts
-import "../singleton"
-import "../components"
+import qs.state
+import qs.config
 
 Rectangle {
     id: notch
 
-    color: '#111111'
-    width: Constants.notchWidth
-    height: Constants.notchHeight
+    required property var items
 
-    Component.onCompleted: {
-        NotchState.notchGlobalPosition.left = notch.mapToGlobal(0, 0).x;
-        NotchState.notchGlobalPosition.right = notch.mapToGlobal(0, 0).x + notch.width;
-    }
+    color: Config.colors.base
+    width: Config.notchSize.width
+    height: Config.notchSize.height
 
     radius: 10
 
     anchors.horizontalCenter: parent.horizontalCenter
 
-    HoverHandler {
-        id: notchMouseArea
-        onHoveredChanged: () => {
-            NotchState.isHovered = notchMouseArea.hovered;
-        }
-    }
+    Rectangle {
 
-    RowLayout {
-        id: notchItemsRow
-        anchors.fill: parent
-        spacing: 1
+        color: 'transparent'
 
-        Repeater {
-            model: 3
+        width: parent.width / 2
+        height: parent.height
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
 
-            delegate: Rectangle {
-                id: notchItem
+        RowLayout {
+            id: notchItemsRow
+            anchors.fill: parent
+            spacing: 10
 
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-
-                radius: 10
-
-                color: '#111111'
-
-                MouseArea {
-                    z: 5
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onEntered: () => {
-                        console.log('entered', index);
-                        NotchState.itemHovered = index;
-                        NotchState.itemAlignment = notchItem.mapToItem(notch, notchItem.width / 2, 0).x;
-                    }
+            HoverHandler {
+                id: notchMouseArea
+                onHoveredChanged: () => {
+                    NotchState.isNotchHovered = notchMouseArea.hovered;
                 }
+            }
 
-                Text {
+            Repeater {
+                model: notch.items
 
-                    text: index + 1
-                    anchors.centerIn: parent
-                    color: 'white'
+                delegate: Rectangle {
+                    id: notchItem
+
+                    required property int index
+
+                    Layout.fillHeight: true
+                    Layout.alignment: Qt.AlignHCenter
+                    width: 40
+
+                    radius: 10
+
+                    color: 'transparent'
+
+                    MouseArea {
+                        z: 5
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onEntered: () => {
+                            NotchState.itemHovered = parent.index;
+                            NotchState.itemAlignment = notchItem.mapToItem(notch, notchItem.width / 2, 0).x;
+                        }
+
+                        onClicked: NotchState.hasClicked = !NotchState.hasClicked
+                    }
+
+                    Loader {
+                        id: notchItemLoader
+                        anchors.fill: parent
+                        sourceComponent: notch.items[parent.index]
+                    }
                 }
             }
         }

@@ -1,92 +1,71 @@
-import "../singleton"
-import "../singleton"
-import "../components"
 import QtQuick
+import qs.components
+import qs.state
+import qs.modules
 
-Rectangle {
+Item {
     id: notchTray
 
+    // properties
     default property alias content: contentItem.data
-
-    Item {
-        id: contentItem
-    }
 
     property bool hasChildren: contentItem.children.length > 0
     property bool childrenHasWidth: hasChildren && contentItem.children[0].implicitWidth > 0
     property bool childrenHasHeight: hasChildren && contentItem.children[0].implicitHeight > 0
 
-    property real targetWidth: !NotchState.isHovered ? 0 : hasChildren && childrenHasWidth ? contentItem.children[0].implicitWidth : 0
+    property real targetWidth: hasChildren && childrenHasWidth ? contentItem.children[0].implicitWidth : 0
     property real targetHeight: !NotchState.isHovered ? 0 : hasChildren && childrenHasHeight ? contentItem.children[0].implicitHeight : 0
 
-    z: -1
-    color: '#111111'
+    // dimensions
     implicitWidth: targetWidth
     implicitHeight: targetHeight
-
-    clip: !NotchState.isHovered
 
     onImplicitWidthChanged: NotchState.trayWidth = implicitWidth
     onImplicitHeightChanged: NotchState.trayWidth = implicitHeight
 
-    onXChanged: {
-        NotchState.trayPosition.right = x + targetWidth;
-        NotchState.trayPosition.left = x;
-    }
+    z: -1
 
-    onChildrenChanged: {
-        console.log(contentItem.childrenRect);
-    }
-
-    radius: 10
+    clip: true
 
     anchors.top: parent.top
-    anchors.topMargin: 25
-    x: NotchState.isHovered ? parent.width / 2 + NotchState.itemAlignment - targetWidth / 2 - 100 : parent.width / 2
+    anchors.topMargin: 35
+
+    x: parent.width / 2 + NotchState.itemAlignment - targetWidth / 2 - 250
+
+    // elements
+
+    Popout {}
+
+    Item {
+        id: contentItem
+
+        ViewTransitioner {
+            anchors.fill: parent
+            currentIndex: NotchState.itemHovered
+
+            model: Modules.items.map(item => NotchState.hasClicked ? item.activeComponent : item.hoverComponent)
+        }
+    }
 
     HoverHandler {
         id: notchTrayMouseArea
         onHoveredChanged: () => {
-            NotchState.isHovered = notchTrayMouseArea.hovered;
+            NotchState.isTrayHovered = notchTrayMouseArea.hovered;
         }
     }
 
+    // animations
+
     Behavior on implicitHeight {
-        NumberAnimation {
-            duration: 200
-            easing.type: Easing.InOutQuart
-        }
+        Anim {}
     }
 
     Behavior on implicitWidth {
-        NumberAnimation {
-            duration: 200
-            easing.type: Easing.InOutQuart
-        }
+        Anim {}
     }
 
     Behavior on x {
         enabled: NotchState.isHovered
-        NumberAnimation {
-            duration: 200
-            easing.type: Easing.InOutQuad
-        }
-    }
-    Rectangle {
-        x: parent.x < NotchState.notchGlobalPosition.left ? NotchState.notchGlobalPosition.left - 20 - parent.x : 0
-        width: 20
-        height: 20
-        InvertedCorner {
-            id: cornerRight
-            color: 'red'
-            radius: 20
-            width: 20
-            height: 20
-            anchors.centerIn: parent
-
-            transform: Rotation {
-                angle: 180
-            }
-        }
+        Anim {}
     }
 }

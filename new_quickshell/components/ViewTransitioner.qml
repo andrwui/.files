@@ -1,4 +1,5 @@
 import QtQuick
+import qs.components
 import Qt5Compat.GraphicalEffects
 
 Item {
@@ -18,16 +19,10 @@ Item {
             width: contentLoader.implicitWidth
             height: contentLoader.implicitHeight
 
-            transform: {
-                scale: index === root.currentIndex ? 1 : 0;
-            }
-
             scale: index === root.currentIndex ? 1 : 0
+
             Behavior on scale {
-                NumberAnimation {
-                    duration: root.fadeDuration
-                    easing.type: Easing.OutQuart
-                }
+                Anim {}
             }
 
             Loader {
@@ -71,36 +66,17 @@ Item {
                 sourceItem: contentLoader
                 hideSource: true
                 live: true
-
-                scale: index === root.currentIndex ? 1 : 0
-                Behavior on scale {
-                    NumberAnimation {
-                        duration: root.fadeDuration
-                        easing.type: Easing.OutQuart
-                    }
-                }
             }
 
             FastBlur {
                 width: contentLoader.implicitWidth
                 height: contentLoader.implicitHeight
                 source: effectSource
-                radius: index === root.currentIndex ? 0 : 40
-
-                Behavior on radius {
-                    NumberAnimation {
-                        duration: root.fadeDuration
-                        easing.type: Easing.OutQuart
-                    }
-                }
             }
 
             opacity: index === root.currentIndex ? 1 : 0
             Behavior on opacity {
-                NumberAnimation {
-                    duration: root.fadeDuration
-                    easing.type: Easing.OutQuart
-                }
+                Anim {}
             }
         }
     }
