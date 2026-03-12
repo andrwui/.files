@@ -4,28 +4,41 @@ import qs.modules.power as Power
 import qs.modules.bluetooth as Bluetooth
 import qs.modules.wifi as Wifi
 import qs.modules.other as Other
+import qs.modules.time as Time
 
 QtObject {
-    property var items: [
-        {
-            notchItem: powerNotchItem,
-            hoverComponent: powerHover,
-            activeComponent: powerActive
+    id: root
+
+    property list<NotchModule> items: [
+        NotchModule {
+            name: 'power'
+            notchItem: root.powerNotchItem
+            hoverComponent: root.powerHover
+            activeComponent: root.powerActive
         },
-        {
-            notchItem: bluetoothNotchItem,
-            hoverComponent: bluetoothHover,
-            activeComponent: bluetoothActive
+        NotchModule {
+            name: 'bluetooth'
+            notchItem: root.bluetoothNotchItem
+            hoverComponent: root.bluetoothHover
+            activeComponent: root.bluetoothActive
         },
-        {
-            notchItem: wifiNotchItem,
-            hoverComponent: wifiHover,
-            activeComponent: wifiActive
+        NotchModule {
+            name: 'time'
+            notchItem: root.timeNotchItem
+            hoverComponent: root.timeHover
+            activeComponent: root.timeActive
         },
-        {
-            notchItem: otherNotchItem,
-            hoverComponent: otherHover,
-            activeComponent: otherActive
+        NotchModule {
+            name: 'wifi'
+            notchItem: root.wifiNotchItem
+            hoverComponent: root.wifiHover
+            activeComponent: root.wifiActive
+        },
+        NotchModule {
+            name: 'other'
+            notchItem: root.otherNotchItem
+            hoverComponent: root.otherHover
+            activeComponent: root.otherActive
         }
     ]
 
@@ -44,4 +57,8 @@ QtObject {
     property Component otherActive: Other.Active {}
     property Component otherNotchItem: Other.NotchItem {}
     property Component otherHover: Other.Hover {}
+
+    property Component timeActive: Time.Active {}
+    property Component timeNotchItem: Time.NotchItem {}
+    property Component timeHover: Time.Hover {}
 }

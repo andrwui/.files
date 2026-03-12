@@ -9,7 +9,7 @@ Rectangle {
     implicitHeight: 35
     implicitWidth: row.implicitWidth + 20
     clip: true
-    color: '#111111'
+    color: Config.colors.base
     radius: 10
 
     Behavior on implicitWidth {
@@ -35,7 +35,7 @@ Rectangle {
             Rectangle {
                 id: workspace
                 required property HyprlandWorkspace modelData
-                color: modelData.id === Hyprland.focusedWorkspace.id ? Config.colors.foreground : Config.colors.secondary
+                color: modelData.id === Hyprland.focusedWorkspace.id ? Config.colors.foreground : Config.colors.secondaryDark
                 implicitWidth: modelData.id === Hyprland.focusedWorkspace.id ? 35 : 15
                 implicitHeight: 15
                 radius: 5

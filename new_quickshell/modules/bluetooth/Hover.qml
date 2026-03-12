@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls
 
 Rectangle {
     width: 200

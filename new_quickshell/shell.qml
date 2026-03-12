@@ -3,45 +3,54 @@ import Quickshell
 import qs.notch
 import qs.modules
 import qs.modules.workspaces
+import QtQuick.Controls
+import qs.state
 
-PanelWindow {
-    id: bar
-    color: 'transparent'
+Scope {
 
-    height: 1080
-    exclusiveZone: 35
-    margins.left: 5
-    margins.top: 5
-    margins.right: 5
-
-    mask: Region {
-        regions: [notchRegion, trayRegion]
+    Component.onCompleted: {
+        CalendarState.populateYears();
     }
 
-    Region {
-        id: notchRegion
-        item: notch
-    }
+    PanelWindow {
+        id: bar
+        color: 'transparent'
 
-    Region {
-        id: trayRegion
-        item: tray
-    }
+        implicitHeight: 1080
+        exclusiveZone: 35
+        margins.left: 5
+        margins.top: 5
+        margins.right: 5
 
-    anchors {
-        top: true
-        left: true
-        right: true
-    }
+        mask: Region {
+            regions: [notchRegion, trayRegion]
+        }
 
-    Workspaces {}
+        Region {
+            id: notchRegion
+            item: notch
+        }
 
-    Notch {
-        id: notch
-        items: Modules.items.map(item => item.notchItem)
-    }
+        Region {
+            id: trayRegion
+            item: tray
+        }
 
-    NotchTray {
-        id: tray
+        anchors {
+            top: true
+            left: true
+            right: true
+        }
+
+        Workspaces {}
+
+        Notch {
+            id: notch
+            items: Modules.items.map(item => item.notchItem)
+        }
+
+        NotchTray {
+            id: tray
+        }
     }
 }

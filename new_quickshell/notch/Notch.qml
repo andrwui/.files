@@ -4,16 +4,18 @@ import QtQuick.Window
 import QtQuick.Layouts
 import qs.state
 import qs.config
+import qs.modules
+import qs.components
 
 Rectangle {
     id: notch
 
     required property var items
 
-    color: Config.colors.base
     width: Config.notchSize.width
     height: Config.notchSize.height
 
+    color: Config.colors.base
     radius: 10
 
     anchors.horizontalCenter: parent.horizontalCenter
@@ -22,7 +24,7 @@ Rectangle {
 
         color: 'transparent'
 
-        width: parent.width / 2
+        width: parent.width / 2.5
         height: parent.height
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
@@ -30,12 +32,15 @@ Rectangle {
         RowLayout {
             id: notchItemsRow
             anchors.fill: parent
-            spacing: 10
 
             HoverHandler {
                 id: notchMouseArea
                 onHoveredChanged: () => {
-                    NotchState.isNotchHovered = notchMouseArea.hovered;
+                    if (notchMouseArea.hovered) {
+                        NotchState.enterNotch();
+                    } else {
+                        NotchState.exitNotch();
+                    }
                 }
             }
 
@@ -45,22 +50,22 @@ Rectangle {
                 delegate: Rectangle {
                     id: notchItem
 
+                    color: 'transparent'
+
                     required property int index
 
                     Layout.fillHeight: true
+
                     Layout.alignment: Qt.AlignHCenter
-                    width: 40
 
-                    radius: 10
-
-                    color: 'transparent'
+                    width: Modules.items[index].name === 'time' ? 50 : 25
 
                     MouseArea {
                         z: 5
                         anchors.fill: parent
                         hoverEnabled: true
                         onEntered: () => {
-                            NotchState.itemHovered = parent.index;
+                            NotchState.itemHovered = Modules.items[parent.index];
                             NotchState.itemAlignment = notchItem.mapToItem(notch, notchItem.width / 2, 0).x;
                         }
 
@@ -69,6 +74,7 @@ Rectangle {
 
                     Loader {
                         id: notchItemLoader
+                        asynchronous: true
                         anchors.fill: parent
                         sourceComponent: notch.items[parent.index]
                     }

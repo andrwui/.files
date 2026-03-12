@@ -1,20 +1,16 @@
 import QtQuick
+import QtQuick.Controls
 import qs.components
 import qs.state
-import qs.modules
+import qs.config
 
 Item {
     id: notchTray
 
     // properties
-    default property alias content: contentItem.data
 
-    property bool hasChildren: contentItem.children.length > 0
-    property bool childrenHasWidth: hasChildren && contentItem.children[0].implicitWidth > 0
-    property bool childrenHasHeight: hasChildren && contentItem.children[0].implicitHeight > 0
-
-    property real targetWidth: hasChildren && childrenHasWidth ? contentItem.children[0].implicitWidth : 0
-    property real targetHeight: !NotchState.isHovered ? 0 : hasChildren && childrenHasHeight ? contentItem.children[0].implicitHeight : 0
+    property real targetWidth: stackView.currentItem.width
+    property real targetHeight: NotchState.isHovered ? stackView.currentItem.height : 0
 
     // dimensions
     implicitWidth: targetWidth
@@ -25,32 +21,82 @@ Item {
 
     z: -1
 
-    clip: true
-
     anchors.top: parent.top
     anchors.topMargin: 35
 
-    x: parent.width / 2 + NotchState.itemAlignment - targetWidth / 2 - 250
+    clip: true
 
-    // elements
+    x: parent.width / 2 + NotchState.itemAlignment - targetWidth / 2 - Config.notchSize.width / 2
 
     Popout {}
 
-    Item {
-        id: contentItem
+    Connections {
+        target: NotchState
+        function onItemHoveredChanged() {
+            if (NotchState.hasClicked) {
+                stackView.replace(NotchState.itemHovered.activeComponent);
+            } else {
+                stackView.replace(NotchState.itemHovered.hoverComponent);
+            }
+        }
 
-        ViewTransitioner {
-            anchors.fill: parent
-            currentIndex: NotchState.itemHovered
+        function onHasClickedChanged() {
+            if (NotchState.hasClicked) {
+                stackView.replace(NotchState.itemHovered.activeComponent);
+            } else {
+                stackView.replace(NotchState.itemHovered.hoverComponent);
+            }
+        }
+    }
 
-            model: Modules.items.map(item => NotchState.hasClicked ? item.activeComponent : item.hoverComponent)
+    StackView {
+        id: stackView
+        anchors.fill: parent
+        initialItem: NotchState.itemHovered.hoverComponent
+
+        replaceEnter: Transition {
+            PropertyAnimation {
+                property: "opacity"
+                from: 0
+                to: 1
+                duration: 300
+                easing.type: Easing.OutCubic
+            }
+            PropertyAnimation {
+                property: "scale"
+                from: 0
+                to: 1
+                duration: 300
+                easing.type: Easing.OutCubic
+            }
+        }
+
+        replaceExit: Transition {
+            PropertyAnimation {
+                property: "opacity"
+                from: 1
+                to: 0
+                duration: 200
+                easing.type: Easing.OutQuart
+            }
+            PropertyAnimation {
+                property: "scale"
+                from: 1
+                to: 0
+                duration: 200
+                easing.type: Easing.OutQuart
+            }
         }
     }
 
     HoverHandler {
         id: notchTrayMouseArea
         onHoveredChanged: () => {
-            NotchState.isTrayHovered = notchTrayMouseArea.hovered;
+            if (notchTrayMouseArea.hovered) {
+                NotchState.enterTray();
+            } else {
+                NotchState.exitTray();
+            }
         }
     }
 
