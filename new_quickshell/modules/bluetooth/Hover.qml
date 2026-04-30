@@ -1,13 +1,14 @@
 import QtQuick
-import QtQuick.Controls
+import qs.config
+import qs.components
 
 Rectangle {
     width: 200
     height: 35
     color: "transparent"
-    Text {
+    BaseText {
         anchors.centerIn: parent
         text: 'Bluetooth'
-        color: 'white'
+        color: Config.colors.foreground
     }
 }

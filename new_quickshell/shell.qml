@@ -3,13 +3,13 @@ import Quickshell
 import qs.notch
 import qs.modules
 import qs.modules.workspaces
-import QtQuick.Controls
 import qs.state
 
 Scope {
 
     Component.onCompleted: {
-        CalendarState.populateYears();
+        CalendarState.init();
+        SystemState.init();
     }
 
     PanelWindow {

@@ -5,6 +5,6 @@ Rectangle {
     color: 'transparent'
 
     CustomIcon {
-        iconName: 'power'
+        iconName: 'notifications'
     }
 }

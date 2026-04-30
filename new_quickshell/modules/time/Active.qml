@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import Quickshell
 import QtQuick.Controls
@@ -23,16 +25,12 @@ Rectangle {
     property int month: CalendarState.currentMonth
 
     ColumnLayout {
-        width: parent.width / 1.5
-        height: parent.height / 1.2
+        width: parent.width - 80
+        height: parent.height - 40
 
-        anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: 10
+        anchors.centerIn: parent
 
         spacing: 0
-
-        Layout.fillWidth: true
 
         RowLayout {
             z: 20
@@ -47,6 +45,8 @@ Rectangle {
 
                 CustomIcon {
                     iconName: 'left'
+                    width: 10
+                    height: 10
                 }
             }
 
@@ -80,6 +80,8 @@ Rectangle {
 
                 CustomIcon {
                     iconName: 'right'
+                    width: 10
+                    height: 10
                 }
             }
 
@@ -92,6 +94,8 @@ Rectangle {
 
                 CustomIcon {
                     iconName: 'left'
+                    width: 10
+                    height: 10
                 }
             }
 
@@ -122,6 +126,8 @@ Rectangle {
 
                 CustomIcon {
                     iconName: 'right'
+                    width: 10
+                    height: 10
                 }
             }
         }
@@ -139,7 +145,7 @@ Rectangle {
 
                 delegate: BaseText {
                     required property string shortName
-                    text: shortName
+                    text: shortName.toLowerCase()
                     color: Config.colors.secondaryLight
                     horizontalAlignment: Text.AlignHCenter
                 }

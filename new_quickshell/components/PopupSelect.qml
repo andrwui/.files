@@ -64,10 +64,12 @@ StackView {
                 width: parent.width
                 height: parent.height
 
+                cursorShape: Qt.PointingHandCursor
+
                 BaseText {
                     anchors.centerIn: parent
                     text: root.items.get(root.value).label
-                    color: 'white'
+                    color: Config.colors.foreground
                     scale: parent.pressed ? 0.8 : 1
                     Behavior on scale {
                         Anim {}
@@ -118,10 +120,12 @@ StackView {
 
                     MouseArea {
                         anchors.fill: parent
+                        hoverEnabled: false
                         onClicked: {
                             root.change(parent.index);
                             root.replace(button);
                         }
+                        cursorShape: Qt.PointingHandCursor
                     }
                 }
             }

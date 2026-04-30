@@ -1,12 +1,14 @@
 import QtQuick
+import qs.config
+import qs.components
 
 Rectangle {
     width: 200
     height: 35
     color: "transparent"
-    Text {
+    BaseText {
         anchors.centerIn: parent
-        text: 'Power'
-        color: 'white'
+        text: 'Notifications'
+        color: Config.colors.foreground
     }
 }

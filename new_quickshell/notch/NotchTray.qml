@@ -10,14 +10,11 @@ Item {
     // properties
 
     property real targetWidth: stackView.currentItem.width
-    property real targetHeight: NotchState.isHovered ? stackView.currentItem.height : 0
+    property real targetHeight: NotchState.isHovered ? Math.max(stackView.currentItem.height, stackView.currentItem.implicitHeight) : 0
 
     // dimensions
     implicitWidth: targetWidth
     implicitHeight: targetHeight
-
-    onImplicitWidthChanged: NotchState.trayWidth = implicitWidth
-    onImplicitHeightChanged: NotchState.trayWidth = implicitHeight
 
     z: -1
 

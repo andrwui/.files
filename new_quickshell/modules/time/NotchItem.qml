@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import qs.config
 
 Rectangle {
     id: root
@@ -12,10 +13,11 @@ Rectangle {
     Text {
         id: text
         text: root.time
-        color: 'white'
+        color: Config.colors.foreground
 
         anchors.centerIn: parent
 
+        font.bold: true
         font.family: 'Geist'
         font.pixelSize: 16
     }

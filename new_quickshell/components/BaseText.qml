@@ -1,9 +1,10 @@
 import QtQuick
+import qs.config
 
 Text {
     id: text
-    color: 'white'
+    color: Config.colors.foreground
 
     font.family: 'Geist'
-    font.pixelSize: 16
+    font.pixelSize: 13
 }

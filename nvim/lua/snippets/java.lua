@@ -36,4 +36,16 @@ public class {} extends ApiaAbstractClass {{
     f(get_file_name),
     i(1)
   }))
+  ,
+  s("att", fmt([[
+Attribute {} = e.getAttribute("");
+  ]], {
+    i(1),
+  }))
+  ,
+  s("param", fmt([[
+Parameter {} = getParameter("");
+  ]], {
+    i(1),
+  }))
 }

@@ -13,51 +13,51 @@ Singleton {
     readonly property ListModel months: ListModel {
         id: monthsModel
         ListElement {
-            label: 'January'
+            label: 'january'
             value: Calendar.January
         }
         ListElement {
-            label: 'February'
+            label: 'february'
             value: Calendar.February
         }
         ListElement {
-            label: 'March'
+            label: 'march'
             value: Calendar.March
         }
         ListElement {
-            label: 'April'
+            label: 'april'
             value: Calendar.April
         }
         ListElement {
-            label: 'May'
+            label: 'may'
             value: Calendar.May
         }
         ListElement {
-            label: 'June'
+            label: 'june'
             value: Calendar.June
         }
         ListElement {
-            label: 'July'
+            label: 'july'
             value: Calendar.July
         }
         ListElement {
-            label: 'August'
+            label: 'august'
             value: Calendar.August
         }
         ListElement {
-            label: 'September'
+            label: 'september'
             value: Calendar.September
         }
         ListElement {
-            label: 'October'
+            label: 'october'
             value: Calendar.October
         }
         ListElement {
-            label: 'November'
+            label: 'november'
             value: Calendar.November
         }
         ListElement {
-            label: 'December'
+            label: 'december'
             value: Calendar.December
         }
     }
@@ -76,6 +76,10 @@ Singleton {
                 value: i - 1
             });
         }
+    }
+
+    function init() {
+        populateYears();
     }
 
     property int currentMonth: new Date().getMonth()

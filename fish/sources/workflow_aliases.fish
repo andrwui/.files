@@ -31,7 +31,7 @@ function tn
     end
     # Switch or attach to session
     if set -q TMUX
-      tmux switch-client -t "$session_name" \; new-window -dn scratch -c "$selected_dir" \; send-keys 'nv' C-m 
+      tmux switch-client -t "$session_name" \; new-window -dn pnpm -c "$selected_dir" \; new-window -dn docker -c "$selected_dir" \; new-window -dn scratch -c "$selected_dir" \; send-keys 'nv' C-m 
     else
       tmux attach-session -t "$session_name"
     end

@@ -1,10 +1,10 @@
 import QtQuick
+import qs.components
 
 Rectangle {
     color: 'transparent'
 
-    Image {
-        source: 'root:/icons/wifi.svg'
-        anchors.centerIn: parent
+    CustomIcon {
+        iconName: 'wifi'
     }
 }

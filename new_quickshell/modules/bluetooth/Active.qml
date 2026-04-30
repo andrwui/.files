@@ -1,13 +1,15 @@
 import QtQuick
+import qs.config
+import qs.components
 
 Rectangle {
     width: 300
     height: 85
 
     color: "transparent"
-    Text {
+    BaseText {
         anchors.centerIn: parent
         text: 'You have clicked bitch: BLUETOOTH'
-        color: 'white'
+        color: Config.colors.foreground
     }
 }

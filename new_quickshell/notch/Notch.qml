@@ -24,7 +24,8 @@ Rectangle {
 
         color: 'transparent'
 
-        width: parent.width / 2.5
+        width: parent.width / 2
+
         height: parent.height
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
@@ -61,6 +62,7 @@ Rectangle {
                     width: Modules.items[index].name === 'time' ? 50 : 25
 
                     MouseArea {
+                        id: itemMouseArea
                         z: 5
                         anchors.fill: parent
                         hoverEnabled: true
@@ -70,13 +72,19 @@ Rectangle {
                         }
 
                         onClicked: NotchState.hasClicked = !NotchState.hasClicked
+                        cursorShape: Qt.PointingHandCursor
                     }
 
                     Loader {
                         id: notchItemLoader
+                        opacity: NotchState.itemHovered === Modules.items[parent.index] && NotchState.isHovered ? 1 : itemMouseArea.containsMouse ? 1 : 0.7
                         asynchronous: true
                         anchors.fill: parent
                         sourceComponent: notch.items[parent.index]
+
+                        Behavior on opacity {
+                            Anim {}
+                        }
                     }
                 }
             }

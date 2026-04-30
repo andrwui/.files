@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell
 import qs.components
+import qs.config
 
 Rectangle {
     width: 200
@@ -8,8 +9,8 @@ Rectangle {
     color: "transparent"
     BaseText {
         anchors.centerIn: parent
-        color: 'white'
-        text: parent.time
+        color: Config.colors.foreground
+        text: parent.time.toLowerCase()
     }
 
     readonly property string time: {

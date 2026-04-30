@@ -1,13 +1,33 @@
 import QtQuick
+import qs.state
+import qs.components
+import qs.models.system
+import QtQuick.Layouts
 
 Rectangle {
-    width: 300
-    height: 85
-
+    width: 380
+    height: 200
     color: "transparent"
-    Text {
-        anchors.centerIn: parent
-        text: 'You have clicked bitch: OTHER'
-        color: 'white'
+
+    ColumnLayout {
+        id: serversColumn
+
+        Repeater {
+            model: SystemState.servers
+
+            delegate: Rectangle {
+                required property ServerModel modelData
+
+                Layout.fillWidth: true
+                Layout.preferredHeight: 80
+                height: 80
+
+                color: "transparent"
+                BaseText {
+                    anchors.centerIn: parent
+                    text: parent.modelData.name
+                }
+            }
+        }
     }
 }
