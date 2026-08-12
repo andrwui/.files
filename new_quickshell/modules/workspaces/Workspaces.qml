@@ -10,7 +10,7 @@ Rectangle {
     implicitWidth: row.implicitWidth + 20
     clip: true
     color: Config.colors.base
-    radius: 10
+    radius: 20
 
     Behavior on implicitWidth {
         Anim {}
@@ -26,7 +26,7 @@ Rectangle {
         Behavior on implicitWidth {
             NumberAnimation {
                 duration: 250
-                easing.type: Easing.OutSine
+                easing.type: Config.animations.easingType
             }
         }
 
@@ -38,7 +38,7 @@ Rectangle {
                 color: modelData.id === Hyprland.focusedWorkspace.id ? Config.colors.foreground : Config.colors.secondaryDark
                 implicitWidth: modelData.id === Hyprland.focusedWorkspace.id ? 35 : 15
                 implicitHeight: 15
-                radius: 5
+                radius: 10
 
                 Behavior on implicitWidth {
                     Anim {}
@@ -46,7 +46,7 @@ Rectangle {
                 Behavior on color {
                     ColorAnimation {
                         duration: 100
-                        easing.type: Easing.OutSine
+                        easing.type: Config.animations.easingType
                     }
                 }
             }

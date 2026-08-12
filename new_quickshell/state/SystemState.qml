@@ -46,8 +46,6 @@ Singleton {
                     return;
                 }
 
-                console.log("ES NULO POR QUE EBTRA");
-
                 const incoming = {};
 
                 for (const item of parsedData) {

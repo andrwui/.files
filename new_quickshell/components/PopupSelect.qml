@@ -20,14 +20,14 @@ StackView {
             from: 0
             to: 1
             duration: 300
-            easing.type: Easing.OutCubic
+            easing.type: Config.animations.easingType
         }
         PropertyAnimation {
             property: "scale"
             from: 0
             to: 1
             duration: 300
-            easing.type: Easing.OutCubic
+            easing.type: Config.animations.easingType
         }
     }
 
@@ -37,14 +37,14 @@ StackView {
             from: 1
             to: 0
             duration: 200
-            easing.type: Easing.OutQuart
+            easing.type: Config.animations.easingType
         }
         PropertyAnimation {
             property: "scale"
             from: 1
             to: 0
             duration: 200
-            easing.type: Easing.OutQuart
+            easing.type: Config.animations.easingType
         }
     }
 

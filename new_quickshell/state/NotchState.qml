@@ -3,11 +3,11 @@ pragma Singleton
 import QtQuick
 import Quickshell
 import qs.models.notch
-import qs.modules
+import qs.modules.notch.panels
 
 Singleton {
     id: notchState
-    property NotchModuleModel itemHovered: Modules.items[0]
+    property NotchPanelModel activePanel: null
 
     property var itemAlignment
 

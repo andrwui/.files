@@ -82,6 +82,11 @@ Singleton {
         populateYears();
     }
 
+    function reset() {
+        currentMonth = new Date().getMonth();
+        currentYear = new Date().getFullYear();
+    }
+
     property int currentMonth: new Date().getMonth()
     property int currentYear: new Date().getFullYear()
 }

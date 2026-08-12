@@ -1,8 +1,11 @@
 import QtQuick
 import Quickshell
 import "bar"
-
+import "ocr"
+import "clipboard"
 
 ShellRoot {
-  Bar {}
+    Bar {}
+    Ocr {}
+    Clipboard {}
 }

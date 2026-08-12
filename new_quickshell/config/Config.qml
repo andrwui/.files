@@ -5,20 +5,30 @@ import Quickshell
 import qs.models.config
 
 Singleton {
-    property NotchSizeModel notchSize: NotchSizeModel {
-        property int width: 600
-        property int height: 35
-    }
-
     property ColorModel colors: ColorModel {
-        property string base: '#111111'
-        property string foreground: '#ffffff'
-        property string secondaryDark: '#222222'
-        property string secondaryLight: '#6a6a6a'
+        base: '#080808'
+        foreground: '#ffffff'
+        secondaryDark: '#222222'
+        secondaryLight: '#6a6a6a'
     }
 
     property AnimationModel animations: AnimationModel {
-        property int duration: 300
-        property int easingType: Easing.OutQuart
+        duration: 300
+        easingType: Easing.OutQuart
+    }
+
+    property ConstantsModel constants: ConstantsModel {
+        iconSize: 10
+
+        notchHomeLayoutWidth: 300
+        notchHomeLayoutHeight: 35
+
+        popoutVMargin: 20
+
+        fullRadius: 9999
+
+        months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+        spacing: 20
     }
 }

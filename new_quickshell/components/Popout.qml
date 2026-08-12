@@ -8,9 +8,9 @@ Shape {
     preferredRendererType: Shape.CurveRenderer
 
     property real radius: 20
-    readonly property bool flatten: height < radius * 2
-    readonly property real radiusX: radius
-    readonly property real radiusY: flatten ? height / 2 : Math.min(radius, height / 2)
+    readonly property bool flatten: width < radius * 2
+    readonly property real radiusX: flatten ? width / 2 : Math.min(radius, width / 2)
+    readonly property real radiusY: Math.min(radius, height / 2)
 
     ShapePath {
         strokeWidth: 0
@@ -34,7 +34,7 @@ Shape {
             direction: PathArc.Counterclockwise
         }
         PathLine {
-            x: root.width - root.radiusX * 2
+            x: Math.max(root.width - root.radiusX * 2, root.radiusX)
             y: root.height
         }
         PathArc {

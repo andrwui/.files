@@ -1,18 +1,19 @@
+import QtQuick.Layouts
+import qs.config
 import QtQuick
-import Quickshell.Widgets
 
 Image {
     id: icon
 
     required property string iconName
     source: `root:/icons/${iconName}.svg`
-    sourceSize: Qt.size(28, 28)
+    sourceSize: Qt.size(24, 24)
     fillMode: Image.PreserveAspectFit
     antialiasing: true
     smooth: true
 
-    width: 18
-    height: 18
-
-    anchors.centerIn: parent
+    width: Config.constants.iconSize
+    height: Config.constants.iconSize
+    Layout.preferredWidth: Config.constants.iconSize
+    Layout.preferredHeight: Config.constants.iconSize
 }

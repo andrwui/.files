@@ -1,9 +1,10 @@
 import QtQuick
 import Quickshell
-import qs.notch
-import qs.modules
+import qs.modules.notch
 import qs.modules.workspaces
+import qs.modules.notch.panels
 import qs.state
+import qs.config
 
 Scope {
 
@@ -12,45 +13,48 @@ Scope {
         SystemState.init();
     }
 
-    PanelWindow {
-        id: bar
-        color: 'transparent'
+    Variants {
+        model: Quickshell.screens
 
-        implicitHeight: 1080
-        exclusiveZone: 35
-        margins.left: 5
-        margins.top: 5
-        margins.right: 5
+        PanelWindow {
+            id: bar
+            required property var modelData
 
-        mask: Region {
-            regions: [notchRegion, trayRegion]
-        }
+            screen: modelData
 
-        Region {
-            id: notchRegion
-            item: notch
-        }
+            color: 'transparent'
 
-        Region {
-            id: trayRegion
-            item: tray
-        }
+            implicitHeight: 1080
+            exclusiveZone: 35
+            margins.left: 5
+            margins.top: 5
+            margins.right: 5
 
-        anchors {
-            top: true
-            left: true
-            right: true
-        }
+            mask: Region {
+                regions: [notchRegion]
+            }
 
-        Workspaces {}
+            Region {
+                id: notchRegion
+                item: notch
+            }
 
-        Notch {
-            id: notch
-            items: Modules.items.map(item => item.notchItem)
-        }
+            anchors {
+                top: true
+                left: true
+                right: true
+            }
 
-        NotchTray {
-            id: tray
+            height: Config.constants.notchHeight
+
+            Workspaces {
+                anchors.left: parent.left
+            }
+
+            Notch {
+                id: notch
+                items: Panels.items.map(item => item.notchItem)
+            }
         }
     }
 }
