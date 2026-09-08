@@ -1,7 +1,14 @@
 import QtQuick
 
 QtObject {
-    property int notchWidth
-    property int notchHeight
+    property int iconSize
     property int popoutVMargin
+
+    property int notchHomeLayoutWidth
+    property int notchHomeLayoutHeight
+    property int fullRadius
+
+    property list<string> months
+
+    property int spacing
 }

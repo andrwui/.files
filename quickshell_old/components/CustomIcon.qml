@@ -1,6 +1,5 @@
-import QtQuick.Layouts
-import qs.config
 import QtQuick
+import Quickshell.Widgets
 
 Image {
     id: icon
@@ -12,8 +11,6 @@ Image {
     antialiasing: true
     smooth: true
 
-    width: Config.constants.iconSize
-    height: Config.constants.iconSize
-    Layout.preferredWidth: Config.constants.iconSize
-    Layout.preferredHeight: Config.constants.iconSize
+    width: 20
+    height: 20
 }

@@ -20,7 +20,7 @@ Item {
         }
     }
 
-    default property alias data: content.data
+    default final property alias data: content.data
 
     MouseArea {
         id: ma

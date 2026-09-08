@@ -5,4 +5,5 @@ QtObject {
     property string foreground
     property string secondaryDark
     property string secondaryLight
+    property string error
 }

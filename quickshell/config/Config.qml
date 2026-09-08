@@ -6,21 +6,32 @@ import qs.models.config
 
 Singleton {
     property ColorModel colors: ColorModel {
-        property string base: '#111111'
-        property string foreground: '#ffffff'
-        property string secondaryDark: '#222222'
-        property string secondaryLight: '#6a6a6a'
+        base: '#080808'
+        foreground: '#ffffff'
+        secondaryDark: '#222222'
+        secondaryLight: '#6a6a6a'
+        error: '#ff5555'
     }
 
     property AnimationModel animations: AnimationModel {
-        property int duration: 300
-        property int easingType: Easing.OutQuart
+        duration: 300
+        easingType: Easing.OutQuad
+        spring: 8.0
+        damping: 0.6
     }
 
     property ConstantsModel constants: ConstantsModel {
-        property int notchWidth: 300
-        property int notchHeight: 35
+        iconSize: 10
 
-        property int popoutVMargin: 20
+        notchHomeLayoutWidth: 300
+        notchHomeLayoutHeight: 35
+
+        popoutVMargin: 20
+
+        fullRadius: 9999
+
+        months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+        spacing: 20
     }
 }

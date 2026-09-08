@@ -1,7 +1,8 @@
 import QtQuick
 import qs.config
 
-NumberAnimation {
-    duration: Config.animations.duration
-    easing.type: Config.animations.easingType
+SpringAnimation {
+    spring: Config.animations.spring
+    damping: Config.animations.damping
+    epsilon: 0.01
 }

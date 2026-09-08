@@ -15,12 +15,11 @@ CustomIcon {
 
     opacity: root.visible ? 1 : 0
     Behavior on opacity {
-      Anim {}
+        Anim {}
     }
 
     scale: root.visible ? 1 : 0
     Behavior on scale {
-      Anim {}
+        Anim {}
     }
-
 }
