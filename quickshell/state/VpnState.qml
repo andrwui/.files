@@ -15,12 +15,16 @@ Singleton {
     property bool _wasConnected: false
 
     function connect() {
+        if (root.active)
+            return;
         root.isWaiting = true;
-        SudoState.runPersistent(['openfortivpn']);
+        // Launch detached (new session, reparented to init) so quickshell
+        // reloads don't kill the VPN. The one-shot runner exits immediately;
+        // the polling loop below keeps isConnected/isWaiting in sync.
+        SudoState.run(['sh', '-c', 'setsid nohup openfortivpn >/tmp/openfortivpn.log 2>&1 < /dev/null &']);
     }
 
     function disconnect() {
-        SudoState.stopPersistent();
         SudoState.run(['pkill', '-x', 'openfortivpn'], (success) => {
             // polling confirms actual state
         });

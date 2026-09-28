@@ -27,6 +27,7 @@ Rectangle {
 
         RowLayout {
             Layout.fillWidth: true
+            spacing: Config.constants.spacing / 2
 
             BackButton {
                 text: 'Bluetooth'
@@ -34,9 +35,35 @@ Rectangle {
             }
 
             Text {
+                text: 'On/Off'
+                font.pixelSize: 13
+                color: Config.colors.secondaryLight
+                Layout.alignment: Qt.AlignVCenter
+            }
+
+            CustomSwitch {
+                checked: Bluetooth.defaultAdapter && Bluetooth.defaultAdapter.enabled
+                onToggled: {
+                    if (Bluetooth.defaultAdapter)
+                        Bluetooth.defaultAdapter.enabled = checked;
+                }
+                Layout.alignment: Qt.AlignVCenter
+            }
+        }
+
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: Config.constants.spacing / 2
+
+            Item {
+                Layout.fillWidth: true
+            }
+
+            Text {
                 text: 'Scan'
                 font.pixelSize: 13
                 color: Config.colors.secondaryLight
+                Layout.alignment: Qt.AlignVCenter
             }
 
             CustomSwitch {
@@ -45,6 +72,7 @@ Rectangle {
                     if (Bluetooth.defaultAdapter)
                         Bluetooth.defaultAdapter.discovering = checked;
                 }
+                Layout.alignment: Qt.AlignVCenter
             }
         }
 

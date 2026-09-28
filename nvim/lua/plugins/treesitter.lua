@@ -16,13 +16,27 @@ local TS = {
         'go',
         'javascript',
         'typescript',
+        'tsx',
         'html',
         'astro',
         'css',
         'scss',
         'lua',
+        'python',
+        'bash',
+        'diff',
+        'gitcommit',
+        'git_rebase',
         'markdown',
         'markdown_inline',
+        -- filetypes that show up in muse/opencode edit blocks; without
+        -- these the code fences fall back to plain grey and diffs look
+        -- "very wrong". Missing parsers (e.g. tmux) safely fall back.
+        'vim',
+        'vimdoc',
+        'json',
+        'yaml',
+        'toml',
       },
       ignore_install = { 'rust' }
     })

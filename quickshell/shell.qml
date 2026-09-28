@@ -31,7 +31,10 @@ Scope {
 
             color: 'transparent'
 
-            WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
+            // Only take keyboard focus while a panel is open (e.g. typing
+            // a wifi/VPN password). Drops back to None on hover-out when
+            // the panel closes, so focus returns to your apps.
+            WlrLayershell.keyboardFocus: NotchState.activePanel ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
 
             implicitHeight: 1080
             exclusiveZone: 35

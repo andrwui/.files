@@ -33,12 +33,25 @@ Rectangle {
         return 'wifi/wifi-lo';
     }
 
+    readonly property var sortedNetworks: {
+        var nets = root.wifiDevice && root.wifiDevice.networks ? root.wifiDevice.networks.values : [];
+        // Copy so sort() doesn't mutate the source model order.
+        var copy = nets.slice();
+        copy.sort((a, b) => {
+            // Connected network always topmost.
+            if (a.connected !== b.connected)
+                return a.connected ? -1 : 1;
+            // Then remembered (known) networks.
+            if (a.known !== b.known)
+                return a.known ? -1 : 1;
+            // Finally strongest signal first.
+            return (b.signalStrength || 0) - (a.signalStrength || 0);
+        });
+        return copy;
+    }
+
     function needsPassword(network) {
-        return network
-            && network.security !== WifiSecurityType.Open
-            && (network.security === WifiSecurityType.WpaPsk
-                || network.security === WifiSecurityType.Wpa2Psk
-                || network.security === WifiSecurityType.Sae);
+        return network && network.security !== WifiSecurityType.Open && (network.security === WifiSecurityType.WpaPsk || network.security === WifiSecurityType.Wpa2Psk || network.security === WifiSecurityType.Sae);
     }
 
     ColumnLayout {
@@ -47,6 +60,7 @@ Rectangle {
 
         RowLayout {
             Layout.fillWidth: true
+            spacing: Config.constants.spacing / 2
 
             BackButton {
                 text: 'Wifi'
@@ -54,42 +68,34 @@ Rectangle {
             }
 
             Text {
-                text: 'Wifi'
+                text: 'On/Off'
                 font.pixelSize: 13
                 color: Config.colors.secondaryLight
+                Layout.alignment: Qt.AlignVCenter
+                bottomPadding: 10
             }
 
             CustomSwitch {
                 checked: Networking.wifiEnabled
                 onToggled: Networking.wifiEnabled = checked
-            }
-
-            Text {
-                text: 'Scan'
-                font.pixelSize: 13
-                color: Config.colors.secondaryLight
-            }
-
-            CustomSwitch {
-                checked: root.wifiDevice && root.wifiDevice.scannerEnabled
-                onToggled: {
-                    if (root.wifiDevice)
-                        root.wifiDevice.scannerEnabled = checked;
-                }
+                Layout.alignment: Qt.AlignVCenter
             }
         }
 
         RowLayout {
             Layout.fillWidth: true
+            spacing: Config.constants.spacing / 2
+
+            Item {
+                Layout.fillWidth: true
+            }
 
             Text {
                 text: 'VPN'
                 font.pixelSize: 13
                 color: Config.colors.secondaryLight
-            }
-
-            Item {
-                Layout.fillWidth: true
+                Layout.alignment: Qt.AlignVCenter
+                bottomPadding: 10
             }
 
             Spinner {
@@ -102,13 +108,31 @@ Rectangle {
 
             CustomSwitch {
                 id: vpnSwitch
-                Component.onCompleted: vpnSwitch.checked = VpnState.active;
+                Component.onCompleted: vpnSwitch.checked = VpnState.active
                 onToggled: {
                     if (vpnSwitch.checked)
                         VpnState.connect();
                     else
                         VpnState.disconnect();
                 }
+                Layout.alignment: Qt.AlignVCenter
+            }
+
+            Text {
+                text: 'Scan'
+                font.pixelSize: 13
+                color: Config.colors.secondaryLight
+                Layout.alignment: Qt.AlignVCenter
+                bottomPadding: 10
+            }
+
+            CustomSwitch {
+                checked: root.wifiDevice && root.wifiDevice.scannerEnabled
+                onToggled: {
+                    if (root.wifiDevice)
+                        root.wifiDevice.scannerEnabled = checked;
+                }
+                Layout.alignment: Qt.AlignVCenter
             }
         }
 
@@ -126,7 +150,7 @@ Rectangle {
             spacing: Config.constants.spacing / 2
             clip: true
 
-            model: root.wifiDevice ? root.wifiDevice.networks : null
+            model: root.sortedNetworks
 
             delegate: Rectangle {
                 required property var modelData
@@ -157,6 +181,8 @@ Rectangle {
                             iconName: root.signalIcon(modelData.signalStrength)
                             height: 24
                             width: 24
+                            Layout.preferredWidth: 24
+                            Layout.preferredHeight: 24
                         }
 
                         Text {
@@ -300,10 +326,8 @@ Rectangle {
 
     Text {
         anchors.centerIn: parent
-        visible: !root.wifiDevice || !Networking.wifiEnabled || root.wifiDevice.networks.count === 0
-        text: !Networking.wifiEnabled || !root.wifiDevice
-            ? 'Wifi off'
-            : 'No networks'
+        visible: !root.wifiDevice || !Networking.wifiEnabled || root.sortedNetworks.length === 0
+        text: !Networking.wifiEnabled || !root.wifiDevice ? 'Wifi off' : 'No networks'
         font.pixelSize: 13
         color: Config.colors.secondaryLight
     }

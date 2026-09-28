@@ -39,7 +39,7 @@ Rectangle {
                 return 'wifi/wifi-mid';
             return 'wifi/wifi-lo';
         }
-        height: 15
-        width: 15
+        height: 18
+        width: 18
     }
 }
