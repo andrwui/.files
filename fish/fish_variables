@@ -1,5 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export ANDROID_HOME:/home/andrw/Android/Sdk
+SETUVAR --export ANDROID_SDK_ROOT:/home/andrw/Android/Sdk
+SETUVAR --export JAVA_HOME:/usr/lib/jvm/java\x2d17\x2dopenjdk
 SETUVAR Z_DATA_DIR:/home/andrw/\x2elocal/share/z
 SETUVAR _ZO_EXCLUDE_DIRS:/home/andrw/\x2efiles/\x2a\x3a/home/andrw/\x2elocal/\x2a
 SETUVAR _ZO_RESOLVE_SYMLINKS:1
@@ -9,4 +12,4 @@ SETUVAR _fisher_jorgebucaran_2F_autopair_2E_fish_files:\x7e/\x2econfig/fish/func
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejorgebucaran/autopair\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
-SETUVAR fish_user_paths:/home/andrw/\x2elocal/bin\x1e/home/andrw/\x2ebun/bin\x1e/home/andrw/\x2elocal/share/pnpm\x1e/usr/lib/jvm/java\x2d22\x2dopenjdk/bin\x1e/home/andrw/go/bin\x1e/home/andrw/\x2espicetify\x1e/usr/local/ant/bin\x1e/sbin\x1e/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/sbin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl
+SETUVAR fish_user_paths:/home/andrw/\x2eopencode/bin\x1e/home/andrw/Android/Sdk/cmdline\x2dtools/latest/bin\x1e/home/andrw/\x2elocal/bin\x1e/home/andrw/\x2ebun/bin\x1e/home/andrw/\x2elocal/share/pnpm\x1e/usr/lib/jvm/java\x2d22\x2dopenjdk/bin\x1e/home/andrw/go/bin\x1e/home/andrw/\x2espicetify\x1e/usr/local/ant/bin\x1e/sbin\x1e/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/sbin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl

@@ -1,17 +1,20 @@
 local TS = {
-
   'nvim-treesitter/nvim-treesitter',
-
-  build = function()
-    require('nvim-treesitter.install').update({ with_sync = true })()
-  end,
-
+  branch = "main",
+  build = ":TSUpdate",
   config = function()
-    local confs = require('nvim-treesitter.configs')
+    -- Fixed: Call the top-level 'nvim-treesitter' module instead of '.configs'
+    local ts = require('nvim-treesitter')
 
-    confs.setup({
-      enable = true,
-      aditional_vim_regex_highlighting = false,
+    ts.setup({
+      -- Fixed: Moved enable options into the required highlight sub-block
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+      -- If you want indentation enabled, uncomment the line below:
+      -- indent = { enable = true },
+
       ensure_installed = {
         'go',
         'javascript',
@@ -41,8 +44,6 @@ local TS = {
       ignore_install = { 'rust' }
     })
   end
-
 }
-
 
 return { TS }
